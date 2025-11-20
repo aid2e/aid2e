@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Collaboration - AID2E</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="darker-bg">
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar dark-bg w3-card w3-left-align w3-large">
+    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-opacity w3-large" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="index.html" class="w3-bar-item w3-button w3-padding-large accent-hover">Home</a>
+    <a href="collaboration.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-color">Collaboration</a>
+    <a href="publications.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Publications</a>
+    <a href="other-works.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Other Works</a>
+    <a href="projects.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Projects</a>
+  </div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block dark-bg w3-hide w3-hide-large w3-hide-medium w3-large">
+    <a href="index.html" class="w3-bar-item w3-button w3-padding-large">Home</a>
+    <a href="collaboration.html" class="w3-bar-item w3-button w3-padding-large">Collaboration</a>
+    <a href="publications.html" class="w3-bar-item w3-button w3-padding-large">Publications</a>
+    <a href="other-works.html" class="w3-bar-item w3-button w3-padding-large">Other Works</a>
+    <a href="projects.html" class="w3-bar-item w3-button w3-padding-large">Projects</a>
+  </div>
+</div>
+
+<!-- Under Construction -->
+<div class="w3-container w3-center" style="padding-top: 200px; min-height: 80vh;">
+  <div class="under-construction">
+    <i class="fa fa-cogs" style="font-size: 120px; color: #3a7ca5; margin-bottom: 30px;"></i>
+    <h1 class="w3-jumbo">Under Construction</h1>
+    <p class="w3-xlarge w3-text-grey">This page is currently being built.</p>
+    <p class="w3-large w3-text-grey">Check back soon!</p>
+    <a href="index.html" class="w3-button accent-color w3-padding-large w3-margin-top">
+      <i class="fa fa-home"></i> Return to Home
+    </a>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-64 w3-center dark-bg">  
+  <div class="w3-xlarge w3-padding-32">
+    <a href="https://github.com/aid2e" target="_blank"><i class="fa fa-github w3-hover-opacity"></i></a>
+  </div>
+  <p>&copy; 2025 AID2E Collaboration. Funded by the U.S. Department of Energy Grant Contract No. DE-SC0024625.</p>
+</footer>
+
+<script>
+function myFunction() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+</script>
+
+</body>
+</html>

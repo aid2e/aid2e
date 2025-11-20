@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>AID2E - AI-assisted Detector Design for EIC</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="darker-bg">
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar dark-bg w3-card w3-left-align w3-large">
+    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-opacity w3-large" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="index.html" class="w3-bar-item w3-button w3-padding-large accent-color">Home</a>
+    <a href="collaboration.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Collaboration</a>
+    <a href="publications.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Publications</a>
+    <a href="other-works.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Other Works</a>
+    <a href="projects.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Projects</a>
+  </div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block dark-bg w3-hide w3-hide-large w3-hide-medium w3-large">
+    <a href="collaboration.html" class="w3-bar-item w3-button w3-padding-large">Collaboration</a>
+    <a href="publications.html" class="w3-bar-item w3-button w3-padding-large">Publications</a>
+    <a href="other-works.html" class="w3-bar-item w3-button w3-padding-large">Other Works</a>
+    <a href="projects.html" class="w3-bar-item w3-button w3-padding-large">Projects</a>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="w3-container w3-center" style="padding:128px 16px; background-image: url('assets/images/AID2E-logo.png'); background-size: contain; background-repeat: no-repeat; background-position: center; background-color: #1a1a1a; min-height: 400px; display: flex; align-items: center; justify-content: center;">
+  <!-- <div style="background-color: rgba(58, 124, 165, 0.7); padding: 20px; border-radius: 10px;">
+    <p class="w3-xlarge" style="color: white;">AI-assisted Detector Design for EIC</p>
+  </div> -->
+</header>
+
+<!-- First Grid -->
+<div class="w3-row-padding w3-padding-64 w3-container darker-bg">
+  <div class="w3-content">
+    <div class="w3-col">
+      <h1>About AID2E</h1>
+      <h5 class="w3-padding-32">AI-assisted Detector Design for EIC (AID2E)</h5>
+
+      <p class="w3-text-grey">
+        Artificial Intelligence is poised to transform the design of complex, large-scale detectors like the ePIC at the future Electron Ion Collider. Featuring a central detector with additional detecting systems in the far forward and far backward regions, the ePIC experiment incorporates numerous design parameters and objectives, including performance, physics reach, and cost, constrained by mechanical and geometric limits.
+      </p>
+      
+      <p class="w3-text-grey">
+        This ongoing DOE-funded grant project aims to develop a scalable, distributed AI-assisted detector design for the EIC (AID²E), employing state-of-the-art multiobjective optimization to tackle complex designs. Supported by the ePIC software stack and using Geant4 simulations, our approach benefits from transparent parameterization and advanced AI features.
+      </p>
+      
+      <p class="w3-text-grey">
+        The workflow leverages the PanDA and iDDS systems, used in major experiments such as ATLAS at CERN LHC, the Rubin Observatory, and sPHENIX at RHIC, to manage the compute intensive demands of ePIC detector simulations. Tailored enhancements to the PanDA system focus on usability, scalability, automation, and monitoring.
+      </p>
+      
+      <p class="w3-text-grey">
+        Ultimately, this project aims to establish a robust design capability, apply a distributed AI-assisted workflow to the ePIC detector, and extend its applications to the design of the second detector (Detector-2) in the EIC, as well as to calibration and alignment tasks. Additionally, we are developing advanced data science tools to efficiently navigate the complex, multidimensional trade-offs identified through this optimization process.
+      </p>
+      
+      <p class="w3-padding-16">
+        <a href="https://arxiv.org/abs/2405.16279" target="_blank" class="w3-button accent-color w3-padding-large">
+          <i class="fa fa-external-link"></i> Read our paper on arXiv
+        </a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- Collaborating Institutes -->
+<div class="w3-row-padding w3-padding-64 w3-container dark-bg">
+  <div class="w3-content">
+    <h2 class="w3-center w3-padding-32">Collaborating Institutes</h2>
+    <div class="w3-center" style="display: flex; align-items: center; justify-content: center; flex-wrap: nowrap; gap: 30px;">
+      <div class="institute-logo">
+        <img src="assets/images/BNL.png" alt="Brookhaven National Laboratory" style="max-width: 180px; height: auto; filter: brightness(0.9);">
+      </div>
+      <div class="institute-logo">
+        <img src="assets/images/CUA.png" alt="Catholic University of America" style="max-width: 180px; height: auto; filter: brightness(0.9);">
+      </div>
+      <div class="institute-logo">
+        <img src="assets/images/Duke.png" alt="Duke University" style="max-width: 180px; height: auto; filter: brightness(0.9);">
+      </div>
+      <div class="institute-logo">
+        <img src="assets/images/JLab.png" alt="Jefferson Lab" style="max-width: 180px; height: auto; filter: brightness(0.9);">
+      </div>
+      <div class="institute-logo lead-institute">
+        <img src="assets/images/W&M.png" alt="William & Mary" style="max-width: 90px; height: auto; filter: brightness(0.9);">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Second Grid -->
+<div class="w3-row-padding dark-bg w3-padding-64 w3-container">
+  <div class="w3-content">
+    <div class="w3-col">
+      <h1>Key Features</h1>
+      <div class="w3-row-padding w3-margin-top">
+        <div class="w3-half">
+          <h3><i class="fa fa-cogs"></i> Multiobjective Optimization</h3>
+          <p class="w3-text-grey">State-of-the-art AI techniques for complex detector design optimization.</p>
+        </div>
+        <div class="w3-half">
+          <h3><i class="fa fa-server"></i> Distributed Workflow</h3>
+          <p class="w3-text-grey">Leveraging PanDA and iDDS systems for scalable simulations.</p>
+        </div>
+      </div>
+      <div class="w3-row-padding w3-margin-top">
+        <div class="w3-half">
+          <h3><i class="fa fa-flask"></i> Physics-Driven</h3>
+          <p class="w3-text-grey">Supported by ePIC software stack and Geant4 simulations.</p>
+        </div>
+        <div class="w3-half">
+          <h3><i class="fa fa-chart-line"></i> Advanced Analytics</h3>
+          <p class="w3-text-grey">Data science tools for navigating complex design trade-offs.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="w3-container darker-bg w3-center w3-padding-64">
+    <h1 class="w3-margin w3-xlarge">"Transforming detector design through artificial intelligence"</h1>
+</div>
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-64 w3-center dark-bg">  
+  <div class="w3-xlarge w3-padding-32">
+    <a href="https://github.com/aid2e" target="_blank"><i class="fa fa-github w3-hover-opacity"></i></a>
+  </div>
+  <p>&copy; 2025 AID2E Collaboration. Funded by the U.S. Department of Energy Grant Contract No. DE-SC0024625.</p>
+</footer>
+
+<script>
+// Used to toggle the menu on small screens when clicking on the menu button
+function myFunction() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+</script>
+
+</body>
+</html>
+

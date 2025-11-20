@@ -1,0 +1,105 @@
+/* AID2E Custom Styles */
+
+/* Typography */
+body,h1,h2,h3,h4,h5,h6 {
+  font-family: "Lato", sans-serif;
+  color: #e0e0e0;
+}
+
+.w3-bar,h1,button {
+  font-family: "Montserrat", sans-serif;
+}
+
+/* Background Colors */
+body {
+  background-color: #1a1a1a;
+}
+
+.dark-bg {
+  background-color: #2a2a2a !important;
+}
+
+.darker-bg {
+  background-color: #1a1a1a !important;
+}
+
+/* Accent Colors */
+.accent-color {
+  background-color: #3a7ca5 !important;
+}
+
+.accent-hover:hover {
+  background-color: #2d6080 !important;
+}
+
+/* Logo Container */
+.logo-container {
+  max-width: 300px;
+  margin: 20px auto;
+}
+
+.logo-container img {
+  width: 100%;
+  height: auto;
+}
+
+/* Institute Logos */
+.institute-logo {
+  padding: 20px;
+  transition: transform 0.3s ease;
+}
+
+.institute-logo:hover {
+  transform: scale(1.05);
+}
+
+.institute-logo img {
+  opacity: 0.85;
+  transition: opacity 0.3s ease;
+}
+
+.institute-logo img:hover {
+  opacity: 1;
+}
+
+/* Lead Institute Highlight */
+.lead-institute {
+  border: 3px solid #3a7ca5;
+  border-radius: 10px;
+  background-color: rgba(58, 124, 165, 0.1);
+}
+
+/* White Background for Specific Logos */
+.white-bg-logo {
+  background-color: white;
+  border-radius: 10px;
+}
+
+/* Under Construction Page */
+.under-construction {
+  animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.under-construction i {
+  animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
