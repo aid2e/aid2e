@@ -7,6 +7,7 @@ This script generates static HTML pages from Jinja2 templates.
 from jinja2 import Environment, FileSystemLoader
 import os
 import json
+import markdown
 
 # Configuration
 TEMPLATE_DIR = 'templates'
@@ -18,6 +19,53 @@ def load_collaborators():
     with open('collaborators.json', 'r', encoding='utf-8') as f:
         data = json.load(f)
     return data['institutions']
+
+# Load projects data
+def load_projects():
+    """Load projects from JSON file and parse markdown content."""
+    with open('projects.json', 'r', encoding='utf-8') as f:
+        data = json.load(f)
+    
+    md = markdown.Markdown(extensions=['extra', 'codehilite'])
+    
+    # Process software infrastructure projects
+    for project in data['software_infrastructure']:
+        if 'markdown_file' in project:
+            try:
+                with open(project['markdown_file'], 'r', encoding='utf-8') as f:
+                    project['content'] = md.convert(f.read())
+                md.reset()
+            except FileNotFoundError:
+                project['content'] = '<p>Content coming soon.</p>'
+    
+    # Process ePIC use cases
+    for project in data['epic_use_cases']:
+        if 'markdown_file' in project:
+            try:
+                with open(project['markdown_file'], 'r', encoding='utf-8') as f:
+                    project['content'] = md.convert(f.read())
+                md.reset()
+            except FileNotFoundError:
+                project['content'] = '<p>Content coming soon.</p>'
+    
+    # Process other use cases
+    for project in data['other_use_cases']:
+        if 'markdown_file' in project:
+            try:
+                with open(project['markdown_file'], 'r', encoding='utf-8') as f:
+                    project['content'] = md.convert(f.read())
+                md.reset()
+            except FileNotFoundError:
+                project['content'] = '<p>Content coming soon.</p>'
+    
+    return data
+
+# Load publications data
+def load_publications():
+    """Load publications from JSON file."""
+    with open('publications.json', 'r', encoding='utf-8') as f:
+        data = json.load(f)
+    return data
 
 # Institute data in alphabetical order
 INSTITUTES = [
@@ -47,11 +95,12 @@ PAGES = [
         }
     },
     {
-        'template': 'under_construction.html',
+        'template': 'publications.html',
         'output': 'publications.html',
         'active_page': 'publications',
-        'context': {
-            'page_title': 'Publications'
+        'context': lambda: {
+            'papers': load_publications()['papers'],
+            'other_activities': load_publications()['other_activities']
         }
     },
     {
@@ -63,11 +112,13 @@ PAGES = [
         }
     },
     {
-        'template': 'under_construction.html',
+        'template': 'projects.html',
         'output': 'projects.html',
         'active_page': 'projects',
-        'context': {
-            'page_title': 'Projects'
+        'context': lambda: {
+            'software_infrastructure': load_projects()['software_infrastructure'],
+            'epic_use_cases': load_projects()['epic_use_cases'],
+            'other_use_cases': load_projects()['other_use_cases']
         }
     },
 ]
@@ -87,9 +138,14 @@ def generate_site():
         template = env.get_template(page_config['template'])
         
         # Prepare context
+        context_data = page_config.get('context', {})
+        # Handle callable context (for lazy loading)
+        if callable(context_data):
+            context_data = context_data()
+        
         context = {
             'active_page': page_config['active_page'],
-            **page_config.get('context', {})
+            **context_data
         }
         
         # Render template

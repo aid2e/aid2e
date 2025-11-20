@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+
+{% block title %}Projects - AID2E{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="page-header">
+  <h1>AID2E Projects</h1>
+  <p class="about-text" style="max-width: 900px; margin: 0 auto;">
+    The AID2E collaboration develops software infrastructure in parallel with advancing detector optimization for the ePIC experiment. 
+    Our work builds upon the iDDS and PanDA frameworks for distributed computing while creating specialized solutions for high-performance 
+    environments including SLURM-based parallelization. These efforts support systematic exploration of detector design parameters through 
+    multi-objective optimization, enabling data-driven improvements to ePIC detector subsystems.
+  </p>
+</div>
+
+<!-- Software Infrastructure Section -->
+<div class="w3-container darker-bg" style="padding: clamp(2rem, 4vw, 4rem) clamp(1rem, 3vw, 2rem);">
+  <div class="w3-content">
+    <h2 class="section-title">
+      <i class="fa fa-cogs"></i> Software Infrastructure
+    </h2>
+    <p class="section-description">
+      Core software systems and tools that enable distributed detector design optimization workflows.
+    </p>
+    
+    <div class="projects-container">
+      {% for project in software_infrastructure %}
+      <div class="project-card">
+        <div class="project-header">
+          <h3>{{ project.title }}</h3>
+          <div class="project-meta">
+            <span class="status-badge status-{{ project.status }}">{{ project.status }}</span>
+            {% if project.github %}
+            <a href="{{ project.github }}" target="_blank" class="github-link">
+              <i class="fa fa-github"></i> GitHub
+            </a>
+            {% endif %}
+          </div>
+        </div>
+        
+        <p class="project-short-desc">{{ project.short_description }}</p>
+        
+        <div class="project-tags">
+          {% for tag in project.tags %}
+          <span class="tag">{{ tag }}</span>
+          {% endfor %}
+        </div>
+        
+        
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<!-- ePIC Use Cases Section -->
+<div class="w3-container dark-bg" style="padding: clamp(2rem, 4vw, 4rem) clamp(1rem, 3vw, 2rem);">
+  <div class="w3-content">
+    <h2 class="section-title">
+      <i class="fa fa-flask"></i> ePIC Detector Optimization Use Cases
+    </h2>
+    <p class="section-description">
+      Application of AI-assisted optimization methods to specific ePIC detector subsystems.
+    </p>
+    
+    <div class="projects-container">
+      {% for project in epic_use_cases %}
+      <div class="project-card">
+        <div class="project-header">
+          <h3>{{ project.title }}</h3>
+          <div class="project-meta">
+            <span class="status-badge status-{{ project.status }}">{{ project.status }}</span>
+            {% if project.github %}
+            <a href="{{ project.github }}" target="_blank" class="github-link">
+              <i class="fa fa-github"></i> GitHub
+            </a>
+            {% endif %}
+          </div>
+        </div>
+        
+        <p class="project-short-desc">{{ project.short_description }}</p>
+        
+        <div class="project-tags">
+          {% for tag in project.tags %}
+          <span class="tag">{{ tag }}</span>
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<!-- Other Use Cases Section -->
+<div class="w3-container darker-bg" style="padding: clamp(2rem, 4vw, 4rem) clamp(1rem, 3vw, 2rem);">
+  <div class="w3-content">
+    <h2 class="section-title">
+      <i class="fa fa-cube"></i> Other Use Cases
+    </h2>
+    <p class="section-description">
+      Additional applications and use cases of the AID2E framework beyond ePIC detector optimization.
+    </p>
+    
+    <div class="projects-container">
+      {% for project in other_use_cases %}
+      <div class="project-card">
+        <div class="project-header">
+          <h3>{{ project.title }}</h3>
+          <div class="project-meta">
+            <span class="status-badge status-{{ project.status }}">{{ project.status }}</span>
+            {% if project.github %}
+            <a href="{{ project.github }}" target="_blank" class="github-link">
+              <i class="fa fa-github"></i> GitHub
+            </a>
+            {% endif %}
+          </div>
+        </div>
+        
+        <p class="project-short-desc">{{ project.short_description }}</p>
+        
+        <div class="project-tags">
+          {% for tag in project.tags %}
+          <span class="tag">{{ tag }}</span>
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<script>
+function toggleProject(projectId) {
+  const content = document.getElementById('content-' + projectId);
+  const btnText = document.getElementById('btn-text-' + projectId);
+  const btnIcon = document.getElementById('btn-icon-' + projectId);
+  
+  if (content.classList.contains('active')) {
+    content.classList.remove('active');
+    btnText.textContent = 'Read More';
+    btnIcon.classList.remove('fa-chevron-up');
+    btnIcon.classList.add('fa-chevron-down');
+  } else {
+    content.classList.add('active');
+    btnText.textContent = 'Read Less';
+    btnIcon.classList.remove('fa-chevron-down');
+    btnIcon.classList.add('fa-chevron-up');
+  }
+}
+</script>
+{% endblock %}

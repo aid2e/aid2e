@@ -1,0 +1,287 @@
+{% extends "base.html" %}
+
+{% block title %}Publications - AID2E{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="page-header">
+  <h1>Publications & Activities</h1>
+  <p class="about-text" style="max-width: 900px; margin: 0 auto;">
+    Scientific publications, conference proceedings, and community activities from the AID2E collaboration.
+  </p>
+</div>
+
+<!-- Related Publications Section -->
+<div class="w3-container dark-bg" style="padding: clamp(2rem, 4vw, 4rem) clamp(1rem, 3vw, 2rem);">
+  <div class="w3-content">
+    <h2 class="section-title">
+      <i class="fa fa-file-text"></i> Related Publications
+    </h2>
+    <p class="section-description">
+      Peer-reviewed publications and preprints from AID2E members and collaborators.
+    </p>
+    
+    <div class="publications-container">
+      {% for paper in papers %}
+      <div class="publication-card">
+        <div class="publication-header">
+          <h3 class="publication-title">{{ paper.title }}</h3>
+          <div class="publication-meta">
+            <span class="publication-authors">{{ paper.authors }}</span>
+            <span class="publication-venue">{{ paper.venue }} ({{ paper.year }})</span>
+          </div>
+        </div>
+        
+        <div class="publication-citation">
+          {{ paper.citation }}
+        </div>
+        
+        <div class="publication-links">
+          {% if paper.doi %}
+          <a href="https://doi.org/{{ paper.doi }}" target="_blank" class="pub-link">
+            <i class="fa fa-external-link"></i> DOI
+          </a>
+          {% endif %}
+          {% if paper.arxiv %}
+          <a href="https://arxiv.org/abs/{{ paper.arxiv }}" target="_blank" class="pub-link">
+            <i class="fa fa-file-pdf-o"></i> arXiv
+          </a>
+          {% endif %}
+          {% if paper.pdf %}
+          <a href="{{ paper.pdf }}" target="_blank" class="pub-link">
+            <i class="fa fa-download"></i> PDF
+          </a>
+          {% endif %}
+        </div>
+        
+        <div class="publication-tags">
+          {% for tag in paper.tags %}
+          <span class="tag">{{ tag }}</span>
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<!-- Other Activities Section -->
+<div class="w3-container darker-bg" style="padding: clamp(2rem, 4vw, 4rem) clamp(1rem, 3vw, 2rem);">
+  <div class="w3-content">
+    <h2 class="section-title">
+      <i class="fa fa-lightbulb-o"></i> Other Activities
+    </h2>
+    <p class="section-description">
+      Workshops, educational materials, and tools developed by the AID2E collaboration.
+    </p>
+    
+    <div class="activities-container">
+      {% for activity in other_activities %}
+      <div class="activity-card">
+        <div class="activity-icon">
+          {% if activity.type == 'workshop' %}
+          <i class="fa fa-graduation-cap"></i>
+          {% elif activity.type == 'tool' %}
+          <i class="fa fa-wrench"></i>
+          {% else %}
+          <i class="fa fa-star"></i>
+          {% endif %}
+        </div>
+        <div class="activity-content">
+          <h3>{{ activity.title }}</h3>
+          <p>{{ activity.description }}</p>
+          <a href="{{ activity.url }}" target="_blank" class="activity-link">
+            <i class="fa fa-external-link"></i> Visit
+          </a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<style>
+/* Publications Styles */
+.publications-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.publication-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.publication-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.publication-header {
+  margin-bottom: 1rem;
+}
+
+.publication-title {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.4;
+}
+
+.publication-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.9rem;
+}
+
+.publication-authors {
+  color: rgba(255, 255, 255, 0.8);
+  font-style: italic;
+}
+
+.publication-venue {
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 500;
+}
+
+.publication-citation {
+  background: rgba(0, 0, 0, 0.2);
+  border-left: 3px solid #4CAF50;
+  padding: 0.75rem;
+  margin: 1rem 0;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.9);
+  border-radius: 4px;
+}
+
+.publication-links {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0;
+  flex-wrap: wrap;
+}
+
+.pub-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  background: rgba(76, 175, 80, 0.2);
+  color: #4CAF50;
+  text-decoration: none;
+  border-radius: 4px;
+  border: 1px solid rgba(76, 175, 80, 0.3);
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.pub-link:hover {
+  background: rgba(76, 175, 80, 0.3);
+  border-color: #4CAF50;
+  transform: translateY(-1px);
+}
+
+.publication-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+/* Activities Styles */
+.activities-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.activity-card {
+  display: flex;
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.activity-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.activity-icon {
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(76, 175, 80, 0.2);
+  border-radius: 50%;
+  color: #4CAF50;
+  font-size: 1.5rem;
+}
+
+.activity-content {
+  flex: 1;
+}
+
+.activity-content h3 {
+  color: #fff;
+  font-size: 1.1rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.activity-content p {
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 1rem 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.activity-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #4CAF50;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.activity-link:hover {
+  color: #66BB6A;
+  gap: 0.6rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .publication-links {
+    flex-direction: column;
+  }
+  
+  .pub-link {
+    justify-content: center;
+  }
+  
+  .activities-container {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+{% endblock %}

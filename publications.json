@@ -1,0 +1,87 @@
+{
+  "papers": [
+    {
+      "id": "aid2e_detector_design_2024",
+      "title": "AI-assisted detector design for the EIC",
+      "authors": "AID2E Collaboration",
+      "year": 2024,
+      "venue": "JINST",
+      "citation": "2024 JINST 19 C07001",
+      "doi": "10.1088/1748-0221/19/07/C07001",
+      "arxiv": "",
+      "pdf": "",
+      "abstract": "",
+      "tags": ["AI", "detector-design", "EIC"]
+    },
+    {
+      "id": "panda_system_2024",
+      "title": "PanDA: Production and Distributed Analysis System",
+      "authors": "PanDA Collaboration",
+      "year": 2024,
+      "venue": "Comput. Softw. Big Sci.",
+      "citation": "Comput. Softw. Big Sci. 8, 4 (2024)",
+      "doi": "10.1007/s41781-024-00113-3",
+      "arxiv": "",
+      "pdf": "",
+      "abstract": "",
+      "tags": ["PanDA", "distributed-computing", "workflow"]
+    },
+    {
+      "id": "ecce_tracking_2023",
+      "title": "AI-assisted optimization of the ECCE tracking system at the Electron Ion Collider",
+      "authors": "C. Fanelli, Z. Papandreou, K. Suresh et al.",
+      "year": 2023,
+      "venue": "NIM A",
+      "citation": "NIM A Volume 1047, February 2023, 167748",
+      "doi": "10.1016/j.nima.2022.167748",
+      "arxiv": "",
+      "pdf": "",
+      "abstract": "",
+      "tags": ["AI", "tracking", "ECCE", "optimization"]
+    },
+    {
+      "id": "hklm_design_2024",
+      "title": "Design and Expected Performance for an hKLM at the EIC",
+      "authors": "William W. Jacobs, Gerard Visser, Rowan Kelleher, Anselm Vossen, Simon Schneider, Yordanka Ilieva, Pawel Turonski",
+      "year": 2024,
+      "venue": "arXiv",
+      "citation": "ArXiv: 2511.08432 [physics.ins-det]",
+      "doi": "",
+      "arxiv": "2511.08432",
+      "pdf": "",
+      "abstract": "",
+      "tags": ["hKLM", "calorimeter", "EIC"]
+    },
+    {
+      "id": "rag_eic_2024",
+      "title": "Towards a RAG-based summarization for the Electron Ion Collider",
+      "authors": "Karthik Suresh, Neeltje Kackar, Luke Schleck and Cristiano Fanelli",
+      "year": 2024,
+      "venue": "JINST",
+      "citation": "2024 JINST 19 C07006",
+      "doi": "10.1088/1748-0221/19/07/C07006",
+      "arxiv": "",
+      "pdf": "",
+      "abstract": "",
+      "tags": ["RAG", "AI", "EIC", "summarization"]
+    }
+  ],
+  "other_activities": [
+    {
+      "id": "bootcamp_2024",
+      "title": "AID2E Bootcamp (2024)",
+      "description": "Educational workshop on AI-assisted detector design",
+      "url": "https://aid2e.github.io/boot-camp-2024/",
+      "year": 2024,
+      "type": "workshop"
+    },
+    {
+      "id": "rag4eic",
+      "title": "RAG4EIC Agent",
+      "description": "Retrieval-Augmented Generation system for EIC documentation",
+      "url": "http://rag4eic.ds.wm.edu/",
+      "year": 2024,
+      "type": "tool"
+    }
+  ]
+}

@@ -21,7 +21,6 @@
     <a href="collaboration.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Collaboration</a>
     <a href="projects.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-color">Projects</a>
     <a href="publications.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Publications</a>
-    <a href="other-works.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Other Works</a>
   </div>
 
   <!-- Navbar on small screens -->
@@ -35,18 +34,342 @@
 </div>
 
 
-<!-- Under Construction -->
-<div class="w3-container w3-center" style="padding-top: clamp(100px, 20vh, 200px); min-height: 80vh;">
-  <div class="under-construction">
-    <i class="fa fa-cogs" style="font-size: clamp(60px, 12vw, 120px); color: #3a7ca5; margin-bottom: clamp(15px, 3vw, 30px);"></i>
-    <h1 class="w3-jumbo" style="font-size: clamp(2rem, 6vw, 4rem);">Under Construction</h1>
-    <p class="w3-xlarge w3-text-grey" style="font-size: clamp(1rem, 2.5vw, 1.5rem);">This page is currently being built.</p>
-    <p class="w3-large w3-text-grey" style="font-size: clamp(0.9rem, 2vw, 1.2rem);">Check back soon!</p>
-    <a href="index.html" class="w3-button accent-color w3-padding-large w3-margin-top" style="font-size: clamp(0.9rem, 1.8vw, 1.1rem);">
-      <i class="fa fa-home"></i> Return to Home
-    </a>
+<!-- Page Header -->
+<div class="page-header">
+  <h1>AID2E Projects</h1>
+  <p class="about-text" style="max-width: 900px; margin: 0 auto;">
+    The AID2E collaboration develops software infrastructure in parallel with advancing detector optimization for the ePIC experiment. 
+    Our work builds upon the iDDS and PanDA frameworks for distributed computing while creating specialized solutions for high-performance 
+    environments including SLURM-based parallelization. These efforts support systematic exploration of detector design parameters through 
+    multi-objective optimization, enabling data-driven improvements to ePIC detector subsystems.
+  </p>
+</div>
+
+<!-- Software Infrastructure Section -->
+<div class="w3-container darker-bg" style="padding: clamp(2rem, 4vw, 4rem) clamp(1rem, 3vw, 2rem);">
+  <div class="w3-content">
+    <h2 class="section-title">
+      <i class="fa fa-cogs"></i> Software Infrastructure
+    </h2>
+    <p class="section-description">
+      Core software systems and tools that enable distributed detector design optimization workflows.
+    </p>
+    
+    <div class="projects-container">
+      
+      <div class="project-card">
+        <div class="project-header">
+          <h3>Scheduler EPIC</h3>
+          <div class="project-meta">
+            <span class="status-badge status-ongoing - pandas0.0.1 released">ongoing - pandas0.0.1 released</span>
+            
+            <a href="https://github.com/aid2e/scheduler_epic/tree/ver00" target="_blank" class="github-link">
+              <i class="fa fa-github"></i> GitHub
+            </a>
+            
+          </div>
+        </div>
+        
+        <p class="project-short-desc">Distributed workflow management system for ePIC detector simulations leveraging PanDA and iDDS frameworks</p>
+        
+        <div class="project-tags">
+          
+          <span class="tag">scheduler</span>
+          
+          <span class="tag">distributed-computing</span>
+          
+          <span class="tag">workflow</span>
+          
+          <span class="tag">multistep-jobs</span>
+          
+        </div>
+        
+        
+      </div>
+      
+      <div class="project-card">
+        <div class="project-header">
+          <h3>AID2E Utilities</h3>
+          <div class="project-meta">
+            <span class="status-badge status-ongoing">ongoing</span>
+            
+            <a href="https://github.com/aid2e/AID2EUtilities" target="_blank" class="github-link">
+              <i class="fa fa-github"></i> GitHub
+            </a>
+            
+          </div>
+        </div>
+        
+        <p class="project-short-desc">Core utilities and optimization tools for AID2E optimization workflows</p>
+        
+        <div class="project-tags">
+          
+          <span class="tag">utilities</span>
+          
+          <span class="tag">Optimizers</span>
+          
+          <span class="tag">ePIC Utilities</span>
+          
+        </div>
+        
+        
+      </div>
+      
+      <div class="project-card">
+        <div class="project-header">
+          <h3>RAG4EIC</h3>
+          <div class="project-meta">
+            <span class="status-badge status-ongoing">ongoing</span>
+            
+            <a href="https://github.com/ai4eic/EIC-RAG-Project" target="_blank" class="github-link">
+              <i class="fa fa-github"></i> GitHub
+            </a>
+            
+          </div>
+        </div>
+        
+        <p class="project-short-desc">Retrieval-Augmented Generation system for the Electron Ion Collider providing AI-powered documentation search and summarization</p>
+        
+        <div class="project-tags">
+          
+          <span class="tag">RAG</span>
+          
+          <span class="tag">AI</span>
+          
+          <span class="tag">LLM</span>
+          
+          <span class="tag">documentation</span>
+          
+          <span class="tag">chatbot</span>
+          
+        </div>
+        
+        
+      </div>
+      
+    </div>
   </div>
 </div>
+
+<!-- ePIC Use Cases Section -->
+<div class="w3-container dark-bg" style="padding: clamp(2rem, 4vw, 4rem) clamp(1rem, 3vw, 2rem);">
+  <div class="w3-content">
+    <h2 class="section-title">
+      <i class="fa fa-flask"></i> ePIC Detector Optimization Use Cases
+    </h2>
+    <p class="section-description">
+      Application of AI-assisted optimization methods to specific ePIC detector subsystems.
+    </p>
+    
+    <div class="projects-container">
+      
+      <div class="project-card">
+        <div class="project-header">
+          <h3>dRICH-MOBO</h3>
+          <div class="project-meta">
+            <span class="status-badge status-ongoing">ongoing</span>
+            
+            <a href="https://github.com/aid2e/dRICH-MOBO" target="_blank" class="github-link">
+              <i class="fa fa-github"></i> GitHub
+            </a>
+            
+          </div>
+        </div>
+        
+        <p class="project-short-desc">Multi-objective Bayesian optimization for dual Ring Imaging Cherenkov detector design</p>
+        
+        <div class="project-tags">
+          
+          <span class="tag">dRICH</span>
+          
+          <span class="tag">2-mirror</span>
+          
+          <span class="tag">3-mirror</span>
+          
+        </div>
+      </div>
+      
+      <div class="project-card">
+        <div class="project-header">
+          <h3>B0 Tracker Optimization</h3>
+          <div class="project-meta">
+            <span class="status-badge status-ongoing">ongoing</span>
+            
+            <a href="https://github.com/aid2e/B0_FarForward/" target="_blank" class="github-link">
+              <i class="fa fa-github"></i> GitHub
+            </a>
+            
+          </div>
+        </div>
+        
+        <p class="project-short-desc">Optimization of the B0 tracking system for the ePIC detector</p>
+        
+        <div class="project-tags">
+          
+          <span class="tag">Far Forward</span>
+          
+          <span class="tag">B0 tracker</span>
+          
+          <span class="tag">Maximize Coverage</span>
+          
+        </div>
+      </div>
+      
+      <div class="project-card">
+        <div class="project-header">
+          <h3>BIC Optimization</h3>
+          <div class="project-meta">
+            <span class="status-badge status-ongoing">ongoing</span>
+            
+            <a href="https://github.com/aid2e/BIC-MOBO" target="_blank" class="github-link">
+              <i class="fa fa-github"></i> GitHub
+            </a>
+            
+          </div>
+        </div>
+        
+        <p class="project-short-desc">An application of the AID2E framework to the ePIC Barrel Imaging Calorimeter (BIC).</p>
+        
+        <div class="project-tags">
+          
+          <span class="tag">calorimeter</span>
+          
+          <span class="tag">BIC</span>
+          
+        </div>
+      </div>
+      
+      <div class="project-card">
+        <div class="project-header">
+          <h3>Central Tracker Optimization</h3>
+          <div class="project-meta">
+            <span class="status-badge status-ongoing">ongoing</span>
+            
+            <a href="https://github.com/aid2e/Central-Tracker-Optimization" target="_blank" class="github-link">
+              <i class="fa fa-github"></i> GitHub
+            </a>
+            
+          </div>
+        </div>
+        
+        <p class="project-short-desc">Optimization of the central tracking detector system</p>
+        
+        <div class="project-tags">
+          
+          <span class="tag">tracker</span>
+          
+          <span class="tag">central-detector</span>
+          
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<!-- Other Use Cases Section -->
+<div class="w3-container darker-bg" style="padding: clamp(2rem, 4vw, 4rem) clamp(1rem, 3vw, 2rem);">
+  <div class="w3-content">
+    <h2 class="section-title">
+      <i class="fa fa-cube"></i> Other Use Cases
+    </h2>
+    <p class="section-description">
+      Additional applications and use cases of the AID2E framework beyond ePIC detector optimization.
+    </p>
+    
+    <div class="projects-container">
+      
+      <div class="project-card">
+        <div class="project-header">
+          <h3>CLAS12-RICH-Align</h3>
+          <div class="project-meta">
+            <span class="status-badge status-ongoing">ongoing</span>
+            
+            <a href="https://github.com/aid2e/CLAS12-RICH-Align" target="_blank" class="github-link">
+              <i class="fa fa-github"></i> GitHub
+            </a>
+            
+          </div>
+        </div>
+        
+        <p class="project-short-desc">Bayesian optimization for the alignment of the CLAS12 RICH detector</p>
+        
+        <div class="project-tags">
+          
+          <span class="tag">CLAS12</span>
+          
+          <span class="tag">RICH</span>
+          
+          <span class="tag">alignment</span>
+          
+        </div>
+      </div>
+      
+      <div class="project-card">
+        <div class="project-header">
+          <h3>Optimization of an hKLM at the EIC</h3>
+          <div class="project-meta">
+            <span class="status-badge status-finished">finished</span>
+            
+          </div>
+        </div>
+        
+        <p class="project-short-desc">Optimization of iron-scintillator sampling calorimeter for the Detector 2</p>
+        
+        <div class="project-tags">
+          
+          <span class="tag">calorimeter</span>
+          
+          <span class="tag">Detector-2</span>
+          
+        </div>
+      </div>
+      
+      <div class="project-card">
+        <div class="project-header">
+          <h3>AERFIB -- Reinforced aerogel for RICH detectors</h3>
+          <div class="project-meta">
+            <span class="status-badge status-ongoing">ongoing</span>
+            
+          </div>
+        </div>
+        
+        <p class="project-short-desc">Optimizing design of AEROGEL tile using fibers to improve mechanical properties while maintaining optical performance for RICH detectors</p>
+        
+        <div class="project-tags">
+          
+          <span class="tag">AERFIB</span>
+          
+          <span class="tag">RICH</span>
+          
+          <span class="tag">AEROGEL</span>
+          
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<script>
+function toggleProject(projectId) {
+  const content = document.getElementById('content-' + projectId);
+  const btnText = document.getElementById('btn-text-' + projectId);
+  const btnIcon = document.getElementById('btn-icon-' + projectId);
+  
+  if (content.classList.contains('active')) {
+    content.classList.remove('active');
+    btnText.textContent = 'Read More';
+    btnIcon.classList.remove('fa-chevron-up');
+    btnIcon.classList.add('fa-chevron-down');
+  } else {
+    content.classList.add('active');
+    btnText.textContent = 'Read Less';
+    btnIcon.classList.remove('fa-chevron-down');
+    btnIcon.classList.add('fa-chevron-up');
+  }
+}
+</script>
 
 
 <!-- Footer -->

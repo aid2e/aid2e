@@ -1,0 +1,97 @@
+{
+  "software_infrastructure": [
+    {
+      "id": "scheduler_epic",
+      "title": "Scheduler EPIC",
+      "short_description": "Distributed workflow management system for ePIC detector simulations leveraging PanDA and iDDS frameworks",
+      "markdown_file": "projects/software_infrastructure/scheduler_epic.md",
+      "github": "https://github.com/aid2e/scheduler_epic/tree/ver00",
+      "status": "ongoing - pandas0.0.1 released",
+      "tags": ["scheduler", "distributed-computing", "workflow", "multistep-jobs"],
+      "image": "assets/images/projects/scheduler_epic.png"
+    },
+    {
+      "id": "aid2e_utilities",
+      "title": "AID2E Utilities",
+      "short_description": "Core utilities and optimization tools for AID2E optimization workflows",
+      "markdown_file": "projects/software_infrastructure/aid2e_utilities.md",
+      "github": "https://github.com/aid2e/AID2EUtilities",
+      "status": "ongoing",
+      "tags": ["utilities", "Optimizers", "ePIC Utilities"]
+    },
+    {
+      "id": "rag4eic",
+      "title": "RAG4EIC",
+      "short_description": "Retrieval-Augmented Generation system for the Electron Ion Collider providing AI-powered documentation search and summarization",
+      "markdown_file": "projects/software_infrastructure/rag4eic.md",
+      "github": "https://github.com/ai4eic/EIC-RAG-Project",
+      "status": "ongoing",
+      "tags": ["RAG", "AI", "LLM", "documentation", "chatbot"]
+    }
+  ],
+  "epic_use_cases": [
+    {
+      "id": "drich_mobo",
+      "title": "dRICH-MOBO",
+      "short_description": "Multi-objective Bayesian optimization for dual Ring Imaging Cherenkov detector design",
+      "markdown_file": "projects/epic_use_cases/drich_mobo.md",
+      "github" : "https://github.com/aid2e/dRICH-MOBO",
+      "status": "ongoing",
+      "tags": ["dRICH", "2-mirror", "3-mirror"]
+    },
+    {
+      "id": "b0_tracker",
+      "title": "B0 Tracker Optimization",
+      "short_description": "Optimization of the B0 tracking system for the ePIC detector",
+      "markdown_file": "projects/epic_use_cases/b0_tracker.md",
+      "github": "https://github.com/aid2e/B0_FarForward/",
+      "status": "ongoing",
+      "tags": ["Far Forward", "B0 tracker", "Maximize Coverage"]
+    },
+    {
+      "id": "bic_optimization",
+      "title": "BIC Optimization",
+      "short_description": "An application of the AID2E framework to the ePIC Barrel Imaging Calorimeter (BIC).",
+      "markdown_file": "projects/epic_use_cases/bic_optimization.md",
+      "github" : "https://github.com/aid2e/BIC-MOBO",
+      "status": "ongoing",
+      "tags": ["calorimeter", "BIC"]
+    },
+    {
+      "id": "central_tracker",
+      "title": "Central Tracker Optimization",
+      "short_description": "Optimization of the central tracking detector system",
+      "markdown_file": "projects/epic_use_cases/central_tracker.md",
+      "github" : "https://github.com/aid2e/Central-Tracker-Optimization",
+      "status": "ongoing",
+      "tags": ["tracker", "central-detector"]
+    }
+  ],
+  "other_use_cases": [
+    {
+      "id": "clas12_rich_align",
+      "title": "CLAS12-RICH-Align",
+      "short_description": "Bayesian optimization for the alignment of the CLAS12 RICH detector",
+      "markdown_file": "projects/other_use_cases/clas12_rich_align.md",
+      "github" : "https://github.com/aid2e/CLAS12-RICH-Align",
+      "status": "ongoing",
+      "tags": ["CLAS12", "RICH", "alignment"]
+    },
+    {
+      "id": "hklm_optimization",
+      "title": "Optimization of an hKLM at the EIC",
+      "short_description": "Optimization of iron-scintillator sampling calorimeter for the Detector 2",
+      "markdown_file": "projects/other_use_cases/hklm_optimization.md",
+      "status": "finished",
+      "tags": ["calorimeter", "Detector-2"]
+    },
+    {
+        "id" : "AERFIB",
+        "title": "AERFIB -- Reinforced aerogel for RICH detectors",
+        "short_description": "Optimizing design of AEROGEL tile using fibers to improve mechanical properties while maintaining optical performance for RICH detectors",
+        "markdown_file": "projects/other_use_cases/aerfib.md",
+        "status": "ongoing",
+        "tags": ["AERFIB", "RICH", "AEROGEL"]
+    }
+  ]
+}

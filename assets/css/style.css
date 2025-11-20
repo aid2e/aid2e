@@ -411,3 +411,245 @@ body {
   max-width: 800px;
   margin: 0 auto;
 }
+
+/* Projects Page Styles */
+.section-title {
+  color: #3a7ca5;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.section-title i {
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+}
+
+.section-description {
+  color: #e0e0e0;
+  font-size: clamp(1rem, 1.8vw, 1.1rem);
+  margin-bottom: 3rem;
+  line-height: 1.6;
+}
+
+.projects-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.project-card {
+  background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%);
+  border-radius: 10px;
+  padding: clamp(1.5rem, 3vw, 2rem);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  border-left: 4px solid #3a7ca5;
+}
+
+.project-card:hover {
+  box-shadow: 0 6px 12px rgba(58, 124, 165, 0.3);
+  transform: translateX(5px);
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.project-header h3 {
+  color: white;
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  margin: 0;
+  flex: 1;
+  min-width: 200px;
+}
+
+.project-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.status-badge {
+  padding: 0.4rem 0.8rem;
+  border-radius: 5px;
+  font-size: clamp(0.75rem, 1.5vw, 0.85rem);
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.status-ongoing {
+  background-color: #3a7ca5;
+  color: white;
+}
+
+.status-completed {
+  background-color: #28a745;
+  color: white;
+}
+
+.github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  background-color: #24292e;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+  transition: all 0.3s ease;
+}
+
+.github-link:hover {
+  background-color: #2d3338;
+  transform: scale(1.05);
+}
+
+.project-short-desc {
+  color: #e0e0e0;
+  font-size: clamp(0.95rem, 1.8vw, 1.05rem);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tag {
+  background-color: rgba(58, 124, 165, 0.2);
+  color: #3a7ca5;
+  padding: 0.3rem 0.7rem;
+  border-radius: 15px;
+  font-size: clamp(0.75rem, 1.4vw, 0.85rem);
+  border: 1px solid #3a7ca5;
+}
+
+.expand-btn {
+  background: linear-gradient(135deg, #3a7ca5 0%, #2d6080 100%);
+  color: white;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: clamp(0.9rem, 1.6vw, 1rem);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  margin-bottom: 1rem;
+}
+
+.expand-btn:hover {
+  background: linear-gradient(135deg, #2d6080 0%, #3a7ca5 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(58, 124, 165, 0.3);
+}
+
+.expand-btn i {
+  transition: transform 0.3s ease;
+}
+
+.project-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+
+.project-content.active {
+  max-height: 5000px;
+  margin-top: 1rem;
+}
+
+.markdown-content {
+  color: #e0e0e0;
+  line-height: 1.8;
+  font-size: clamp(0.95rem, 1.7vw, 1.05rem);
+}
+
+.markdown-content h2 {
+  color: #3a7ca5;
+  font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #3a7ca5;
+  padding-bottom: 0.5rem;
+}
+
+.markdown-content h3 {
+  color: #5a9cc5;
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  margin-top: 1.5rem;
+  margin-bottom: 0.8rem;
+}
+
+.markdown-content p {
+  margin-bottom: 1rem;
+}
+
+.markdown-content ul, .markdown-content ol {
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+}
+
+.markdown-content li {
+  margin-bottom: 0.5rem;
+}
+
+.markdown-content code {
+  background-color: #1a1a1a;
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9em;
+  color: #3a7ca5;
+}
+
+.markdown-content pre {
+  background-color: #1a1a1a;
+  padding: 1rem;
+  border-radius: 5px;
+  overflow-x: auto;
+  border-left: 4px solid #3a7ca5;
+}
+
+.markdown-content pre code {
+  background-color: transparent;
+  padding: 0;
+  color: #e0e0e0;
+}
+
+.markdown-content a {
+  color: #3a7ca5;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-bottom 0.3s ease;
+}
+
+.markdown-content a:hover {
+  border-bottom: 1px solid #3a7ca5;
+}
+
+.markdown-content strong {
+  color: white;
+  font-weight: bold;
+}
+
+.markdown-content blockquote {
+  border-left: 4px solid #3a7ca5;
+  padding-left: 1rem;
+  margin: 1rem 0;
+  font-style: italic;
+  color: #c0c0c0;
+}
