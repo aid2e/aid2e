@@ -9,6 +9,235 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="assets/css/style.css">
+
+<style>
+/* Collaboration Page Specific Styles */
+.collaboration-section {
+  margin-bottom: 2rem;
+}
+
+.institution-header {
+  background: linear-gradient(135deg, #3a7ca5 0%, #2d6080 100%);
+  padding: clamp(1rem, 2vw, 1.5rem);
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.institution-header:hover {
+  background: linear-gradient(135deg, #2d6080 0%, #3a7ca5 100%);
+  transform: translateX(5px);
+}
+
+.institution-header h2 {
+  margin: 0;
+  color: white;
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+}
+
+.toggle-icon {
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+  transition: transform 0.3s ease;
+  color: white;
+}
+
+.toggle-icon.active {
+  transform: rotate(180deg);
+}
+
+.institution-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+  padding: 0 1rem;
+}
+
+.institution-content.active {
+  max-height: 5000px;
+  padding: 2rem 1rem;
+}
+
+.role-section {
+  margin-bottom: 3rem;
+}
+
+.role-title {
+  color: #3a7ca5;
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #3a7ca5;
+}
+
+.members-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(clamp(200px, 25vw, 280px), 1fr));
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  margin-bottom: 2rem;
+}
+
+/* Flip Card Styles */
+.flip-card {
+  background-color: transparent;
+  perspective: 1000px;
+  height: clamp(280px, 35vw, 360px);
+  cursor: pointer;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  transition: box-shadow 0.3s ease;
+}
+
+.flip-card:hover .flip-card-front,
+.flip-card:hover .flip-card-back {
+  box-shadow: 0 8px 16px rgba(58, 124, 165, 0.4);
+}
+
+.flip-card-front {
+  background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+}
+
+.flip-card-front img {
+  width: clamp(100px, 15vw, 150px);
+  height: clamp(100px, 15vw, 150px);
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  border: 3px solid #3a7ca5;
+}
+
+.flip-card-front h3 {
+  color: white;
+  margin: 0.5rem 0;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+}
+
+.flip-card-front .member-role {
+  color: #3a7ca5;
+  font-weight: bold;
+  font-size: clamp(0.85rem, 1.5vw, 1rem);
+  margin-top: 0.5rem;
+}
+
+.flip-card-back {
+  background: linear-gradient(135deg, #3a7ca5 0%, #2d6080 100%);
+  color: white;
+  transform: rotateY(180deg);
+  padding: clamp(1rem, 2vw, 1.5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow-y: auto;
+}
+
+.flip-card-back h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  border-bottom: 2px solid white;
+  padding-bottom: 0.5rem;
+}
+
+.flip-card-back p {
+  margin: 0.5rem 0;
+  font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+  line-height: 1.5;
+  text-align: left;
+}
+
+.flip-card-back .label {
+  font-weight: bold;
+  color: #e0e0e0;
+}
+
+.visit-link {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: white;
+  color: #3a7ca5;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: clamp(0.8rem, 1.4vw, 0.9rem);
+  transition: all 0.3s ease;
+}
+
+.visit-link:hover {
+  background-color: #e0e0e0;
+  transform: scale(1.05);
+}
+
+.visit-link i {
+  margin-left: 0.3rem;
+}
+
+/* Placeholder image for missing photos */
+.placeholder-image {
+  width: clamp(100px, 15vw, 150px);
+  height: clamp(100px, 15vw, 150px);
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3a7ca5 0%, #2d6080 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  border: 3px solid #3a7ca5;
+}
+
+.placeholder-image i {
+  font-size: clamp(3rem, 8vw, 5rem);
+  color: white;
+  opacity: 0.7;
+}
+
+/* Page header */
+.page-header {
+  padding: clamp(6rem, 12vw, 8rem) 2rem clamp(3rem, 6vw, 4rem);
+  text-align: center;
+  background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+}
+
+.page-header h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 1rem;
+}
+
+.page-header p {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: #e0e0e0;
+  max-width: 800px;
+  margin: 0 auto;
+}
+</style>
+
 </head>
 <body class="darker-bg">
 
@@ -27,24 +256,1006 @@
   <div id="navDemo" class="w3-bar-block dark-bg w3-hide w3-hide-large w3-hide-medium w3-large">
     <a href="index.html" class="w3-bar-item w3-button w3-padding-large">Home</a>
     <a href="collaboration.html" class="w3-bar-item w3-button w3-padding-large">Collaboration</a>
+    <a href="projects.html" class="w3-bar-item w3-button w3-padding-large">Projects</a>
     <a href="publications.html" class="w3-bar-item w3-button w3-padding-large">Publications</a>
     <a href="other-works.html" class="w3-bar-item w3-button w3-padding-large">Other Works</a>
-    <a href="projects.html" class="w3-bar-item w3-button w3-padding-large">Projects</a>
   </div>
 </div>
 
-<!-- Under Construction -->
-<div class="w3-container w3-center" style="padding-top: 200px; min-height: 80vh;">
-  <div class="under-construction">
-    <i class="fa fa-cogs" style="font-size: 120px; color: #3a7ca5; margin-bottom: 30px;"></i>
-    <h1 class="w3-jumbo">Under Construction</h1>
-    <p class="w3-xlarge w3-text-grey">This page is currently being built.</p>
-    <p class="w3-large w3-text-grey">Check back soon!</p>
-    <a href="index.html" class="w3-button accent-color w3-padding-large w3-margin-top">
-      <i class="fa fa-home"></i> Return to Home
-    </a>
+
+<!-- Page Header -->
+<div class="page-header">
+  <h1>AID2E Collaboration</h1>
+  <p>Meet the talented team of researchers, scientists, and experts working together to advance AI-assisted detector design for the Electron Ion Collider.</p>
+</div>
+
+<!-- Collaboration Content -->
+<div class="w3-container darker-bg" style="padding: clamp(2rem, 4vw, 4rem) clamp(1rem, 3vw, 2rem);">
+  <div class="w3-content">
+    
+    <div class="collaboration-section">
+      <!-- Institution Header -->
+      <div class="institution-header" onclick="toggleInstitution('BNL')">
+        <h2>Brookhaven National Laboratory</h2>
+        <i class="fa fa-chevron-down toggle-icon" id="toggle-BNL"></i>
+      </div>
+      
+      <!-- Institution Content -->
+      <div class="institution-content" id="content-BNL">
+        
+        
+        
+        
+        
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+        
+        <!-- PI Section -->
+        
+        
+        <!-- Co-PI Section -->
+        
+        <div class="role-section">
+          <h3 class="role-title">Co-Principal Investigators</h3>
+          <div class="members-grid">
+            
+            
+<div class="flip-card" onclick="window.open('https://www.wenaus.org/torre.html', '_blank')">
+  <div class="flip-card-inner">
+    <!-- Front of card -->
+    <div class="flip-card-front">
+      
+        <img src="https://www.wenaus.org/images/Torre_Wenaus_Photo.jpg" alt="Torre Wenaus, PhD" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="placeholder-image" style="display:none;">
+          <i class="fa fa-user"></i>
+        </div>
+      
+      <h3>Torre Wenaus, PhD</h3>
+      <p class="member-role">Co-PI</p>
+    </div>
+    
+    <!-- Back of card -->
+    <div class="flip-card-back">
+      <h3>Torre Wenaus, PhD</h3>
+      <p><span class="label">Role:</span> Co-PI</p>
+      <p><span class="label">Designation:</span> Senior Physicist</p>
+      
+      <p><span class="label">Expertise:</span> Expertise: Nuclear and particle physics software, Distributed Computing, Simulations</p>
+      
+      
+      <a href="https://www.wenaus.org/torre.html" target="_blank" class="visit-link" onclick="event.stopPropagation();">
+        Visit Page <i class="fa fa-external-link"></i>
+      </a>
+      
+    </div>
   </div>
 </div>
+
+            
+          </div>
+        </div>
+        
+        
+        <!-- Members Section -->
+        
+        <div class="role-section">
+          <h3 class="role-title">Team Members</h3>
+          <div class="members-grid">
+            
+            
+<div class="flip-card" onclick="window.open('https://www.bnl.gov/staff/mlin', '_blank')">
+  <div class="flip-card-inner">
+    <!-- Front of card -->
+    <div class="flip-card-front">
+      
+        <img src="assets/images/collaborators/meifang_lin.png" alt="Meifeng Lin, PhD" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="placeholder-image" style="display:none;">
+          <i class="fa fa-user"></i>
+        </div>
+      
+      <h3>Meifeng Lin, PhD</h3>
+      <p class="member-role">Member</p>
+    </div>
+    
+    <!-- Back of card -->
+    <div class="flip-card-back">
+      <h3>Meifeng Lin, PhD</h3>
+      <p><span class="label">Role:</span> Member</p>
+      <p><span class="label">Designation:</span> Computational Scientist, Computational Science</p>
+      
+      <p><span class="label">Expertise:</span> Expertise: Computational physics, exascale</p>
+      
+      
+      <a href="https://www.bnl.gov/staff/mlin" target="_blank" class="visit-link" onclick="event.stopPropagation();">
+        Visit Page <i class="fa fa-external-link"></i>
+      </a>
+      
+    </div>
+  </div>
+</div>
+
+            
+            
+<div class="flip-card" onclick="window.open('https://www.bnl.gov/staff/twang3', '_blank')">
+  <div class="flip-card-inner">
+    <!-- Front of card -->
+    <div class="flip-card-front">
+      
+        <img src="assets/images/collaborators/tianle_wang.png" alt="Tianle Wang, PhD" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="placeholder-image" style="display:none;">
+          <i class="fa fa-user"></i>
+        </div>
+      
+      <h3>Tianle Wang, PhD</h3>
+      <p class="member-role">Member</p>
+    </div>
+    
+    <!-- Back of card -->
+    <div class="flip-card-back">
+      <h3>Tianle Wang, PhD</h3>
+      <p><span class="label">Role:</span> Member</p>
+      <p><span class="label">Designation:</span> Research Associate, High Performance Computing, Computational Science</p>
+      
+      <p><span class="label">Expertise:</span> Expertise: Physics, High Performance Computing, Workflow Management, Machine Learning</p>
+      
+      
+      <a href="https://www.bnl.gov/staff/twang3" target="_blank" class="visit-link" onclick="event.stopPropagation();">
+        Visit Page <i class="fa fa-external-link"></i>
+      </a>
+      
+    </div>
+  </div>
+</div>
+
+            
+            
+<div class="flip-card" onclick="window.open('https://www.bnl.gov/staff/wguan2', '_blank')">
+  <div class="flip-card-inner">
+    <!-- Front of card -->
+    <div class="flip-card-front">
+      
+        <img src="assets/images/collaborators/wen_guan.png" alt="Wen Guan, PhD" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="placeholder-image" style="display:none;">
+          <i class="fa fa-user"></i>
+        </div>
+      
+      <h3>Wen Guan, PhD</h3>
+      <p class="member-role">Member</p>
+    </div>
+    
+    <!-- Back of card -->
+    <div class="flip-card-back">
+      <h3>Wen Guan, PhD</h3>
+      <p><span class="label">Role:</span> Member</p>
+      <p><span class="label">Designation:</span> Research Scientist</p>
+      
+      <p><span class="label">Expertise:</span> Expertise: distributed computing, workflow management, ML workflows</p>
+      
+      
+      <a href="https://www.bnl.gov/staff/wguan2" target="_blank" class="visit-link" onclick="event.stopPropagation();">
+        Visit Page <i class="fa fa-external-link"></i>
+      </a>
+      
+    </div>
+  </div>
+</div>
+
+            
+            
+<div class="flip-card" onclick="window.open('https://sites.google.com/view/amitbashyal', '_blank')">
+  <div class="flip-card-inner">
+    <!-- Front of card -->
+    <div class="flip-card-front">
+      
+        <img src="assets/images/collaborators/amit_bashyal.png" alt="Amit Bashyal, PhD" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="placeholder-image" style="display:none;">
+          <i class="fa fa-user"></i>
+        </div>
+      
+      <h3>Amit Bashyal, PhD</h3>
+      <p class="member-role">Member</p>
+    </div>
+    
+    <!-- Back of card -->
+    <div class="flip-card-back">
+      <h3>Amit Bashyal, PhD</h3>
+      <p><span class="label">Role:</span> Member</p>
+      <p><span class="label">Designation:</span> Research Associate</p>
+      
+      <p><span class="label">Expertise:</span> Expertise: AI/ML, optimization algorithms, scientific infrastructures</p>
+      
+      
+      <a href="https://sites.google.com/view/amitbashyal" target="_blank" class="visit-link" onclick="event.stopPropagation();">
+        Visit Page <i class="fa fa-external-link"></i>
+      </a>
+      
+    </div>
+  </div>
+</div>
+
+            
+            
+<div class="flip-card" onclick="window.open('https://www.linkedin.com/in/fang-ying-tsai-17656b344', '_blank')">
+  <div class="flip-card-inner">
+    <!-- Front of card -->
+    <div class="flip-card-front">
+      
+        <img src="assets/images/collaborators/fangying_tsai.png" alt="Fang-Ying Tsai, PhD" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="placeholder-image" style="display:none;">
+          <i class="fa fa-user"></i>
+        </div>
+      
+      <h3>Fang-Ying Tsai, PhD</h3>
+      <p class="member-role">Member</p>
+    </div>
+    
+    <!-- Back of card -->
+    <div class="flip-card-back">
+      <h3>Fang-Ying Tsai, PhD</h3>
+      <p><span class="label">Role:</span> Member</p>
+      <p><span class="label">Designation:</span> Postdoc (Stony Brook)</p>
+      
+      <p><span class="label">Expertise:</span> Expertise: AI/ML, HPC, and large-scale data processing</p>
+      
+      
+      <a href="https://www.linkedin.com/in/fang-ying-tsai-17656b344" target="_blank" class="visit-link" onclick="event.stopPropagation();">
+        Visit Page <i class="fa fa-external-link"></i>
+      </a>
+      
+    </div>
+  </div>
+</div>
+
+            
+          </div>
+        </div>
+        
+        
+        <!-- Consultants Section -->
+        
+        <div class="role-section">
+          <h3 class="role-title">Consultants</h3>
+          <div class="members-grid">
+            
+            
+<div class="flip-card" onclick="window.open('https://www.bnl.gov/staff/ggalgoczi1', '_blank')">
+  <div class="flip-card-inner">
+    <!-- Front of card -->
+    <div class="flip-card-front">
+      
+        <img src="assets/images/collaborators/gabor_galgoczi.png" alt="Gabor Galgoczi, PhD" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="placeholder-image" style="display:none;">
+          <i class="fa fa-user"></i>
+        </div>
+      
+      <h3>Gabor Galgoczi, PhD</h3>
+      <p class="member-role">Consultant</p>
+    </div>
+    
+    <!-- Back of card -->
+    <div class="flip-card-back">
+      <h3>Gabor Galgoczi, PhD</h3>
+      <p><span class="label">Role:</span> Consultant</p>
+      <p><span class="label">Designation:</span> Postdoc BNL</p>
+      
+      <p><span class="label">Expertise:</span> Expertise: Physics, Data Science, MOO, Bayesian, Detectors</p>
+      
+      
+      <a href="https://www.bnl.gov/staff/ggalgoczi1" target="_blank" class="visit-link" onclick="event.stopPropagation();">
+        Visit Page <i class="fa fa-external-link"></i>
+      </a>
+      
+    </div>
+  </div>
+</div>
+
+            
+            
+<div class="flip-card" onclick="window.open('https://www.bnl.gov/staff/kkauder', '_blank')">
+  <div class="flip-card-inner">
+    <!-- Front of card -->
+    <div class="flip-card-front">
+      
+        <img src="assets/images/collaborators/kolja_kauder.jpeg" alt="Kolja Kauder, PhD" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="placeholder-image" style="display:none;">
+          <i class="fa fa-user"></i>
+        </div>
+      
+      <h3>Kolja Kauder, PhD</h3>
+      <p class="member-role">Consultant</p>
+    </div>
+    
+    <!-- Back of card -->
+    <div class="flip-card-back">
+      <h3>Kolja Kauder, PhD</h3>
+      <p><span class="label">Role:</span> Consultant</p>
+      <p><span class="label">Designation:</span> Staff Scientist</p>
+      
+      <p><span class="label">Expertise:</span> Expertise: Physics, Simulation</p>
+      
+      
+      <a href="https://www.bnl.gov/staff/kkauder" target="_blank" class="visit-link" onclick="event.stopPropagation();">
+        Visit Page <i class="fa fa-external-link"></i>
+      </a>
+      
+    </div>
+  </div>
+</div>
+
+            
+            
+<div class="flip-card" onclick="window.open('https://www.bnl.gov/staff/ajentsch', '_blank')">
+  <div class="flip-card-inner">
+    <!-- Front of card -->
+    <div class="flip-card-front">
+      
+        <img src="assets/images/collaborators/alex_jentsch.jpeg" alt="Alex Jentsch, PhD" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="placeholder-image" style="display:none;">
+          <i class="fa fa-user"></i>
+        </div>
+      
+      <h3>Alex Jentsch, PhD</h3>
+      <p class="member-role">Consultant</p>
+    </div>
+    
+    <!-- Back of card -->
+    <div class="flip-card-back">
+      <h3>Alex Jentsch, PhD</h3>
+      <p><span class="label">Role:</span> Consultant</p>
+      <p><span class="label">Designation:</span> Staff Scientist</p>
+      
+      <p><span class="label">Expertise:</span> Expertise: Far Forward physics, EIC</p>
+      
+      
+      <a href="https://www.bnl.gov/staff/ajentsch" target="_blank" class="visit-link" onclick="event.stopPropagation();">
+        Visit Page <i class="fa fa-external-link"></i>
+      </a>
+      
+    </div>
+  </div>
+</div>
+
+            
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+    <div class="collaboration-section">
+      <!-- Institution Header -->
+      <div class="institution-header" onclick="toggleInstitution('CUA')">
+        <h2>Catholic University of America</h2>
+        <i class="fa fa-chevron-down toggle-icon" id="toggle-CUA"></i>
+      </div>
+      
+      <!-- Institution Content -->
+      <div class="institution-content" id="content-CUA">
+        
+        
+        
+        
+        
+        
+          
+            
+          
+        
+          
+            
+          
+        
+        
+        <!-- PI Section -->
+        
+        
+        <!-- Co-PI Section -->
+        
+        <div class="role-section">
+          <h3 class="role-title">Co-Principal Investigators</h3>
+          <div class="members-grid">
+            
+            
+<div class="flip-card" onclick="window.open('https://www.linkedin.com/in/tanja-horn-27608a91', '_blank')">
+  <div class="flip-card-inner">
+    <!-- Front of card -->
+    <div class="flip-card-front">
+      
+        <img src="assets/images/collaborators/tanja_horn.png" alt="Tanja Horn, PhD" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="placeholder-image" style="display:none;">
+          <i class="fa fa-user"></i>
+        </div>
+      
+      <h3>Tanja Horn, PhD</h3>
+      <p class="member-role">Co-PI</p>
+    </div>
+    
+    <!-- Back of card -->
+    <div class="flip-card-back">
+      <h3>Tanja Horn, PhD</h3>
+      <p><span class="label">Role:</span> Co-PI</p>
+      <p><span class="label">Designation:</span> Professor of Physics</p>
+      
+      <p><span class="label">Expertise:</span> Expertise: medium energy nuclear physics, EIC, 3D hadron Imaging, calorimetry</p>
+      
+      
+      <a href="https://www.linkedin.com/in/tanja-horn-27608a91" target="_blank" class="visit-link" onclick="event.stopPropagation();">
+        Visit Page <i class="fa fa-external-link"></i>
+      </a>
+      
+    </div>
+  </div>
+</div>
+
+            
+          </div>
+        </div>
+        
+        
+        <!-- Members Section -->
+        
+        <div class="role-section">
+          <h3 class="role-title">Team Members</h3>
+          <div class="members-grid">
+            
+            
+<div class="flip-card" onclick="window.open('https://scholar.google.com/citations?user=H7AvRdIAAAAJ&hl', '_blank')">
+  <div class="flip-card-inner">
+    <!-- Front of card -->
+    <div class="flip-card-front">
+      
+        <img src="assets/images/collaborators/baptiste_fraisse.jpeg" alt="Baptiste Fraisse, PhD" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="placeholder-image" style="display:none;">
+          <i class="fa fa-user"></i>
+        </div>
+      
+      <h3>Baptiste Fraisse, PhD</h3>
+      <p class="member-role">Member</p>
+    </div>
+    
+    <!-- Back of card -->
+    <div class="flip-card-back">
+      <h3>Baptiste Fraisse, PhD</h3>
+      <p><span class="label">Role:</span> Member</p>
+      <p><span class="label">Designation:</span> Postdoc Physics</p>
+      
+      <p><span class="label">Expertise:</span> Expertise: medium energy nuclear physics, simulations, calorimetry</p>
+      
+      
+      <a href="https://scholar.google.com/citations?user=H7AvRdIAAAAJ&hl" target="_blank" class="visit-link" onclick="event.stopPropagation();">
+        Visit Page <i class="fa fa-external-link"></i>
+      </a>
+      
+    </div>
+  </div>
+</div>
+
+            
+          </div>
+        </div>
+        
+        
+        <!-- Consultants Section -->
+        
+      </div>
+    </div>
+    
+    <div class="collaboration-section">
+      <!-- Institution Header -->
+      <div class="institution-header" onclick="toggleInstitution('Duke')">
+        <h2>Duke University</h2>
+        <i class="fa fa-chevron-down toggle-icon" id="toggle-Duke"></i>
+      </div>
+      
+      <!-- Institution Content -->
+      <div class="institution-content" id="content-Duke">
+        
+        
+        
+        
+        
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+        
+        <!-- PI Section -->
+        
+        
+        <!-- Co-PI Section -->
+        
+        <div class="role-section">
+          <h3 class="role-title">Co-Principal Investigators</h3>
+          <div class="members-grid">
+            
+            
+<div class="flip-card" onclick="window.open('https://scholars.duke.edu/person/Anselm.Vossen', '_blank')">
+  <div class="flip-card-inner">
+    <!-- Front of card -->
+    <div class="flip-card-front">
+      
+        <img src="assets/images/collaborators/anselm_vossen.jpg" alt="Anselm Vossen, PhD" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="placeholder-image" style="display:none;">
+          <i class="fa fa-user"></i>
+        </div>
+      
+      <h3>Anselm Vossen, PhD</h3>
+      <p class="member-role">Co-PI</p>
+    </div>
+    
+    <!-- Back of card -->
+    <div class="flip-card-back">
+      <h3>Anselm Vossen, PhD</h3>
+      <p><span class="label">Role:</span> Co-PI</p>
+      <p><span class="label">Designation:</span> Associate Professor of Physics</p>
+      
+      <p><span class="label">Expertise:</span> Expertise: Physics, PID and calorimetry for the EIC</p>
+      
+      
+      <a href="https://scholars.duke.edu/person/Anselm.Vossen" target="_blank" class="visit-link" onclick="event.stopPropagation();">
+        Visit Page <i class="fa fa-external-link"></i>
+      </a>
+      
+    </div>
+  </div>
+</div>
+
+            
+          </div>
+        </div>
+        
+        
+        <!-- Members Section -->
+        
+        <div class="role-section">
+          <h3 class="role-title">Team Members</h3>
+          <div class="members-grid">
+            
+            
+<div class="flip-card" onclick="window.open('https://www.linkedin.com/in/cynunez/', '_blank')">
+  <div class="flip-card-inner">
+    <!-- Front of card -->
+    <div class="flip-card-front">
+      
+        <img src="assets/images/collaborators/cynthia_nunez.jpeg" alt="Cynthia Nunez, PhD" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="placeholder-image" style="display:none;">
+          <i class="fa fa-user"></i>
+        </div>
+      
+      <h3>Cynthia Nunez, PhD</h3>
+      <p class="member-role">Member</p>
+    </div>
+    
+    <!-- Back of card -->
+    <div class="flip-card-back">
+      <h3>Cynthia Nunez, PhD</h3>
+      <p><span class="label">Role:</span> Member</p>
+      <p><span class="label">Designation:</span> Postdoc</p>
+      
+      <p><span class="label">Expertise:</span> Expertise: physics, simulations</p>
+      
+      
+      <a href="https://www.linkedin.com/in/cynunez/" target="_blank" class="visit-link" onclick="event.stopPropagation();">
+        Visit Page <i class="fa fa-external-link"></i>
+      </a>
+      
+    </div>
+  </div>
+</div>
+
+            
+            
+<div class="flip-card" onclick="window.open('https://scholars.duke.edu/person/connor.pecar', '_blank')">
+  <div class="flip-card-inner">
+    <!-- Front of card -->
+    <div class="flip-card-front">
+      
+        <img src="assets/images/collaborators/connor_pecar.jpg" alt="Connor Pecar, MS" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="placeholder-image" style="display:none;">
+          <i class="fa fa-user"></i>
+        </div>
+      
+      <h3>Connor Pecar, MS</h3>
+      <p class="member-role">Member</p>
+    </div>
+    
+    <!-- Back of card -->
+    <div class="flip-card-back">
+      <h3>Connor Pecar, MS</h3>
+      <p><span class="label">Role:</span> Member</p>
+      <p><span class="label">Designation:</span> PhD Student</p>
+      
+      <p><span class="label">Expertise:</span> Expertise: physics, PID and detector simulations for the EIC</p>
+      
+      
+      <a href="https://scholars.duke.edu/person/connor.pecar" target="_blank" class="visit-link" onclick="event.stopPropagation();">
+        Visit Page <i class="fa fa-external-link"></i>
+      </a>
+      
+    </div>
+  </div>
+</div>
+
+            
+          </div>
+        </div>
+        
+        
+        <!-- Consultants Section -->
+        
+      </div>
+    </div>
+    
+    <div class="collaboration-section">
+      <!-- Institution Header -->
+      <div class="institution-header" onclick="toggleInstitution('JLab')">
+        <h2>Jefferson Lab</h2>
+        <i class="fa fa-chevron-down toggle-icon" id="toggle-JLab"></i>
+      </div>
+      
+      <!-- Institution Content -->
+      <div class="institution-content" id="content-JLab">
+        
+        
+        
+        
+        
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+        
+        <!-- PI Section -->
+        
+        
+        <!-- Co-PI Section -->
+        
+        <div class="role-section">
+          <h3 class="role-title">Co-Principal Investigators</h3>
+          <div class="members-grid">
+            
+            
+<div class="flip-card" onclick="window.open('https://scholar.google.com/citations?user=_zSCAWEAAAAJ&hl', '_blank')">
+  <div class="flip-card-inner">
+    <!-- Front of card -->
+    <div class="flip-card-front">
+      
+        <img src="assets/images/collaborators/markus_diefenthaler.jpeg" alt="Markus Diefenthaler, PhD" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="placeholder-image" style="display:none;">
+          <i class="fa fa-user"></i>
+        </div>
+      
+      <h3>Markus Diefenthaler, PhD</h3>
+      <p class="member-role">Co-PI</p>
+    </div>
+    
+    <!-- Back of card -->
+    <div class="flip-card-back">
+      <h3>Markus Diefenthaler, PhD</h3>
+      <p><span class="label">Role:</span> Co-PI</p>
+      <p><span class="label">Designation:</span> Staff Scientist</p>
+      
+      <p><span class="label">Expertise:</span> Expertise: ePIC Software & Computing Coordinator, EIC Science, Simulations</p>
+      
+      
+      <a href="https://scholar.google.com/citations?user=_zSCAWEAAAAJ&hl" target="_blank" class="visit-link" onclick="event.stopPropagation();">
+        Visit Page <i class="fa fa-external-link"></i>
+      </a>
+      
+    </div>
+  </div>
+</div>
+
+            
+          </div>
+        </div>
+        
+        
+        <!-- Members Section -->
+        
+        <div class="role-section">
+          <h3 class="role-title">Team Members</h3>
+          <div class="members-grid">
+            
+            
+<div class="flip-card" onclick="window.open('https://www.linkedin.com/in/derek-m-anderson-b2432ba6/', '_blank')">
+  <div class="flip-card-inner">
+    <!-- Front of card -->
+    <div class="flip-card-front">
+      
+        <img src="assets/images/collaborators/derek_anderson.jpeg" alt="Derek Anderson PhD" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="placeholder-image" style="display:none;">
+          <i class="fa fa-user"></i>
+        </div>
+      
+      <h3>Derek Anderson PhD</h3>
+      <p class="member-role">Member</p>
+    </div>
+    
+    <!-- Back of card -->
+    <div class="flip-card-back">
+      <h3>Derek Anderson PhD</h3>
+      <p><span class="label">Role:</span> Member</p>
+      <p><span class="label">Designation:</span> Postdoc</p>
+      
+      <p><span class="label">Expertise:</span> Expertise: EIC Science, Reconstruction, Simulations, calorimetry, jets</p>
+      
+      
+      <a href="https://www.linkedin.com/in/derek-m-anderson-b2432ba6/" target="_blank" class="visit-link" onclick="event.stopPropagation();">
+        Visit Page <i class="fa fa-external-link"></i>
+      </a>
+      
+    </div>
+  </div>
+</div>
+
+            
+          </div>
+        </div>
+        
+        
+        <!-- Consultants Section -->
+        
+        <div class="role-section">
+          <h3 class="role-title">Consultants</h3>
+          <div class="members-grid">
+            
+            
+<div class="flip-card" onclick="window.open('https://inspirehep.net/authors/1018026', '_blank')">
+  <div class="flip-card-inner">
+    <!-- Front of card -->
+    <div class="flip-card-front">
+      
+        <img src="assets/images/collaborators/makoto_asai.png" alt="Makoto Asai, PhD" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="placeholder-image" style="display:none;">
+          <i class="fa fa-user"></i>
+        </div>
+      
+      <h3>Makoto Asai, PhD</h3>
+      <p class="member-role">Consultant</p>
+    </div>
+    
+    <!-- Back of card -->
+    <div class="flip-card-back">
+      <h3>Makoto Asai, PhD</h3>
+      <p><span class="label">Role:</span> Consultant</p>
+      <p><span class="label">Designation:</span> Staff Scientist</p>
+      
+      <p><span class="label">Expertise:</span> Expertise: Detector Simulations, Geant4</p>
+      
+      
+      <a href="https://inspirehep.net/authors/1018026" target="_blank" class="visit-link" onclick="event.stopPropagation();">
+        Visit Page <i class="fa fa-external-link"></i>
+      </a>
+      
+    </div>
+  </div>
+</div>
+
+            
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+    <div class="collaboration-section">
+      <!-- Institution Header -->
+      <div class="institution-header" onclick="toggleInstitution('W&M')">
+        <h2>William & Mary</h2>
+        <i class="fa fa-chevron-down toggle-icon" id="toggle-W&M"></i>
+      </div>
+      
+      <!-- Institution Content -->
+      <div class="institution-content" id="content-W&M">
+        
+        
+        
+        
+        
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+        
+        <!-- PI Section -->
+        
+        <div class="role-section">
+          <h3 class="role-title">Principal Investigator</h3>
+          <div class="members-grid">
+            
+            
+<div class="flip-card" onclick="window.open('https://cristianofanelli.com/', '_blank')">
+  <div class="flip-card-inner">
+    <!-- Front of card -->
+    <div class="flip-card-front">
+      
+        <img src="assets/images/collaborators/cristiano_fanelli.jpeg" alt="Cristiano Fanelli, PhD" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="placeholder-image" style="display:none;">
+          <i class="fa fa-user"></i>
+        </div>
+      
+      <h3>Cristiano Fanelli, PhD</h3>
+      <p class="member-role">PI</p>
+    </div>
+    
+    <!-- Back of card -->
+    <div class="flip-card-back">
+      <h3>Cristiano Fanelli, PhD</h3>
+      <p><span class="label">Role:</span> PI</p>
+      <p><span class="label">Designation:</span> Associate Professor of Data Science</p>
+      
+      <p><span class="label">Expertise:</span> Expertise: Data Science, Physics, MOO, Bayesian, Detectors, Artificial Intelligence, Computing</p>
+      
+      
+      <a href="https://cristianofanelli.com/" target="_blank" class="visit-link" onclick="event.stopPropagation();">
+        Visit Page <i class="fa fa-external-link"></i>
+      </a>
+      
+    </div>
+  </div>
+</div>
+
+            
+          </div>
+        </div>
+        
+        
+        <!-- Co-PI Section -->
+        
+        
+        <!-- Members Section -->
+        
+        <div class="role-section">
+          <h3 class="role-title">Team Members</h3>
+          <div class="members-grid">
+            
+            
+<div class="flip-card" onclick="window.open('https://karthik18495.github.io/karthik18495/', '_blank')">
+  <div class="flip-card-inner">
+    <!-- Front of card -->
+    <div class="flip-card-front">
+      
+        <img src="assets/images/collaborators/karthik_suresh.jpeg" alt="Karthik Suresh PhD" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="placeholder-image" style="display:none;">
+          <i class="fa fa-user"></i>
+        </div>
+      
+      <h3>Karthik Suresh PhD</h3>
+      <p class="member-role">Member</p>
+    </div>
+    
+    <!-- Back of card -->
+    <div class="flip-card-back">
+      <h3>Karthik Suresh PhD</h3>
+      <p><span class="label">Role:</span> Member</p>
+      <p><span class="label">Designation:</span> Research Scientist</p>
+      
+      <p><span class="label">Expertise:</span> Expertise: Data Science, Physics, MOO, Bayesian, Detectors, Distributed Computing</p>
+      
+      
+      <a href="https://karthik18495.github.io/karthik18495/" target="_blank" class="visit-link" onclick="event.stopPropagation();">
+        Visit Page <i class="fa fa-external-link"></i>
+      </a>
+      
+    </div>
+  </div>
+</div>
+
+            
+            
+<div class="flip-card" >
+  <div class="flip-card-inner">
+    <!-- Front of card -->
+    <div class="flip-card-front">
+      
+        <img src="assets/images/collaborators/hemalata_nayak.jpg" alt="Hemalata Nayak, MS" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="placeholder-image" style="display:none;">
+          <i class="fa fa-user"></i>
+        </div>
+      
+      <h3>Hemalata Nayak, MS</h3>
+      <p class="member-role">Member</p>
+    </div>
+    
+    <!-- Back of card -->
+    <div class="flip-card-back">
+      <h3>Hemalata Nayak, MS</h3>
+      <p><span class="label">Role:</span> Member</p>
+      <p><span class="label">Designation:</span> PhD Student</p>
+      
+      <p><span class="label">Expertise:</span> Expertise:Data Science, Deep Learning, Jet Reconstruction</p>
+      
+      
+    </div>
+  </div>
+</div>
+
+            
+          </div>
+        </div>
+        
+        
+        <!-- Consultants Section -->
+        
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<script>
+function toggleInstitution(institutionId) {
+  const content = document.getElementById('content-' + institutionId);
+  const icon = document.getElementById('toggle-' + institutionId);
+  
+  content.classList.toggle('active');
+  icon.classList.toggle('active');
+}
+</script>
+
 
 <!-- Footer -->
 <footer class="w3-container w3-padding-64 w3-center dark-bg">  
@@ -55,6 +1266,7 @@
 </footer>
 
 <script>
+// Used to toggle the menu on small screens when clicking on the menu button
 function myFunction() {
   var x = document.getElementById("navDemo");
   if (x.className.indexOf("w3-show") == -1) {
@@ -64,6 +1276,8 @@ function myFunction() {
   }
 }
 </script>
+
+
 
 </body>
 </html>

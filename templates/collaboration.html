@@ -1,0 +1,371 @@
+{% extends "base.html" %}
+
+{% block title %}Collaboration - AID2E{% endblock %}
+
+{% block extra_css %}
+<style>
+/* Collaboration Page Specific Styles */
+.collaboration-section {
+  margin-bottom: 2rem;
+}
+
+.institution-header {
+  background: linear-gradient(135deg, #3a7ca5 0%, #2d6080 100%);
+  padding: clamp(1rem, 2vw, 1.5rem);
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.institution-header:hover {
+  background: linear-gradient(135deg, #2d6080 0%, #3a7ca5 100%);
+  transform: translateX(5px);
+}
+
+.institution-header h2 {
+  margin: 0;
+  color: white;
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+}
+
+.toggle-icon {
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+  transition: transform 0.3s ease;
+  color: white;
+}
+
+.toggle-icon.active {
+  transform: rotate(180deg);
+}
+
+.institution-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+  padding: 0 1rem;
+}
+
+.institution-content.active {
+  max-height: 5000px;
+  padding: 2rem 1rem;
+}
+
+.role-section {
+  margin-bottom: 3rem;
+}
+
+.role-title {
+  color: #3a7ca5;
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #3a7ca5;
+}
+
+.members-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(clamp(200px, 25vw, 280px), 1fr));
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  margin-bottom: 2rem;
+}
+
+/* Flip Card Styles */
+.flip-card {
+  background-color: transparent;
+  perspective: 1000px;
+  height: clamp(280px, 35vw, 360px);
+  cursor: pointer;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  transition: box-shadow 0.3s ease;
+}
+
+.flip-card:hover .flip-card-front,
+.flip-card:hover .flip-card-back {
+  box-shadow: 0 8px 16px rgba(58, 124, 165, 0.4);
+}
+
+.flip-card-front {
+  background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+}
+
+.flip-card-front img {
+  width: clamp(100px, 15vw, 150px);
+  height: clamp(100px, 15vw, 150px);
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  border: 3px solid #3a7ca5;
+}
+
+.flip-card-front h3 {
+  color: white;
+  margin: 0.5rem 0;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+}
+
+.flip-card-front .member-role {
+  color: #3a7ca5;
+  font-weight: bold;
+  font-size: clamp(0.85rem, 1.5vw, 1rem);
+  margin-top: 0.5rem;
+}
+
+.flip-card-back {
+  background: linear-gradient(135deg, #3a7ca5 0%, #2d6080 100%);
+  color: white;
+  transform: rotateY(180deg);
+  padding: clamp(1rem, 2vw, 1.5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow-y: auto;
+}
+
+.flip-card-back h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  border-bottom: 2px solid white;
+  padding-bottom: 0.5rem;
+}
+
+.flip-card-back p {
+  margin: 0.5rem 0;
+  font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+  line-height: 1.5;
+  text-align: left;
+}
+
+.flip-card-back .label {
+  font-weight: bold;
+  color: #e0e0e0;
+}
+
+.visit-link {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: white;
+  color: #3a7ca5;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: clamp(0.8rem, 1.4vw, 0.9rem);
+  transition: all 0.3s ease;
+}
+
+.visit-link:hover {
+  background-color: #e0e0e0;
+  transform: scale(1.05);
+}
+
+.visit-link i {
+  margin-left: 0.3rem;
+}
+
+/* Placeholder image for missing photos */
+.placeholder-image {
+  width: clamp(100px, 15vw, 150px);
+  height: clamp(100px, 15vw, 150px);
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3a7ca5 0%, #2d6080 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  border: 3px solid #3a7ca5;
+}
+
+.placeholder-image i {
+  font-size: clamp(3rem, 8vw, 5rem);
+  color: white;
+  opacity: 0.7;
+}
+
+/* Page header */
+.page-header {
+  padding: clamp(6rem, 12vw, 8rem) 2rem clamp(3rem, 6vw, 4rem);
+  text-align: center;
+  background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+}
+
+.page-header h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 1rem;
+}
+
+.page-header p {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: #e0e0e0;
+  max-width: 800px;
+  margin: 0 auto;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="page-header">
+  <h1>AID2E Collaboration</h1>
+  <p>Meet the talented team of researchers, scientists, and experts working together to advance AI-assisted detector design for the Electron Ion Collider.</p>
+</div>
+
+<!-- Collaboration Content -->
+<div class="w3-container darker-bg" style="padding: clamp(2rem, 4vw, 4rem) clamp(1rem, 3vw, 2rem);">
+  <div class="w3-content">
+    {% for institution in institutions %}
+    <div class="collaboration-section">
+      <!-- Institution Header -->
+      <div class="institution-header" onclick="toggleInstitution('{{ institution.short_name }}')">
+        <h2>{{ institution.name }}</h2>
+        <i class="fa fa-chevron-down toggle-icon" id="toggle-{{ institution.short_name }}"></i>
+      </div>
+      
+      <!-- Institution Content -->
+      <div class="institution-content" id="content-{{ institution.short_name }}">
+        {% set pi_members = [] %}
+        {% set copi_members = [] %}
+        {% set regular_members = [] %}
+        {% set consultants = [] %}
+        
+        {% for member in institution.members %}
+          {% if member.role == 'PI' %}
+            {% set _ = pi_members.append(member) %}
+          {% elif member.role == 'Co-PI' %}
+            {% set _ = copi_members.append(member) %}
+          {% elif member.role == 'Consultant' %}
+            {% set _ = consultants.append(member) %}
+          {% else %}
+            {% set _ = regular_members.append(member) %}
+          {% endif %}
+        {% endfor %}
+        
+        <!-- PI Section -->
+        {% if pi_members %}
+        <div class="role-section">
+          <h3 class="role-title">Principal Investigator</h3>
+          <div class="members-grid">
+            {% for member in pi_members %}
+            {{ render_member_card(member) }}
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+        
+        <!-- Co-PI Section -->
+        {% if copi_members %}
+        <div class="role-section">
+          <h3 class="role-title">Co-Principal Investigators</h3>
+          <div class="members-grid">
+            {% for member in copi_members %}
+            {{ render_member_card(member) }}
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+        
+        <!-- Members Section -->
+        {% if regular_members %}
+        <div class="role-section">
+          <h3 class="role-title">Team Members</h3>
+          <div class="members-grid">
+            {% for member in regular_members %}
+            {{ render_member_card(member) }}
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+        
+        <!-- Consultants Section -->
+        {% if consultants %}
+        <div class="role-section">
+          <h3 class="role-title">Consultants</h3>
+          <div class="members-grid">
+            {% for member in consultants %}
+            {{ render_member_card(member) }}
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+function toggleInstitution(institutionId) {
+  const content = document.getElementById('content-' + institutionId);
+  const icon = document.getElementById('toggle-' + institutionId);
+  
+  content.classList.toggle('active');
+  icon.classList.toggle('active');
+}
+</script>
+{% endblock %}
+
+{% macro render_member_card(member) %}
+<div class="flip-card" {% if member.url %}onclick="window.open('{{ member.url }}', '_blank')"{% endif %}>
+  <div class="flip-card-inner">
+    <!-- Front of card -->
+    <div class="flip-card-front">
+      {% if member.image %}
+        <img src="{{ member.image }}" alt="{{ member.name }}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="placeholder-image" style="display:none;">
+          <i class="fa fa-user"></i>
+        </div>
+      {% else %}
+        <div class="placeholder-image">
+          <i class="fa fa-user"></i>
+        </div>
+      {% endif %}
+      <h3>{{ member.name }}</h3>
+      <p class="member-role">{{ member.role }}</p>
+    </div>
+    
+    <!-- Back of card -->
+    <div class="flip-card-back">
+      <h3>{{ member.name }}</h3>
+      <p><span class="label">Role:</span> {{ member.role }}</p>
+      <p><span class="label">Designation:</span> {{ member.designation }}</p>
+      {% if member.works %}
+      <p><span class="label">Expertise:</span> {{ member.works }}</p>
+      {% endif %}
+      {% if member.url %}
+      <a href="{{ member.url }}" target="_blank" class="visit-link" onclick="event.stopPropagation();">
+        Visit Page <i class="fa fa-external-link"></i>
+      </a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endmacro %}

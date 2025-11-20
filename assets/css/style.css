@@ -43,23 +43,82 @@ body {
   height: auto;
 }
 
+/* Institute Logos Container */
+.institutes-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: clamp(15px, 2vw, 30px);
+  width: 100%;
+  padding: 0 2%;
+}
+
 /* Institute Logos */
 .institute-logo {
-  padding: 20px;
+  padding: clamp(10px, 1.5vw, 20px);
   transition: transform 0.3s ease;
+  flex-shrink: 1;
+  min-width: 0;
+}
+
+.institute-logo img {
+  height: auto;
+  width: 100%;
+  filter: brightness(0.9);
+  opacity: 0.85;
+  transition: opacity 0.3s ease;
+  display: block;
 }
 
 .institute-logo:hover {
   transform: scale(1.05);
 }
 
-.institute-logo img {
-  opacity: 0.85;
-  transition: opacity 0.3s ease;
-}
-
 .institute-logo img:hover {
   opacity: 1;
+}
+
+/* Logo sizes - responsive and fluid */
+.logo-large {
+  flex: 0 1 clamp(100px, 12vw, 180px);
+}
+
+.logo-small {
+  flex: 0 1 clamp(50px, 6vw, 90px);
+}
+
+/* Keep all logos in one line on larger screens */
+@media (min-width: 1200px) {
+  .institutes-container {
+    flex-wrap: nowrap;
+  }
+  .logo-large {
+    flex: 0 1 180px;
+  }
+  .logo-small {
+    flex: 0 1 90px;
+  }
+}
+
+/* Allow wrapping on medium screens */
+@media (max-width: 1199px) and (min-width: 768px) {
+  .institutes-container {
+    flex-wrap: wrap;
+  }
+}
+
+/* Stack on small screens */
+@media (max-width: 767px) {
+  .institutes-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .logo-large,
+  .logo-small {
+    flex: 0 1 auto;
+    max-width: 200px;
+  }
 }
 
 /* Lead Institute Highlight */
@@ -73,6 +132,14 @@ body {
 .white-bg-logo {
   background-color: white;
   border-radius: 10px;
+}
+
+/* About Section Text */
+.about-text {
+  color: #ffffff;
+  font-size: clamp(1rem, 1.8vw, 1.125rem);
+  line-height: 1.7;
+  margin-bottom: 1.2em;
 }
 
 /* Under Construction Page */

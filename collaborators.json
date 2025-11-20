@@ -1,0 +1,193 @@
+{
+  "institutions": [
+    {
+      "name": "Brookhaven National Laboratory",
+      "short_name": "BNL",
+      "members": [
+        {
+          "name": "Torre Wenaus, PhD",
+          "role": "Co-PI",
+          "designation": "Senior Physicist",
+          "works": "Expertise: Nuclear and particle physics software, Distributed Computing, Simulations",
+          "image": "https://www.wenaus.org/images/Torre_Wenaus_Photo.jpg",
+          "url" : "https://www.wenaus.org/torre.html"
+        },
+        {
+          "name": "Meifeng Lin, PhD",
+          "role": "Member",
+          "designation": "Computational Scientist, Computational Science",
+          "works": "Expertise: Computational physics, exascale",
+          "image": "assets/images/collaborators/meifang_lin.png",
+          "url" : "https://www.bnl.gov/staff/mlin"
+        },
+        {
+          "name": "Tianle Wang, PhD",
+          "role": "Member",
+          "designation": "Research Associate, High Performance Computing, Computational Science",
+          "works": "Expertise: Physics, High Performance Computing, Workflow Management, Machine Learning",
+          "image": "assets/images/collaborators/tianle_wang.png",
+          "url": "https://www.bnl.gov/staff/twang3"
+        },
+        {
+          "name": "Wen Guan, PhD",
+          "role": "Member",
+          "designation": "Research Scientist",
+          "works": "Expertise: distributed computing, workflow management, ML workflows",
+          "image": "assets/images/collaborators/wen_guan.png",
+          "url": "https://www.bnl.gov/staff/wguan2"
+        },
+        {
+          "name": "Amit Bashyal, PhD",
+          "role": "Member",
+          "designation": "Research Associate",
+          "works": "Expertise: AI/ML, optimization algorithms, scientific infrastructures",
+          "image": "assets/images/collaborators/amit_bashyal.png",
+          "url" : "https://sites.google.com/view/amitbashyal"
+        },
+        {
+          "name": "Fang-Ying Tsai, PhD",
+          "role": "Member",
+          "designation": "Postdoc (Stony Brook)",
+          "works": "Expertise: AI/ML, HPC, and large-scale data processing",
+          "image": "assets/images/collaborators/fangying_tsai.png",
+          "url" : "https://www.linkedin.com/in/fang-ying-tsai-17656b344"
+        },
+        {
+          "name": "Gabor Galgoczi, PhD",
+          "role": "Consultant",
+          "designation": "Postdoc BNL",
+          "works": "Expertise: Physics, Data Science, MOO, Bayesian, Detectors",
+          "image": "assets/images/collaborators/gabor_galgoczi.png",
+          "url" : "https://www.bnl.gov/staff/ggalgoczi1"
+        },
+        {
+          "name": "Kolja Kauder, PhD",
+          "role": "Consultant",
+          "designation": "Staff Scientist",
+          "works": "Expertise: Physics, Simulation",
+          "image": "assets/images/collaborators/kolja_kauder.jpeg",
+          "url" : "https://www.bnl.gov/staff/kkauder"
+        },
+        {
+          "name": "Alex Jentsch, PhD",
+          "role": "Consultant",
+          "designation": "Staff Scientist",
+          "works": "Expertise: Far Forward physics, EIC",
+          "image": "assets/images/collaborators/alex_jentsch.jpeg",
+          "url" : "https://www.bnl.gov/staff/ajentsch"
+        }
+      ]
+    },
+    {
+      "name": "Catholic University of America",
+      "short_name": "CUA",
+      "members": [
+        {
+          "name": "Baptiste Fraisse, PhD",
+          "role": "Member",
+          "designation": "Postdoc Physics",
+          "works": "Expertise: medium energy nuclear physics, simulations, calorimetry",
+          "image": "assets/images/collaborators/baptiste_fraisse.jpeg",
+          "url" : "https://scholar.google.com/citations?user=H7AvRdIAAAAJ&hl"
+        },
+        {
+          "name": "Tanja Horn, PhD",
+          "role": "Co-PI",
+          "designation": "Professor of Physics",
+          "works": "Expertise: medium energy nuclear physics, EIC, 3D hadron Imaging, calorimetry",
+          "image": "assets/images/collaborators/tanja_horn.png",
+          "url" : "https://www.linkedin.com/in/tanja-horn-27608a91"
+        }
+      ]
+    },
+    {
+      "name": "Duke University",
+      "short_name": "Duke",
+      "members": [
+        {
+          "name": "Anselm Vossen, PhD",
+          "role": "Co-PI",
+          "designation": "Associate Professor of Physics",
+          "works": "Expertise: Physics, PID and calorimetry for the EIC",
+          "image": "assets/images/collaborators/anselm_vossen.jpg",
+          "url" : "https://scholars.duke.edu/person/Anselm.Vossen"
+        },
+        {
+          "name": "Cynthia Nunez, PhD",
+          "role": "Member",
+          "designation": "Postdoc",
+          "works": "Expertise: physics, simulations",
+          "image": "assets/images/collaborators/cynthia_nunez.jpeg",
+          "url" : "https://www.linkedin.com/in/cynunez/"
+        },
+        {
+          "name": "Connor Pecar, MS",
+          "role": "Member",
+          "designation": "PhD Student",
+          "works": "Expertise: physics, PID and detector simulations for the EIC",
+          "image": "assets/images/collaborators/connor_pecar.jpg",
+          "url" : "https://scholars.duke.edu/person/connor.pecar"
+        }
+      ]
+    },
+    {
+      "name": "Jefferson Lab",
+      "short_name": "JLab",
+      "members": [
+        {
+          "name": "Markus Diefenthaler, PhD",
+          "role": "Co-PI",
+          "designation": "Staff Scientist",
+          "works": "Expertise: ePIC Software & Computing Coordinator, EIC Science, Simulations",
+          "image": "assets/images/collaborators/markus_diefenthaler.jpeg",
+          "url" : "https://scholar.google.com/citations?user=_zSCAWEAAAAJ&hl"
+        },
+        {
+          "name": "Derek Anderson PhD",
+          "role": "Member",
+          "designation": "Postdoc",
+          "works": "Expertise: EIC Science, Reconstruction, Simulations, calorimetry, jets",
+          "image": "assets/images/collaborators/derek_anderson.jpeg",
+          "url" : "https://www.linkedin.com/in/derek-m-anderson-b2432ba6/"
+        },
+        {
+          "name": "Makoto Asai, PhD",
+          "role": "Consultant",
+          "designation": "Staff Scientist",
+          "works": "Expertise: Detector Simulations, Geant4",
+          "image": "assets/images/collaborators/makoto_asai.png",
+          "url" : "https://inspirehep.net/authors/1018026"
+        }
+      ]
+    },
+    {
+      "name": "William & Mary",
+      "short_name": "W&M",
+      "members": [
+        {
+          "name": "Cristiano Fanelli, PhD",
+          "role": "PI",
+          "designation": "Associate Professor of Data Science",
+          "works": "Expertise: Data Science, Physics, MOO, Bayesian, Detectors, Artificial Intelligence, Computing",
+          "image": "assets/images/collaborators/cristiano_fanelli.jpeg",
+          "url" : "https://cristianofanelli.com/"
+        },
+        {
+          "name": "Karthik Suresh PhD",
+          "role": "Member",
+          "designation": "Research Scientist",
+          "works": "Expertise: Data Science, Physics, MOO, Bayesian, Detectors, Distributed Computing",
+          "image": "assets/images/collaborators/karthik_suresh.jpeg",
+          "url" : "https://karthik18495.github.io/karthik18495/"
+        },
+        {
+          "name": "Hemalata Nayak, MS",
+          "role": "Member",
+          "designation": "PhD Student",
+          "works": "Expertise:Data Science, Deep Learning, Jet Reconstruction",
+          "image": "assets/images/collaborators/hemalata_nayak.jpg"
+        }
+      ]
+    }
+  ]
+}

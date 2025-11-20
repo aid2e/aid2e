@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Publications - AID2E</title>
+<title>{% block title %}AID2E - AI-assisted Detector Design for EIC{% endblock %}</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="assets/css/style.css">
-
+{% block extra_css %}{% endblock %}
 </head>
 <body class="darker-bg">
 
@@ -17,11 +17,11 @@
 <div class="w3-top">
   <div class="w3-bar dark-bg w3-card w3-left-align w3-large">
     <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-opacity w3-large" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-    <a href="index.html" class="w3-bar-item w3-button w3-padding-large accent-hover">Home</a>
-    <a href="collaboration.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Collaboration</a>
-    <a href="publications.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-color">Publications</a>
-    <a href="other-works.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Other Works</a>
-    <a href="projects.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Projects</a>
+    <a href="index.html" class="w3-bar-item w3-button w3-padding-large {% if active_page == 'home' %}accent-color{% else %}accent-hover{% endif %}">Home</a>
+    <a href="collaboration.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large {% if active_page == 'collaboration' %}accent-color{% else %}accent-hover{% endif %}">Collaboration</a>
+    <a href="publications.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large {% if active_page == 'publications' %}accent-color{% else %}accent-hover{% endif %}">Publications</a>
+    <a href="other-works.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large {% if active_page == 'other-works' %}accent-color{% else %}accent-hover{% endif %}">Other Works</a>
+    <a href="projects.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large {% if active_page == 'projects' %}accent-color{% else %}accent-hover{% endif %}">Projects</a>
   </div>
 
   <!-- Navbar on small screens -->
@@ -34,20 +34,7 @@
   </div>
 </div>
 
-
-<!-- Under Construction -->
-<div class="w3-container w3-center" style="padding-top: clamp(100px, 20vh, 200px); min-height: 80vh;">
-  <div class="under-construction">
-    <i class="fa fa-cogs" style="font-size: clamp(60px, 12vw, 120px); color: #3a7ca5; margin-bottom: clamp(15px, 3vw, 30px);"></i>
-    <h1 class="w3-jumbo" style="font-size: clamp(2rem, 6vw, 4rem);">Under Construction</h1>
-    <p class="w3-xlarge w3-text-grey" style="font-size: clamp(1rem, 2.5vw, 1.5rem);">This page is currently being built.</p>
-    <p class="w3-large w3-text-grey" style="font-size: clamp(0.9rem, 2vw, 1.2rem);">Check back soon!</p>
-    <a href="index.html" class="w3-button accent-color w3-padding-large w3-margin-top" style="font-size: clamp(0.9rem, 1.8vw, 1.1rem);">
-      <i class="fa fa-home"></i> Return to Home
-    </a>
-  </div>
-</div>
-
+{% block content %}{% endblock %}
 
 <!-- Footer -->
 <footer class="w3-container w3-padding-64 w3-center dark-bg">  
@@ -69,7 +56,7 @@ function myFunction() {
 }
 </script>
 
-
+{% block extra_js %}{% endblock %}
 
 </body>
 </html>
