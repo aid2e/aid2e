@@ -3,6 +3,7 @@
     {
       "name": "Brookhaven National Laboratory",
       "short_name": "BNL",
+      "logo": "BNL.png",
       "members": [
         {
           "name": "Torre Wenaus, PhD",
@@ -81,6 +82,7 @@
     {
       "name": "Catholic University of America",
       "short_name": "CUA",
+      "logo": "CUA.png",
       "members": [
         {
           "name": "Baptiste Fraisse, PhD",
@@ -103,6 +105,7 @@
     {
       "name": "Duke University",
       "short_name": "Duke",
+      "logo": "Duke.png",
       "members": [
         {
           "name": "Anselm Vossen, PhD",
@@ -133,6 +136,7 @@
     {
       "name": "Jefferson Lab",
       "short_name": "JLab",
+      "logo": "JLab.png",
       "members": [
         {
           "name": "Markus Diefenthaler, PhD",
@@ -163,6 +167,7 @@
     {
       "name": "William & Mary",
       "short_name": "W&M",
+      "logo": "W&M.png",
       "members": [
         {
           "name": "Cristiano Fanelli, PhD",
