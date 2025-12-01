@@ -65,33 +65,35 @@
   </div>
 </div>
 
-<!-- Other Activities Section -->
-<div class="w3-container darker-bg" style="padding: clamp(2rem, 4vw, 4rem) clamp(1rem, 3vw, 2rem);">
+<!-- Related Talks Section -->
+<div class="w3-container dark-bg" style="padding: clamp(2rem, 4vw, 4rem) clamp(1rem, 3vw, 2rem);">
   <div class="w3-content">
     <h2 class="section-title">
-      <i class="fa fa-lightbulb-o"></i> Other Activities
+      <i class="fa fa-microphone"></i> Related Talks
     </h2>
     <p class="section-description">
-      Workshops, educational materials, and tools developed by the AID2E collaboration.
+      Conference presentations and invited talks by AID2E collaboration members.
     </p>
     
-    <div class="activities-container">
-      {% for activity in other_activities %}
-      <div class="activity-card">
-        <div class="activity-icon">
-          {% if activity.type == 'workshop' %}
-          <i class="fa fa-graduation-cap"></i>
-          {% elif activity.type == 'tool' %}
-          <i class="fa fa-wrench"></i>
-          {% else %}
-          <i class="fa fa-star"></i>
-          {% endif %}
+    <div class="talks-container">
+      {% for talk in talks %}
+      <div class="talk-card">
+        <div class="talk-header">
+          <h3 class="talk-title">{{ talk.title }}</h3>
+          <div class="talk-meta">
+            <span class="talk-event"><i class="fa fa-calendar"></i> {{ talk.event }}</span>
+            <span class="talk-date"><i class="fa fa-clock-o"></i> {{ talk.date }}</span>
+            <span class="talk-location"><i class="fa fa-map-marker"></i> {{ talk.location }}</span>
+          </div>
         </div>
-        <div class="activity-content">
-          <h3>{{ activity.title }}</h3>
-          <p>{{ activity.description }}</p>
-          <a href="{{ activity.url }}" target="_blank" class="activity-link">
-            <i class="fa fa-external-link"></i> Visit
+        
+        <div class="talk-presenter">
+          Presenter: {{ talk.presenter }}
+        </div>
+        
+        <div class="talk-link-container">
+          <a href="{{ talk.url }}" target="_blank" class="talk-link">
+            <i class="fa fa-file-powerpoint-o"></i> View Slides
           </a>
         </div>
       </div>
@@ -196,6 +198,92 @@
   gap: 0.5rem;
   flex-wrap: wrap;
   margin-top: 1rem;
+}
+
+/* Talks Styles */
+.talks-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.talk-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.talk-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.talk-header {
+  margin-bottom: 1rem;
+}
+
+.talk-title {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem 0;
+  line-height: 1.4;
+}
+
+.talk-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.talk-event, .talk-date, .talk-location {
+  color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.talk-event {
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.talk-presenter {
+  color: rgba(255, 255, 255, 0.8);
+  font-style: italic;
+  margin: 1rem 0;
+  font-size: 0.95rem;
+}
+
+.talk-link-container {
+  margin-top: 1rem;
+}
+
+.talk-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  background: rgba(33, 150, 243, 0.2);
+  color: #2196F3;
+  text-decoration: none;
+  border-radius: 4px;
+  border: 1px solid rgba(33, 150, 243, 0.3);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.talk-link:hover {
+  background: rgba(33, 150, 243, 0.3);
+  border-color: #2196F3;
+  transform: translateY(-1px);
 }
 
 /* Activities Styles */

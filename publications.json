@@ -64,13 +64,28 @@
       "pdf": "",
       "abstract": "",
       "tags": ["RAG", "AI", "EIC", "summarization"]
+    },
+    {
+      "id": "ai_rich_eic_2020",
+      "title": "AI-optimized detector design for the future Electron-Ion Collider: the dual-radiator RICH case",
+      "authors": "E. Cisbani, A. Del Dotto, C. Fanelli, M. Williams et al.",
+      "year": 2020,
+      "venue": "JINST",
+      "citation": "2020 JINST 15 P05009",
+      "doi": "10.1088/1748-0221/15/05/P05009",
+      "arxiv": "",
+      "pdf": "https://iopscience.iop.org/article/10.1088/1748-0221/15/05/P05009",
+      "abstract": "",
+      "tags": ["AI", "detector design", "EIC", "RICH"]
     }
+
   ],
   "other_activities": [
     {
       "id": "bootcamp_2024",
       "title": "AID2E Bootcamp (2024)",
-      "description": "Educational workshop on AI-assisted detector design",
+      "description": "A comprehensive educational workshop designed to train the next generation of physicists and engineers in AI-assisted detector design methodologies.",
+      "long_description": "The AID2E Bootcamp provides hands-on training in modern detector optimization techniques, combining theoretical foundations with practical applications. Participants learn to use state-of-the-art AI tools, multiobjective optimization frameworks, and distributed computing systems for detector design. The bootcamp covers topics including Bayesian optimization, neural networks for detector simulation, and large-scale workflow management using PanDA and iDDS systems.",
       "url": "https://aid2e.github.io/boot-camp-2024/",
       "year": 2024,
       "type": "workshop"
@@ -78,10 +93,57 @@
     {
       "id": "rag4eic",
       "title": "RAG4EIC Agent",
-      "description": "Retrieval-Augmented Generation system for EIC documentation",
+      "description": "An intelligent AI-powered chatbot system leveraging Retrieval-Augmented Generation (RAG) technology to provide instant access to EIC documentation and knowledge.",
+      "long_description": "RAG4EIC combines advanced Large Language Models with a comprehensive knowledge base of EIC documentation, publications, and technical resources. The system uses RAG technology to provide accurate, context-aware responses to questions about the Electron Ion Collider, detector design, physics objectives, and technical specifications. This tool significantly reduces the time researchers spend searching through documentation and enables more efficient collaboration across the EIC community.",
       "url": "http://rag4eic.ds.wm.edu/",
       "year": 2024,
       "type": "tool"
+    }
+  ],
+  "talks": [
+    {
+      "id": "ai4eic_2025",
+      "title": "AID2E: AI-assisted Detector Design for EIC",
+      "event": "AI4EIC 2025",
+      "date": "October 27-29, 2025",
+      "location": "MIT, Wong Auditorium (Tang Center), in Boston, USA",
+      "presenter": "Wen Guan",
+      "url": "https://indico.bnl.gov/event/28082/contributions/115365/attachments/65815/113073/AID2E_AI4EIC.pptx-3.pdf",
+      "year": 2025,
+      "month": 10
+    },
+    {
+      "id": "rhic_ags_2024",
+      "title": "AI-assisted Detector Design for the EIC",
+      "event": "RHIC/AGS Annual Users' Meeting",
+      "date": "June 11-14, 2024",
+      "location": "Brookhaven National Laboratory, New York, USA",
+      "presenter": "Cristiano Fanelli",
+      "url": "https://indico.bnl.gov/event/22687/contributions/91385/attachments/55151/94387/June_2024_RHIC_AGS_Fanelli_June11-2024.pdf",
+      "year": 2024,
+      "month": 6
+    },
+    {
+      "id": "fcc_week_2024",
+      "title": "AID2E: AI-assisted Detector Design for EIC",
+      "event": "FCC Week 2024",
+      "date": "June 10-14, 2024",
+      "location": "San Francisco, California, USA",
+      "presenter": "Karthik Suresh",
+      "url": "https://indico.cern.ch/event/1298458/contributions/5991557/attachments/2877554/5039712/AID2E%20FCC%20Week%202024.pdf",
+      "year": 2024,
+      "month": 6
+    },
+    {
+      "id": "ai4eic_2023",
+      "title": "AI-assisted Detector Design for EIC",
+      "event": "AI4EIC Workshop",
+      "date": "November 28 - December 1, 2023",
+      "location": "Catholic University of America, Washington, D.C., USA",
+      "presenter": "Cristiano Fanelli",
+      "url": "https://indico.bnl.gov/event/19560/contributions/83254/attachments/51238/87631/AIDE_talk.pdf",
+      "year": 2023,
+      "month": 11
     }
   ]
 }

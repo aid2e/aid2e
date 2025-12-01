@@ -1,0 +1,193 @@
+{% extends "base.html" %}
+
+{% block title %}Other Activities - AID2E{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="page-header">
+  <h1>Other Activities</h1>
+  <p class="about-text" style="max-width: 900px; margin: 0 auto;">
+    Educational initiatives, software tools, and community resources developed by the AID2E collaboration.
+  </p>
+</div>
+
+<!-- Activities Section -->
+<div class="w3-container dark-bg" style="padding: clamp(2rem, 4vw, 4rem) clamp(1rem, 3vw, 2rem);">
+  <div class="w3-content">
+    <div class="activities-grid">
+      {% for activity in activities %}
+      <div class="activity-card-full">
+        <div class="activity-icon-large">
+          {% if activity.type == 'workshop' %}
+          <i class="fa fa-graduation-cap"></i>
+          {% elif activity.type == 'tool' %}
+          <i class="fa fa-wrench"></i>
+          {% else %}
+          <i class="fa fa-star"></i>
+          {% endif %}
+        </div>
+        
+        <div class="activity-details">
+          <h2>{{ activity.title }}</h2>
+          
+          <div class="activity-year">
+            <i class="fa fa-calendar"></i> {{ activity.year }}
+          </div>
+          
+          <p class="activity-description">{{ activity.description }}</p>
+          
+          {% if activity.long_description %}
+          <div class="activity-long-description">
+            {{ activity.long_description }}
+          </div>
+          {% endif %}
+          
+          <div class="activity-link-container">
+            <a href="{{ activity.url }}" target="_blank" class="activity-link-btn">
+              <i class="fa fa-external-link"></i> 
+              {% if activity.type == 'workshop' %}
+              Visit Workshop Site
+              {% elif activity.type == 'tool' %}
+              Launch Tool
+              {% else %}
+              Learn More
+              {% endif %}
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<style>
+/* Activities Grid */
+.activities-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  margin-top: 2rem;
+}
+
+.activity-card-full {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 2.5rem;
+  transition: all 0.3s ease;
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.activity-card-full:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.activity-icon-large {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(76, 175, 80, 0.2);
+  border-radius: 50%;
+  color: #4CAF50;
+  font-size: 2.5rem;
+  border: 2px solid rgba(76, 175, 80, 0.3);
+}
+
+.activity-details {
+  flex: 1;
+}
+
+.activity-details h2 {
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem 0;
+  line-height: 1.3;
+}
+
+.activity-year {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  padding: 0.4rem 0.8rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+.activity-description {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 1.5rem 0;
+  font-weight: 500;
+}
+
+.activity-long-description {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-left: 3px solid #4CAF50;
+  border-radius: 4px;
+}
+
+.activity-link-container {
+  margin-top: 2rem;
+}
+
+.activity-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1.8rem;
+  background: rgba(76, 175, 80, 0.2);
+  color: #4CAF50;
+  text-decoration: none;
+  border-radius: 6px;
+  border: 2px solid rgba(76, 175, 80, 0.3);
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.activity-link-btn:hover {
+  background: rgba(76, 175, 80, 0.3);
+  border-color: #4CAF50;
+  transform: translateX(5px);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .activity-card-full {
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+  
+  .activity-icon-large {
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+  }
+  
+  .activity-details h2 {
+    font-size: 1.4rem;
+  }
+}
+</style>
+{% endblock %}
