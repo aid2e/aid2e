@@ -100,15 +100,15 @@ PAGES = [
         'active_page': 'publications',
         'context': lambda: {
             'papers': load_publications()['papers'],
-            'other_activities': load_publications()['other_activities']
+            'talks': load_publications()['talks']
         }
     },
     {
-        'template': 'under_construction.html',
-        'output': 'other-works.html',
-        'active_page': 'other-works',
-        'context': {
-            'page_title': 'Other Works'
+        'template': 'other_activities.html',
+        'output': 'other-activities.html',
+        'active_page': 'other-activities',
+        'context': lambda: {
+            'activities': load_publications()['other_activities']
         }
     },
     {
