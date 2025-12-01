@@ -103,7 +103,7 @@
   "talks": [
     {
       "id": "ai4eic_2025",
-      "title": "AID2E: AI-assisted Detector Design for EIC",
+      "title": "Scalable AI-assisted Workflow Management for EIC Detector Design Across Distributed Heterogeneous Resources with PanDA-iDDS",
       "event": "AI4EIC 2025",
       "date": "October 27-29, 2025",
       "location": "MIT, Wong Auditorium (Tang Center), in Boston, USA",
@@ -114,7 +114,7 @@
     },
     {
       "id": "rhic_ags_2024",
-      "title": "AI-assisted Detector Design for the EIC",
+      "title": "AI/ML Applications for EIC",
       "event": "RHIC/AGS Annual Users' Meeting",
       "date": "June 11-14, 2024",
       "location": "Brookhaven National Laboratory, New York, USA",
