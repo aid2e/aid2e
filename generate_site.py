@@ -65,6 +65,14 @@ def load_publications():
     """Load publications from JSON file."""
     with open('publications.json', 'r', encoding='utf-8') as f:
         data = json.load(f)
+    
+    # Sort papers by year in descending order
+    data['papers'].sort(key=lambda x: x.get('year', 0), reverse=True)
+    # Sort talks by year and month in descending order
+    data['talks'].sort(key=lambda x: (x.get('year', 0), x.get('month', 0)), reverse=True)
+    # Sort other activities by year in descending order
+    data['other_activities'].sort(key=lambda x: x.get('year', 0), reverse=True)
+
     return data
 
 # Institute data in alphabetical order
