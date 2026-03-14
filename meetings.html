@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>{% block title %}AID2E - AI-assisted Detector Design for EIC{% endblock %}</title>
+<title>Meetings - AID2E</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="assets/css/style.css">
-{% block extra_css %}{% endblock %}
+
 </head>
 <body class="darker-bg">
 
@@ -17,12 +17,12 @@
 <div class="w3-top">
   <div class="w3-bar dark-bg w3-card w3-left-align w3-large">
     <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-opacity w3-large" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-    <a href="index.html" class="w3-bar-item w3-button w3-padding-large {% if active_page == 'home' %}accent-color{% else %}accent-hover{% endif %}">Home</a>
-    <a href="collaboration.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large {% if active_page == 'collaboration' %}accent-color{% else %}accent-hover{% endif %}">Collaboration</a>
-    <a href="projects.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large {% if active_page == 'projects' %}accent-color{% else %}accent-hover{% endif %}">Projects</a>
-    <a href="publications.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large {% if active_page == 'publications' %}accent-color{% else %}accent-hover{% endif %}">Publications</a>
-    <a href="meetings.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large {% if active_page == 'meetings' %}accent-color{% else %}accent-hover{% endif %}">Meetings</a>
-    <a href="other-activities.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large {% if active_page == 'other-activities' %}accent-color{% else %}accent-hover{% endif %}">Other Activities</a>
+    <a href="index.html" class="w3-bar-item w3-button w3-padding-large accent-hover">Home</a>
+    <a href="collaboration.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Collaboration</a>
+    <a href="projects.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Projects</a>
+    <a href="publications.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Publications</a>
+    <a href="meetings.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-color">Meetings</a>
+    <a href="other-activities.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Other Activities</a>
   </div>
 
   <!-- Navbar on small screens -->
@@ -36,7 +36,39 @@
   </div>
 </div>
 
-{% block content %}{% endblock %}
+
+<!-- Page Header -->
+<div class="page-header">
+  <h1>Meetings</h1>
+  <p class="about-text" style="max-width: 900px; margin: 0 auto;">Notes and summaries for general and technical meetings.</p>
+</div>
+
+<!-- Meetings Section -->
+<div class="w3-container dark-bg" style="padding: clamp(2rem, 4vw, 4rem) clamp(1rem, 3vw, 2rem);">
+  <div class="w3-content">
+      <div class="meetings-grid" style="display:flex; gap:2.5rem; flex-wrap:wrap;">
+      <div class="meetings-col" style="flex:1; min-width:260px;">
+        <h2>General Meetings</h2>
+        <div class="notes-list" style="margin-bottom: 2rem;">
+          <ul>
+            <li><a href="gitbook/meetings/general/2026-03-10.md">Mar 10, 2026</a> — Project update and coordination</li>
+            <li><a href="gitbook/meetings/general/2025-12-01.md">Dec 1, 2025</a> — Bootcamp planning</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="meetings-col" style="flex:1; min-width:260px;">
+        <h2>Technical Meetings</h2>
+        <div class="notes-list">
+          <ul>
+            <li><a href="gitbook/meetings/technical/2026-03-03.md">Mar 3, 2026</a> — Simulation pipeline and benchmarking</li>
+            <li><a href="gitbook/meetings/technical/2025-11-15.md">Nov 15, 2025</a> — RAG4EIC integration notes</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- Footer -->
 <footer class="w3-container w3-padding-64 w3-center dark-bg">  
@@ -47,7 +79,6 @@
 </footer>
 
 <script>
-// Used to toggle the menu on small screens when clicking on the menu button
 function myFunction() {
   var x = document.getElementById("navDemo");
   if (x.className.indexOf("w3-show") == -1) {
@@ -57,8 +88,6 @@ function myFunction() {
   }
 }
 </script>
-
-{% block extra_js %}{% endblock %}
 
 </body>
 </html>
