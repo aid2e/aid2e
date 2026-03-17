@@ -1,0 +1,22 @@
+# Ignore entire gitbook source (do not commit source markdown)
+/gitbook/
+
+# Ignore any gitbook content under assets
+/assets/notes/
+
+# If you ever generate other build artifacts, add them below.
+# Keep generated HTML output in /meetings/ (do not ignore)
+
+# Python virtualenvs
+venv/
+env/
+
+# Byte-compiled / cached files
+__pycache__/
+*.py[cod]
+
+# Editor temp files
+*.swp
+*.swo
+*.bak
+*~
