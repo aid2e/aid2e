@@ -400,9 +400,48 @@ body {
   background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
 }
 
+/* Meetings two-column layout (strong rules to override inline or framework styles) */
+.meetings-grid {
+  display: grid !important;
+  /* Force two columns always (desktop + mobile) */
+  grid-template-columns: 1fr 1fr !important;
+  gap: 2.5rem !important;
+  align-items: start !important;
+  width: 100% !important;
+  grid-auto-rows: auto !important;
+}
+.meetings-col {
+  flex: 1 1 48% !important;
+  min-width: 260px !important;
+}
+
+/* Force two columns on wider viewports, stack on small screens */
+/* Keep meetings-col simple and allow grid placement */
+.meetings-col {
+  padding: 0 !important;
+}
+
+@media (max-width: 480px) {
+  /* On very narrow devices reduce left/right padding for lists */
+  .meetings-grid { gap: 1rem !important; }
+  .w3-content { padding-left: 0.5rem !important; padding-right: 0.5rem !important; }
+}
+@media (max-width: 899px) {
+  .meetings-col {
+    flex: 1 1 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
 .page-header h1 {
   font-size: clamp(2rem, 5vw, 3rem);
   margin-bottom: 1rem;
+}
+
+/* Page title color for meeting pages */
+.page-header h1 {
+  color: #2ecc71; /* green */
 }
 
 .page-header p {
@@ -594,8 +633,31 @@ body {
   margin-bottom: 0.8rem;
 }
 
-.markdown-content p {
-  margin-bottom: 1rem;
+.markdown-content a {
+  color: #2b7be9; /* brighter blue for highlighted links */
+  text-decoration: underline dashed rgba(43,123,233,0.15);
+}
+.markdown-content a:hover {
+  color: #1a5fcc;
+  border-bottom: 1px solid rgba(43,123,233,0.35);
+
+/* Attendees block to resemble markdown preview */
+.attendees {
+  border-left: 3px solid rgba(255,255,255,0.06);
+  padding-left: 0.9rem;
+  margin: 0.5rem 0 1rem 0;
+  color: #dbeafe;
+}
+.attendees strong { color: #d1ffd6; }
+
+/* Make nested lists render closer to markdown preview */
+.markdown-content ul ul {
+  list-style-type: circle;
+  margin-left: 1.2rem;
+}
+.markdown-content ol ol {
+  margin-left: 1.2rem;
+}
 }
 
 .markdown-content ul, .markdown-content ol {
@@ -605,6 +667,72 @@ body {
 
 .markdown-content li {
   margin-bottom: 0.5rem;
+}
+
+/* Meeting index and notes list link color: light blue */
+.notes-list a,
+.meetings-grid a,
+.meetings-col a {
+  color: #6fb3ff;
+  text-decoration: none;
+}
+.notes-list a:hover,
+.meetings-grid a:hover,
+.meetings-col a:hover {
+  color: #4aa6ff;
+  text-decoration: underline;
+}
+
+/* Prev/Next navigation link styling (green) */
+.nav-link {
+  color: #2ecc71;
+  text-decoration: none;
+  font-weight: 500;
+}
+.nav-link:hover {
+  color: #28b76a;
+  text-decoration: underline;
+}
+
+/* Boxed, larger Prev/Next buttons */
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 1rem;
+  font-size: 1.05rem;
+  border-radius: 8px;
+  background: linear-gradient(180deg, rgba(46,204,113,0.06), rgba(40,183,106,0.02));
+  border: 1px solid rgba(46,204,113,0.18);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.35);
+}
+.nav-link i {
+  font-size: 1.05rem;
+  color: #2ecc71;
+}
+.nav-link.nav-prev { order: 0; }
+.nav-link.nav-next { order: 1; }
+.nav-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.45);
+}
+
+/* Year toggle styles */
+.year-toggle {
+  cursor: pointer;
+  font-size: 1.1rem;
+  margin: 0.4rem 0 0.2rem 0;
+  color: #dcdcdc;
+  background: linear-gradient(90deg, rgba(58,124,165,0.06), transparent);
+  padding: 0.35rem 0.6rem;
+  border-radius: 6px;
+}
+.year-toggle:hover {
+  color: #ffffff;
+  background: linear-gradient(90deg, rgba(58,124,165,0.12), transparent);
+}
+.year-block ul {
+  margin-top: 0.4rem;
 }
 
 .markdown-content code {
@@ -630,15 +758,7 @@ body {
   color: #e0e0e0;
 }
 
-.markdown-content a {
-  color: #3a7ca5;
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-  transition: border-bottom 0.3s ease;
-}
-
-.markdown-content a:hover {
-  border-bottom: 1px solid #3a7ca5;
+.markdown-content a { /* kept earlier styles; duplicate removed */
 }
 
 .markdown-content strong {
