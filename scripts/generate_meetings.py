@@ -81,6 +81,16 @@ PAGE_TEMPLATE = Template("""<!DOCTYPE html>
   <footer class="w3-container w3-padding-64 w3-center dark-bg">
     <p>&copy; 2025 AID2E Collaboration.</p>
   </footer>
+<script>
+function myFunction() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else {
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+</script>
 </body>
 </html>
 """)
@@ -91,6 +101,8 @@ def md_to_html(md_text: str) -> str:
   # Pre-process common two-space nested-list markers into four-space
   # so python-markdown treats them as sublists (preserve original content otherwise).
   md_text = md_text.replace('\n  * ', '\n    * ').replace('\n  - ', '\n    - ')
+  # Unescape backslash-escaped ampersands (users sometimes write "W\&M").
+  md_text = md_text.replace('\\&', '&')
   return markdown.markdown(
     md_text,
     extensions=["fenced_code", "tables", "toc", "sane_lists"],
