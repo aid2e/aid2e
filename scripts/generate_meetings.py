@@ -55,7 +55,7 @@ PAGE_TEMPLATE = Template("""<!DOCTYPE html>
     <a href="/meetings.html" class="w3-bar-item w3-button w3-padding-large">Meetings</a>
     <a href="/other-activities.html" class="w3-bar-item w3-button w3-padding-large">Other Activities</a>
   </div>
-  </div>
+  
   <div class="page-header" style="padding-top: 6rem;">
     <h1>{{ title }}</h1>
   </div>

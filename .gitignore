@@ -1,6 +1,8 @@
 # Ignore entire gitbook source (do not commit source markdown)
 /gitbook/
-
+/gitbook/meetings/general/2026-03-10.md
+/gitbook/meetings/README.md
+/gitbook/meetings/SUMMARY.md
 # Ignore any gitbook content under assets
 /assets/notes/
 
