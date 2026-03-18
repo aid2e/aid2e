@@ -8,10 +8,14 @@ from jinja2 import Environment, FileSystemLoader
 import os
 import json
 import markdown
+import re
+from datetime import datetime
 
 # Configuration
 TEMPLATE_DIR = 'templates'
 OUTPUT_DIR = '.'
+
+# (No SITE_ROOT here; links are generated root-absolute where appropriate)
 
 # Load collaborators data
 def load_collaborators():
@@ -129,6 +133,12 @@ PAGES = [
             'other_use_cases': load_projects()['other_use_cases']
         }
     },
+    {
+        'template': 'meetings.html',
+        'output': 'meetings.html',
+        'active_page': 'meetings',
+        'context': lambda: load_meetings_index()
+    },
 ]
 
 
@@ -167,6 +177,100 @@ def generate_site():
         print(f"  ✓ Created {output_path}")
     
     print("\n✅ Site generation complete!")
+
+
+def extract_date_and_desc(md_path):
+    """Return a (date_text, short_description) tuple for a markdown file path."""
+    try:
+        with open(md_path, 'r', encoding='utf-8') as f:
+            text = f.read()
+    except FileNotFoundError:
+        return (os.path.splitext(os.path.basename(md_path))[0], '')
+
+    # Try filename ISO date first
+    stem = os.path.splitext(os.path.basename(md_path))[0]
+    m_iso = re.search(r"(\d{4}-\d{2}-\d{2})", stem)
+    if m_iso:
+        try:
+            dt = datetime.fromisoformat(m_iso.group(1))
+            date_text = dt.strftime("%b %d, %Y").replace(" 0", " ")
+        except Exception:
+            date_text = m_iso.group(1)
+    else:
+        # fallback: look for ISO or word date inside content
+        m_iso2 = re.search(r"(\d{4}-\d{2}-\d{2})", text)
+        m_word = re.search(r"(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)\w*\s+\d{1,2},?\s+\d{4}", text)
+        if m_iso2:
+            try:
+                dt = datetime.fromisoformat(m_iso2.group(1))
+                date_text = dt.strftime("%b %d, %Y").replace(" 0", " ")
+            except Exception:
+                date_text = m_iso2.group(1)
+        elif m_word:
+            date_text = m_word.group(0)
+        else:
+            date_text = stem
+
+    # short description: first non-header, non-attendees paragraph
+    lines = [ln.strip() for ln in text.splitlines() if ln.strip()]
+    desc = ''
+    for ln in lines:
+        if ln.startswith('#'):
+            continue
+        if re.match(r"Attendees?:", ln, re.I):
+            continue
+        desc = re.sub(r'<[^>]+>', '', ln)
+        break
+
+    return date_text, desc
+
+
+def group_by_year(items):
+    groups = {}
+    for date_text, desc, href in items:
+        m = re.search(r"(\d{4})$", date_text)
+        if m:
+            year = m.group(1)
+        else:
+            m2 = re.search(r"(\d{4})-(\d{2})-(\d{2})", href)
+            year = m2.group(1) if m2 else 'Unknown'
+        groups.setdefault(year, []).append((date_text, href))
+    return sorted(groups.items(), reverse=True)
+
+
+def load_meetings_index():
+    """Scan gitbook/meetings and return dict with general/technical groups and items.
+
+    Returns keys: general_groups, tech_groups, general_items, technical_items
+    """
+    root = os.path.join('gitbook', 'meetings')
+    def gather(section):
+        path = os.path.join(root, section)
+        items = []
+        if not os.path.isdir(path):
+            return items
+        files = sorted([f for f in os.listdir(path) if f.lower().endswith('.md')], reverse=True)
+        for fn in files:
+            md_path = os.path.join(path, fn)
+            date_text, desc = extract_date_and_desc(md_path)
+            html_rel = os.path.join('meetings', section, os.path.splitext(fn)[0] + '.html')
+            # use root-absolute links (leading '/') so nested pages resolve correctly
+            href = '/' + html_rel.replace(os.sep, '/')
+            items.append((date_text, desc, href))
+        return items
+
+    general_items = gather('general')
+    technical_items = gather('technical')
+
+    general_groups = group_by_year(general_items)
+    tech_groups = group_by_year(technical_items)
+
+    return {
+        'general_groups': general_groups,
+        'tech_groups': tech_groups,
+        'general_items': general_items,
+        'technical_items': technical_items,
+    }
 
 
 if __name__ == '__main__':
