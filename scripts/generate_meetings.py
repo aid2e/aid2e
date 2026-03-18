@@ -12,12 +12,14 @@ It writes HTML files into `meetings/` mirroring the `gitbook/meetings` tree.
 Requires packages in `requirements.txt` (jinja2, markdown).
 """
 from pathlib import Path
-import markdown
-from jinja2 import Template
-import re
+import markdown, re, os
+from jinja2 import Template,  Environment, FileSystemLoader
 from datetime import datetime
 
+BASE_URL = os.getenv("BASE_URL", "/")
 ROOT = Path(__file__).resolve().parents[1]
+env = Environment(loader=FileSystemLoader(ROOT / "templates"))
+
 GITBOOK_MEETINGS = ROOT / "gitbook" / "meetings"
 SITE_MEETINGS = ROOT / "meetings"
 
@@ -27,7 +29,7 @@ PAGE_TEMPLATE = Template("""<!DOCTYPE html>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ title }} - AID2E</title>
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="{{ base_url }}assets/css/style.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
@@ -130,7 +132,7 @@ def generate_page(src_md: Path, dest_html: Path, prev=None, next=None):
   prev_text = prev[0] if prev else None
   next_href = next[1] if next else None
   next_text = next[0] if next else None
-  rendered = PAGE_TEMPLATE.render(title=title, content=html, prev_href=prev_href, prev_text=prev_text, next_href=next_href, next_text=next_text)
+  rendered = PAGE_TEMPLATE.render(title=title, content=html, prev_href=prev_href, prev_text=prev_text, next_href=next_href, next_text=next_text, base_url = BASE_URL)
   dest_html.parent.mkdir(parents=True, exist_ok=True)
   dest_html.write_text(rendered, encoding="utf-8")
 
@@ -150,17 +152,15 @@ def build_all():
         nxt = None
         # prev: previous (older) entry
         if i-1 >= 0:
-          date_prev, _, href_prev = extract_date_and_desc(files[i-1]) + (None,)
+          date_prev, _ = extract_date_and_desc(files[i-1])
           # extract_date_and_desc returns (date, desc) but we want href
           # compute href from files[i-1]
-          href_prev = Path('meetings') / files[i-1].relative_to(GITBOOK_MEETINGS)
-          href_prev = '/' + href_prev.with_suffix('.html').as_posix()
+          href_prev = files[i-1].with_suffix('.html').name
           prev = (date_prev, href_prev)
         # next: next (newer) entry
         if i+1 < len(files):
-          date_next, _, href_next = extract_date_and_desc(files[i+1]) + (None,)
-          href_next = Path('meetings') / files[i+1].relative_to(GITBOOK_MEETINGS)
-          href_next = '/' + href_next.with_suffix('.html').as_posix()
+          date_next, _ = extract_date_and_desc(files[i+1])
+          href_next = files[i+1].with_suffix('.html').name
           nxt = (date_next, href_next)
         generate_page(md, out, prev=prev, next=nxt)
         print(f"Wrote {out}")
@@ -216,11 +216,10 @@ def extract_date_and_desc(md_path: Path):
         break
     return date_text, desc
 
-
 def build_index():
     general_dir = GITBOOK_MEETINGS / "general"
     tech_dir = GITBOOK_MEETINGS / "technical"
-
+    
     def gather(dirpath):
         items = []
         if not dirpath.exists():
@@ -231,153 +230,36 @@ def build_index():
             date_text, desc = extract_date_and_desc(md)
             html_rel = Path("meetings") / md.relative_to(GITBOOK_MEETINGS)
             html_rel = html_rel.with_suffix('.html')
-            # make index links root-absolute to avoid double-prefix when
-            # navigating from nested pages (ensure leading '/')
-            items.append((date_text, desc, '/' + html_rel.as_posix()))
+
+            # RELATIVE path 
+            items.append((date_text, desc, html_rel.as_posix()))
         return items
 
     general_items = gather(general_dir)
     tech_items = gather(tech_dir)
 
     def group_by_year(items):
-      groups = {}
-      for date_text, desc, href in items:
-        m = re.search(r"(\d{4})$", date_text)
-        if m:
-          year = m.group(1)
-        else:
-          # fallback to looking in href for an ISO date
-          m2 = re.search(r"(\d{4})-(\d{2})-(\d{2})", href)
-          year = m2.group(1) if m2 else 'Unknown'
-        groups.setdefault(year, []).append((date_text, href))
-      # return list of (year, entries) sorted by year descending
-      return sorted(groups.items(), reverse=True)
+        groups = {}
+        for date_text, desc, href in items:
+            m = re.search(r"(\d{4})$", date_text)
+            year = m.group(1) if m else "Unknown"
+            groups.setdefault(year, []).append((date_text, href))
+        return sorted(groups.items(), reverse=True)
 
     general_groups = group_by_year(general_items)
     tech_groups = group_by_year(tech_items)
 
-    # Render a simple meetings.html using same header/footer as templates
-    INDEX_TEMPLATE = Template(r"""<!DOCTYPE html>
-<html lang="en">
-<head>
-<title>Meetings - AID2E</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="assets/css/style.css">
+    
+    template = env.get_template("meetings.html")
 
-</head>
-<body class="darker-bg">
+    rendered = template.render(
+        general_groups=general_groups,
+        tech_groups=tech_groups,
+        base_url = BASE_URL
+    )
 
-<!-- Navbar -->
-<div class="w3-top">
-  <div class="w3-bar dark-bg w3-card w3-left-align w3-large">
-    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-opacity w3-large" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-    <a href="index.html" class="w3-bar-item w3-button w3-padding-large accent-hover">Home</a>
-    <a href="collaboration.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Collaboration</a>
-    <a href="projects.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Projects</a>
-    <a href="publications.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Publications</a>
-    <a href="meetings.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-color">Meetings</a>
-    <a href="other-activities.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Other Activities</a>
-  </div>
-
-  <!-- Navbar on small screens -->
-  <div id="navDemo" class="w3-bar-block dark-bg w3-hide w3-hide-large w3-hide-medium w3-large">
-    <a href="index.html" class="w3-bar-item w3-button w3-padding-large">Home</a>
-    <a href="collaboration.html" class="w3-bar-item w3-button w3-padding-large">Collaboration</a>
-    <a href="projects.html" class="w3-bar-item w3-button w3-padding-large">Projects</a>
-    <a href="publications.html" class="w3-bar-item w3-button w3-padding-large">Publications</a>
-    <a href="meetings.html" class="w3-bar-item w3-button w3-padding-large">Meetings</a>
-    <a href="other-activities.html" class="w3-bar-item w3-button w3-padding-large">Other Activities</a>
-  </div>
-</div>
-
-
-<!-- Page Header -->
-<div class="page-header">
-  <h1>Meetings</h1>
-  <p class="about-text" style="max-width: 900px; margin: 0 auto;">Notes and summaries for general and technical meetings.</p>
-</div>
-
-<!-- Meetings Section -->
-<div class="w3-container dark-bg" style="padding: clamp(2rem, 4vw, 4rem) clamp(1rem, 3vw, 2rem);">
-  <div class="w3-content">
-      <div class="meetings-grid" style="display:flex; gap:2.5rem; flex-wrap:wrap;">
-      <div class="meetings-col" style="flex:1; min-width:260px;">
-        <h2>General Meetings</h2>
-        <div class="notes-list" style="margin-bottom: 2rem;">
-          {% for year, entries in general_groups %}
-            <h3 class="year-toggle" onclick="toggleYear('g-{{ year }}')">{{ year }}</h3>
-            <div id="g-{{ year }}" class="year-block" style="display:none; margin-bottom:1rem;">
-              <ul>
-              {% for date, href in entries %}
-                <li><a href="{{ href }}">{{ date }}</a></li>
-              {% endfor %}
-              </ul>
-            </div>
-          {% endfor %}
-        </div>
-      </div>
-
-      <div class="meetings-col" style="flex:1; min-width:260px;">
-        <h2>Technical Meetings</h2>
-        <div class="notes-list">
-          {% for year, entries in tech_groups %}
-            <h3 class="year-toggle" onclick="toggleYear('t-{{ year }}')">{{ year }}</h3>
-            <div id="t-{{ year }}" class="year-block" style="display:none; margin-bottom:1rem;">
-              <ul>
-              {% for date, href in entries %}
-                <li><a href="{{ href }}">{{ date }}</a></li>
-              {% endfor %}
-              </ul>
-            </div>
-          {% endfor %}
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Footer -->
-<footer class="w3-container w3-padding-64 w3-center dark-bg">  
-  <div class="w3-xlarge w3-padding-32">
-    <a href="https://github.com/aid2e" target="_blank"><i class="fa fa-github w3-hover-opacity"></i></a>
-  </div>
-  <p>&copy; 2025 AID2E Collaboration. Funded by the U.S. Department of Energy Grant Contract No. DE-SC0024625.</p>
-</footer>
-
-<script>
-function myFunction() {
-  var x = document.getElementById("navDemo");
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-  } else { 
-    x.className = x.className.replace(" w3-show", "");
-  }
-}
-
-function toggleYear(id) {
-  var el = document.getElementById(id);
-  if (!el) return;
-  if (el.style.display === 'none' || el.style.display === '') {
-    el.style.display = 'block';
-  } else {
-    el.style.display = 'none';
-  }
-}
-</script>
-
-</body>
-</html>
-""")
-
-    index_html = INDEX_TEMPLATE.render(general_groups=general_groups, tech_groups=tech_groups, general=general_items, technical=tech_items)
-    (ROOT / "meetings.html").write_text(index_html, encoding="utf-8")
-    print("Updated meetings.html index")
-
+    (ROOT / "meetings.html").write_text(rendered, encoding="utf-8")
+    print("Updated meetings.html using template")
 
 if __name__ == "__main__":
     build_all()

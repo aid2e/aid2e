@@ -14,7 +14,15 @@ from datetime import datetime
 # Configuration
 TEMPLATE_DIR = 'templates'
 OUTPUT_DIR = '.'
-
+# Normalize BASE_URL so it is either empty or starts with '/' and ends with '/'
+_raw_base_url = os.getenv("BASE_URL", "/")
+_raw_base_url = _raw_base_url.strip() if _raw_base_url is not None else ""
+if _raw_base_url:
+    if not _raw_base_url.startswith("/"):
+        _raw_base_url = "/" + _raw_base_url
+    if not _raw_base_url.endswith("/"):
+        _raw_base_url = _raw_base_url + "/"
+BASE_URL = _raw_base_url
 # (No SITE_ROOT here; links are generated root-absolute where appropriate)
 
 # Load collaborators data
@@ -163,6 +171,7 @@ def generate_site():
         
         context = {
             'active_page': page_config['active_page'],
+            'base_url': BASE_URL,
             **context_data
         }
         
@@ -254,8 +263,8 @@ def load_meetings_index():
             md_path = os.path.join(path, fn)
             date_text, desc = extract_date_and_desc(md_path)
             html_rel = os.path.join('meetings', section, os.path.splitext(fn)[0] + '.html')
-            # use root-absolute links (leading '/') so nested pages resolve correctly
-            href = '/' + html_rel.replace(os.sep, '/')
+            # use relative links so they work on GitHub Pages project sites
+            href = html_rel.replace(os.sep, '/')
             items.append((date_text, desc, href))
         return items
 
