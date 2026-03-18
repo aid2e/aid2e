@@ -37,23 +37,23 @@ PAGE_TEMPLATE = Template("""<!DOCTYPE html>
   <div class="w3-top">
     <div class="w3-bar dark-bg w3-card w3-left-align w3-large">
       <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-opacity w3-large" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-      <a href="{{ base_url }}index.html" class="w3-bar-item w3-button w3-padding-large accent-hover">Home</a>
-      <a href="{{ base_url }}collaboration.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Collaboration</a>
-      <a href="{{ base_url }}projects.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Projects</a>
-      <a href="{{ base_url }}publications.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Publications</a>
-      <a href="{{ base_url }}meetings.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-color">Meetings</a>
-      <a href="{{ base_url }}other-activities.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Other Activities</a>
+      <a href="/index.html" class="w3-bar-item w3-button w3-padding-large accent-hover">Home</a>
+      <a href="/collaboration.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Collaboration</a>
+      <a href="/projects.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Projects</a>
+      <a href="/publications.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Publications</a>
+      <a href="/meetings.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-color">Meetings</a>
+      <a href="/other-activities.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Other Activities</a>
     </div>
   </div>
 
   <!-- Navbar on small screens -->
   <div id="navDemo" class="w3-bar-block dark-bg w3-hide w3-hide-large w3-hide-medium w3-large">
-    <a href="{{ base_url }}index.html" class="w3-bar-item w3-button w3-padding-large">Home</a>
-    <a href="{{ base_url }}collaboration.html" class="w3-bar-item w3-button w3-padding-large">Collaboration</a>
-    <a href="{{ base_url }}projects.html" class="w3-bar-item w3-button w3-padding-large">Projects</a>
-    <a href="{{ base_url }}publications.html" class="w3-bar-item w3-button w3-padding-large">Publications</a>
-    <a href="{{ base_url }}meetings.html" class="w3-bar-item w3-button w3-padding-large">Meetings</a>
-    <a href="{{ base_url }}other-activities.html" class="w3-bar-item w3-button w3-padding-large">Other Activities</a>
+    <a href="/index.html" class="w3-bar-item w3-button w3-padding-large">Home</a>
+    <a href="/collaboration.html" class="w3-bar-item w3-button w3-padding-large">Collaboration</a>
+    <a href="/projects.html" class="w3-bar-item w3-button w3-padding-large">Projects</a>
+    <a href="/publications.html" class="w3-bar-item w3-button w3-padding-large">Publications</a>
+    <a href="/meetings.html" class="w3-bar-item w3-button w3-padding-large">Meetings</a>
+    <a href="/other-activities.html" class="w3-bar-item w3-button w3-padding-large">Other Activities</a>
   </div>
   
   <div class="page-header" style="padding-top: 6rem;">
