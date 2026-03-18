@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2025-12-11 - AID2E</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="darker-bg">
+  <div class="w3-top">
+    <div class="w3-bar dark-bg w3-card w3-left-align w3-large">
+      <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-opacity w3-large" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+      <a href="/index.html" class="w3-bar-item w3-button w3-padding-large accent-hover">Home</a>
+      <a href="/collaboration.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Collaboration</a>
+      <a href="/projects.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Projects</a>
+      <a href="/publications.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Publications</a>
+      <a href="/meetings.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-color">Meetings</a>
+      <a href="/other-activities.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Other Activities</a>
+    </div>
+  </div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block dark-bg w3-hide w3-hide-large w3-hide-medium w3-large">
+    <a href="/index.html" class="w3-bar-item w3-button w3-padding-large">Home</a>
+    <a href="/collaboration.html" class="w3-bar-item w3-button w3-padding-large">Collaboration</a>
+    <a href="/projects.html" class="w3-bar-item w3-button w3-padding-large">Projects</a>
+    <a href="/publications.html" class="w3-bar-item w3-button w3-padding-large">Publications</a>
+    <a href="/meetings.html" class="w3-bar-item w3-button w3-padding-large">Meetings</a>
+    <a href="/other-activities.html" class="w3-bar-item w3-button w3-padding-large">Other Activities</a>
+  </div>
+  
+  <div class="page-header" style="padding-top: 6rem;">
+    <h1>2025-12-11</h1>
+  </div>
+  <div class="w3-container dark-bg" style="padding: clamp(1.5rem, 3vw, 3rem);">
+    <div class="w3-content markdown-content">
+      <h1 id="aid2e-bi-weekly-technical-meeting">AID2E bi-weekly technical meeting</h1>
+<p><strong>Meeting:</strong> December 11, 2025</p>
+<div class="attendees"><strong>Attendees:</strong> Amit Bashyal, Torre Wenaus, plus additional attendees not fully recorded in the source notes.</div>
+<ul>
+<li>Announcements: none.</li>
+<li>Publication and round robin<ul>
+<li>Baptiste:</li>
+<li>B0 optimization has several design parameters and one objective.</li>
+<li>Simulations run with iDDS PanDA, eic-recon, and scheduler support.</li>
+<li>Wrapper work was nearly ready to push.</li>
+<li>Discussion covered containerization and moving design-parameter definitions away from <code>bobo.env</code> toward YAML or JSON.</li>
+<li>BNL:</li>
+<li>Amit shared slides: <a href="https://docs.google.com/presentation/d/14y-QxKQ5CjciKOSwVfVNIP-ApagHyONwqU9UrqC8xwo/edit?usp=sharing">December 11, 2025</a></li>
+<li>The team discussed on-the-fly environment setup inside containers.</li>
+<li>Wen noted <code>pip</code> can be used inside a conda environment with <code>pip install --target=$current_dir</code>.</li>
+<li>Duke:</li>
+<li>Cynthia was cleaning up and generalizing dRICH-MOBO.</li>
+<li>Work to move onto <code>scheduler_epic</code> was ongoing.</li>
+<li>W&amp;M:</li>
+<li><code>scheduler_epic</code> pull request: <a href="https://github.com/aid2e/scheduler_epic/pull/9">#9</a></li>
+<li>Result consistency was implemented by standardizing outputs as <code>Dict[str, Any]</code>.</li>
+<li>SlurmRunner and PanDARunner can now take a script as the objective.</li>
+<li>Work was ongoing to tag design parameters explicitly by objective.</li>
+<li>Central Tracker optimization added a dedicated branch and utility scripts.</li>
+<li>Container packaging and registry publishing were still in progress.</li>
+<li>Holistic optimization was extended with dummy objectives for configuration standardization.</li>
+</ul>
+</li>
+<li>Standardizing configurations<ul>
+<li>Design parameter definitions across projects were compared:</li>
+<li>Central Tracker: YAML</li>
+<li>BIC: JSON</li>
+<li>B0 tracker: env</li>
+<li>dRICH: JSON</li>
+<li>Proposal: start with YAML, while keeping JSON support.</li>
+<li>Existing pydantic validation was already in place.</li>
+<li>Shared utilities include XML editing, environment setup, and file-copy helpers.</li>
+<li>The team discussed a base container with <code>ax</code>, <code>pydantic</code>, <code>numpy</code>, <code>pandas</code>, and <code>eic-shell</code>.</li>
+</ul>
+</li>
+<li>AOB<ul>
+<li>Paper progress timelines were discussed for BIC, central optimization, and B0.</li>
+<li>Karthik planned to post a clear Slack summary about the purpose of the repositories.</li>
+</ul>
+</li>
+</ul>
+    </div>
+  </div>
+  <div class="w3-container dark-bg" style="padding: 1rem 2rem;">
+    <div class="w3-content" style="display:flex; justify-content:space-between; gap:1rem;">
+      <div>
+        
+        <a class="nav-link nav-prev" href="/meetings/technical/2025-11-13.html"><i class="fa fa-arrow-left" aria-hidden="true"></i> Previous: Nov 13, 2025</a>
+        
+      </div>
+      <div style="margin-left:auto;">
+        
+        <a class="nav-link nav-next" href="/meetings/technical/2026-01-22.html">Next: Jan 22, 2026 <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+        
+      </div>
+    </div>
+  </div>
+  <footer class="w3-container w3-padding-64 w3-center dark-bg">
+    <p>&copy; 2025 AID2E Collaboration.</p>
+  </footer>
+<script>
+function myFunction() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else {
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+</script>
+</body>
+</html>
