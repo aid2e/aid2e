@@ -16,11 +16,12 @@ import markdown, re, os
 from jinja2 import Template,  Environment, FileSystemLoader
 from datetime import datetime
 
-BASE_URL = os.getenv("BASE_URL", "/")
-if BASE_URL == "/":
-    BASE_URL = "/"
-else:
-    BASE_URL = "/" + BASE_URL.strip("/") + "/"
+BASE_URL = os.getenv("BASE_URL", "/").strip()
+if BASE_URL:
+    if not BASE_URL.startswith("/"):
+        BASE_URL = "/" + BASE_URL
+    if not BASE_URL.endswith("/"):
+        BASE_URL = BASE_URL + "/"
 ROOT = Path(__file__).resolve().parents[1]
 env = Environment(loader=FileSystemLoader(ROOT / "templates"))
 
