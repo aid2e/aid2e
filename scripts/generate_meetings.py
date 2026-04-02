@@ -17,6 +17,10 @@ from jinja2 import Template,  Environment, FileSystemLoader
 from datetime import datetime
 
 BASE_URL = os.getenv("BASE_URL", "/")
+if BASE_URL == "/":
+    BASE_URL = "/"
+else:
+    BASE_URL = "/" + BASE_URL.strip("/") + "/"
 ROOT = Path(__file__).resolve().parents[1]
 env = Environment(loader=FileSystemLoader(ROOT / "templates"))
 

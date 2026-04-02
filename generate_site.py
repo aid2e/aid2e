@@ -15,6 +15,10 @@ from datetime import datetime
 TEMPLATE_DIR = 'templates'
 OUTPUT_DIR = '.'
 BASE_URL = os.getenv("BASE_URL", "/")
+if BASE_URL == "/":
+    BASE_URL = "/"
+else:
+    BASE_URL = "/" + BASE_URL.strip("/") + "/"
 # (No SITE_ROOT here; links are generated root-absolute where appropriate)
 
 # Load collaborators data
