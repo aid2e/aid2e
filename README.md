@@ -27,7 +27,12 @@ This will install:
 To generate all HTML pages from templates, run:
 
 ```bash
-python generate_site.py
+python generate_site.py 
+```
+or 
+
+```bash
+BASE_URL=/aid2e/ python generate_site.py
 ```
 
 This will:
