@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>2026-03-24 - AID2E</title>
+  <title>2026-04-16 - AID2E</title>
   <link rel="stylesheet" href="/aid2e/assets/css/style.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
@@ -34,100 +34,83 @@
   </div>
   
   <div class="page-header" style="padding-top: 6rem;">
-    <h1>2026-03-24</h1>
+    <h1>2026-04-16</h1>
   </div>
   <div class="w3-container dark-bg" style="padding: clamp(1.5rem, 3vw, 3rem);">
     <div class="w3-content markdown-content">
-      <h1 id="aid2e-bi-weekly-general-meeting">AID2E Bi-Weekly General Meeting</h1>
-<p><strong>Date:</strong> March 24, 2026  </p>
-<div class="attendees"><strong>Attendees:</strong> <br />
-Amit, Kolja (BNL), Tanja, Baptiste (CUA), Cynthia, Anslem (Duke), Markus, Derek (JLab), Cristiano, Hemalata, Karthik (W&amp;M)</div>
+      <h1 id="aid2e-technical-meeting">AID2E Technical Meeting</h1>
+<p><strong>Date:</strong> April 16, 2026  </p>
+<div class="attendees"><strong>Attendees:</strong> BNL: Wen Guan, Amit Bashyal,  JLab: Derek Anderson  W&amp;M: Karthik Suresh</div>
 <hr />
-<h2 id="summary">Summary</h2>
+<h2 id="announcements">Announcements</h2>
 <ul>
-<li>
-<p>The meeting focused on progress in the AID2E framework, with emphasis on holistic optimization of EPIC sub-detectors. Integration of components such as B0, Tracker, and dRICH is underway, with EPIC integration expected to be completed by the end of the week.</p>
-</li>
-<li>
-<p>Plans for benchmarking were reviewed, including the use of test functions and exploration of LLM-based support for optimization initialization and job monitoring.</p>
-</li>
-<li>
-<p>The importance of maintaining human oversight in the optimization loop was highlighted, avoiding full automation.</p>
-</li>
-<li>
-<p>The team discussed the structure of the upcoming paper, covering framework design philosophy, optimization strategies, and benchmarking results. The first holistic optimization run is targeted within the next week.</p>
-</li>
+<li>No major announcements.</li>
 </ul>
 <hr />
-<h2 id="action-items">Action Items</h2>
+<h2 id="phase-i">Phase I</h2>
 <ul>
-<li>
-<p><strong>Derek</strong></p>
-<ul>
-<li>Complete integration of BIC and EPIC interfaces into the AID2E framework by the end of the week.</li>
-<li>Provide a working example for reference.</li>
+<li><strong>Karthik</strong><ul>
+<li>Shared updates on the pull request draft.</li>
 </ul>
 </li>
 <li>
-<p><strong>Baptiste &amp; Derek</strong></p>
+<p><strong>Amit – BIC MOBO</strong></p>
 <ul>
-<li>Schedule a meeting this week to coordinate integration of B0 and BIC with the new scanner.</li>
-<li>Align on implementation strategy moving forward.</li>
+<li>updates on PanDA had to be done.</li>
+<li>Integrated PanDA Runner into BIC MOBO.</li>
+<li>Current job executions are failing; however, the errors have been identified and are being addressed.</li>
+<li>Continuing work based on the previous pull request draft.</li>
 </ul>
 </li>
 <li>
-<p><strong>Karthik (and relevant contributors)</strong></p>
+<p><strong>Derek Anderson</strong></p>
 <ul>
-<li>Define closure test cases for Phase 2, particularly for LLM-related applications.</li>
-<li>Prepare for detailed discussion in the next technical meeting.</li>
-</ul>
-</li>
-<li>
-<p><strong>All</strong></p>
-<ul>
-<li>Review and provide feedback on the Overleaf draft (structure, licensing, figures).</li>
-<li>Share comments via Slack or during the next technical meeting.</li>
-</ul>
-</li>
-<li>
-<p><strong>Next Technical Meeting Lead</strong></p>
-<ul>
-<li>Facilitate discussion on benchmarking strategy:</li>
-<li>Identify which existing stress-test plots can be reused.</li>
-<li>Determine if new runs are required under the updated AID2E framework.</li>
+<li>Emphasized monitoring progress on BIC MOBO.</li>
+<li>Working on implementing the second objective.</li>
+<li>Plans to run a test batch of jobs.</li>
+<li>Transition underway from BIC-SOBO to BIC-MOBO.</li>
 </ul>
 </li>
 </ul>
 <hr />
-<h2 id="technical-notes">Technical Notes</h2>
+<h2 id="phase-ii">Phase II</h2>
 <ul>
 <li>
-<p>The planned holistic optimization includes ~35 design parameters and 3–4 objectives.</p>
+<p><strong>PanDA MCP Development (Amit)</strong></p>
+<ul>
+<li>Established connectivity with LLMs outside BNL.</li>
+<li>Initial experiments conducted with Mistral 7B model.</li>
+<li>Exploring use of more powerful models hosted on Perlmutter.</li>
+</ul>
 </li>
 <li>
-<p>Previous stress tests (December) explored design spaces of sizes 10, 20, 50, and 100 with 3–5 parameters. These were not performed using the current AID2E framework.</p>
+<p><strong>Next Steps</strong></p>
+<ul>
+<li>Wen and Amit are defining next steps for development.</li>
+<li>Plan to:</li>
+<li>Run the PanDA MCP server.</li>
+<li>Monitor job execution.</li>
+<li>Report job status and diagnose failures.</li>
+</ul>
 </li>
 <li>
-<p>The team agreed that existing results may be reused unless framework changes justify rerunning benchmarks. Integration of PandaRunner is expected to require new tests.</p>
+<p><strong>Additional Considerations</strong></p>
+<ul>
+<li>Incorporate Anselm’s suggestions regarding rapid developments in this space.</li>
+</ul>
 </li>
 </ul>
 <hr />
-<h2 id="ongoing-work">Ongoing Work</h2>
-<ul>
-<li>Continue standardizing problem definitions and workflow integration across all sub-detector repositories within the AID2E framework.</li>
-</ul>
     </div>
   </div>
   <div class="w3-container dark-bg" style="padding: 1rem 2rem;">
     <div class="w3-content" style="display:flex; justify-content:space-between; gap:1rem;">
       <div>
         
-        <a class="nav-link nav-prev" href="2026-03-10.html"><i class="fa fa-arrow-left" aria-hidden="true"></i> Previous: Mar 10, 2026</a>
+        <a class="nav-link nav-prev" href="2026-04-02.html"><i class="fa fa-arrow-left" aria-hidden="true"></i> Previous: Apr 2, 2026</a>
         
       </div>
       <div style="margin-left:auto;">
-        
-        <a class="nav-link nav-next" href="2026-04-21.html">Next: Apr 21, 2026 <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
         
       </div>
     </div>
