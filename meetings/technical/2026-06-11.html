@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2026-06-11 - AID2E</title>
+  <link rel="stylesheet" href="/aid2e/assets/css/style.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="darker-bg">
+  <div class="w3-top">
+    <div class="w3-bar dark-bg w3-card w3-left-align w3-large">
+      <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-opacity w3-large" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+      <a href="/aid2e/index.html" class="w3-bar-item w3-button w3-padding-large accent-hover">Home</a>
+      <a href="/aid2e/collaboration.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Collaboration</a>
+      <a href="/aid2e/projects.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Projects</a>
+      <a href="/aid2e/publications.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Publications</a>
+      <a href="/aid2e/meetings.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-color">Meetings</a>
+      <a href="/aid2e/other-activities.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Other Activities</a>
+    </div>
+  </div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block dark-bg w3-hide w3-hide-large w3-hide-medium w3-large">
+    <a href="/aid2e/index.html" class="w3-bar-item w3-button w3-padding-large">Home</a>
+    <a href="/aid2e/collaboration.html" class="w3-bar-item w3-button w3-padding-large">Collaboration</a>
+    <a href="/aid2e/projects.html" class="w3-bar-item w3-button w3-padding-large">Projects</a>
+    <a href="/aid2e/publications.html" class="w3-bar-item w3-button w3-padding-large">Publications</a>
+    <a href="/aid2e/meetings.html" class="w3-bar-item w3-button w3-padding-large">Meetings</a>
+    <a href="/aid2e/other-activities.html" class="w3-bar-item w3-button w3-padding-large">Other Activities</a>
+  </div>
+  
+  <div class="page-header" style="padding-top: 6rem;">
+    <h1>2026-06-11</h1>
+  </div>
+  <div class="w3-container dark-bg" style="padding: clamp(1.5rem, 3vw, 3rem);">
+    <div class="w3-content markdown-content">
+      <h1 id="aid2e-technical-meeting">AID2E Technical Meeting</h1>
+<p><strong>Date:</strong> June 11, 2026  </p>
+<div class="attendees"><strong>Attendees:</strong> <br />
+Derek, Wen, Baptiste, Amit, Miefeng, Kolja, Cynthia, Meifeng, Cris, Hemalata</div>
+<h1 id="announcements">Announcements</h1>
+<ul>
+<li>DOE approved the project progress report.</li>
+<li>James has started his position at William &amp; Mary.</li>
+</ul>
+<hr />
+<h1 id="phase-i">Phase I</h1>
+<p><strong>Derek</strong> </p>
+<ul>
+<li>
+<p><strong>PR #47</strong> (fixes test failures) - ✅ Reviewed and merged.</p>
+</li>
+<li>
+<p><strong>PR #51</strong> (low-level Python EIC interface)</p>
+<ul>
+<li>Ready and reviewed.</li>
+<li>Planned to merge.</li>
+</ul>
+</li>
+<li>
+<p><strong>PR #53</strong> (high-level YAML EIC interface)</p>
+<ul>
+<li>Ready and reviewed.</li>
+<li>Planned to merge.</li>
+</ul>
+</li>
+<li>
+<p>Identified that the CLI is not fully implemented.</p>
+</li>
+<li>Discussing CLI implementation with Cynthia.</li>
+<li>Will open a GitHub issue describing the remaining implementation steps.</li>
+</ul>
+<p><strong>Cynthia</strong></p>
+<ul>
+<li>Added support for <strong>building ePIC once per study instead of once per trial</strong> to improve execution speed.</li>
+<li>Working on implementing <strong>sub-job support</strong> within simulation/reconstruction workflows (e.g., π/K simulations over multiple kinematic points).</li>
+<li>Investigating the best way to integrate sub-job handling into the AID2E framework.</li>
+</ul>
+<hr />
+<h1 id="discussion">Discussion</h1>
+<h2 id="framework-development">Framework Development</h2>
+<ul>
+<li>Identify the remaining work required before running production studies and generating plots for the paper.</li>
+<li>Begin stress-testing framework functionalities that are already implemented.</li>
+<li>Continue development of the EIC interface.</li>
+</ul>
+<h2 id="multi-stage-sub-job-workflows">Multi-stage / Sub-job Workflows</h2>
+<ul>
+<li>Existing PanDA implementation may provide a model for handling SLURM sub-jobs.</li>
+<li>Maintain a common workflow philosophy across all sub-detector implementations.</li>
+<li>Multi-stage workflows are critical for EIC production workflows.</li>
+<li>DTLZ benchmark studies can proceed independently while multi-stage support is being developed.</li>
+<li>Discussed overlap policies for failed trials (drich_utils.py -&gt; <code>apply_overlap_policy</code>).</li>
+</ul>
+<hr />
+<h1 id="action-items">Action Items</h1>
+<p>1) (Amit + Derek) CLI(s) needed for DTLZ tests with different schedulers and optimizers </p>
+<p>2) (Cynthia, anybody else?) no way to collect objectives (missing utility to map that output back to Ax/optimizer) - [drich_utils.py: collect_objectives, failed_trials_from_stage_result]
+3) (Cynthia) try to figure out best way to implement per trial subjob support → merge in AID2E framework [drich_trials.py]
+4) (Cynthia) PR for review after PR#53 merge for adding the no-per-trial build geometry option [drich_utils.py, prepare_trial_geometry]
+5) Work on multi-stage (different schedulers) to support EIC workflows 
+(Derek) continue work on this in connection to point 1) 
+(Amit) Work supporting multi-stage for PandA Runner — see point 1) 
+(Cynthia) — see number 2) <br />
+6) Converging on one single sub-detector workflow (either dRICH, BIC, far-forward) and potentially duplicate that for stress-tests — specific to subdetector workflows</p>
+<pre><code>* (Baptiste) — ✅ independent optimization study achieved already; how can this be included in the framework? ifarm/SLURM was done; some preliminary test with PanDA, issue with EIC environment
+
+    *   (BNL?) help with PanDA implementation? — will discuss this offline
+
+* (Cynthia) dRICH – check and complete; drich-example, complete implementation using AxOptimizer, SlurmScheduler/JobLibScheduler, EpicStack and configs read from workflow yaml with some additional utilities that can be merged into framework
+
+* (Derek) BIC – ✅ The workflow introduced in PR#53 is sufficient for the paper: it’s a SOBO on the BIC AstroPix staves using the photon phi resolution as an objective at 3 kinematic points. I’ve tested the analysis script and kinematic points in the “standalone” (until we get the FW running) BIC-MOBO repo, and Amit and I have confirmed it runs as expected with Ax + SLURM/PanDA
+</code></pre>
+<hr />
+<h3 id="overleaf">Overleaf</h3>
+<ul>
+<li>Begin drafting the paper, create an outline, distribute writing responsibilities among collaborators.</li>
+</ul>
+<h3 id="tasks-for-next-technical-meeting">Tasks for Next Technical Meeting</h3>
+<h4 id="cris-derek-contributors">Cris + Derek (+ contributors)</h4>
+<ul>
+<li>Create the overall paper structure.</li>
+<li>Define sections and subsection outlines.</li>
+</ul>
+<h4 id="cris">Cris</h4>
+<ul>
+<li>Draft the Introduction.</li>
+</ul>
+<h4 id="cris-contributors">Cris (+ contributors)</h4>
+<ul>
+<li>Add figure templates from previous studies.</li>
+<li>Develop an initial narrative based on existing optimization results.</li>
+</ul>
+<hr />
+<h1 id="phase-ii">Phase II</h1>
+<h2 id="aid2e-agent-integration">AID2E Agent Integration</h2>
+<ul>
+<li>Reviewed the preliminary AID2E agent presented on June 11.</li>
+<li>
+<p>Successfully demonstrated:</p>
+<ul>
+<li>Docker container builds and installs the AID2E framework.</li>
+<li>Deployment of the AID2E agent.</li>
+<li>Integration with the PanDA MCP framework.</li>
+<li>Successful execution of a simple AID2E CLI workflow.</li>
+</ul>
+</li>
+<li>
+<p>Integrate the PanDA job-monitoring MCP server developed by the BNL ePIC streaming workflow team.</p>
+</li>
+<li>Amit will continue implementation based on the presented roadmap.</li>
+<li>Continue roadmap planning and task distribution.</li>
+</ul>
+<hr />
+    </div>
+  </div>
+  <div class="w3-container dark-bg" style="padding: 1rem 2rem;">
+    <div class="w3-content" style="display:flex; justify-content:space-between; gap:1rem;">
+      <div>
+        
+        <a class="nav-link nav-prev" href="2026-05-28.html"><i class="fa fa-arrow-left" aria-hidden="true"></i> Previous: May 28, 2026</a>
+        
+      </div>
+      <div style="margin-left:auto;">
+        
+        <a class="nav-link nav-next" href="2026-06-18.html">Next: Jun 18, 2026 <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+        
+      </div>
+    </div>
+  </div>
+  <footer class="w3-container w3-padding-64 w3-center dark-bg">
+    <p>&copy; 2025 AID2E Collaboration.</p>
+  </footer>
+<script>
+function myFunction() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else {
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+</script>
+</body>
+</html>

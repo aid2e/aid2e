@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2026-06-16 - AID2E</title>
+  <link rel="stylesheet" href="/aid2e/assets/css/style.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="darker-bg">
+  <div class="w3-top">
+    <div class="w3-bar dark-bg w3-card w3-left-align w3-large">
+      <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-opacity w3-large" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+      <a href="/aid2e/index.html" class="w3-bar-item w3-button w3-padding-large accent-hover">Home</a>
+      <a href="/aid2e/collaboration.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Collaboration</a>
+      <a href="/aid2e/projects.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Projects</a>
+      <a href="/aid2e/publications.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Publications</a>
+      <a href="/aid2e/meetings.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-color">Meetings</a>
+      <a href="/aid2e/other-activities.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Other Activities</a>
+    </div>
+  </div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block dark-bg w3-hide w3-hide-large w3-hide-medium w3-large">
+    <a href="/aid2e/index.html" class="w3-bar-item w3-button w3-padding-large">Home</a>
+    <a href="/aid2e/collaboration.html" class="w3-bar-item w3-button w3-padding-large">Collaboration</a>
+    <a href="/aid2e/projects.html" class="w3-bar-item w3-button w3-padding-large">Projects</a>
+    <a href="/aid2e/publications.html" class="w3-bar-item w3-button w3-padding-large">Publications</a>
+    <a href="/aid2e/meetings.html" class="w3-bar-item w3-button w3-padding-large">Meetings</a>
+    <a href="/aid2e/other-activities.html" class="w3-bar-item w3-button w3-padding-large">Other Activities</a>
+  </div>
+  
+  <div class="page-header" style="padding-top: 6rem;">
+    <h1>2026-06-16</h1>
+  </div>
+  <div class="w3-container dark-bg" style="padding: clamp(1.5rem, 3vw, 3rem);">
+    <div class="w3-content markdown-content">
+      <h1 id="aid2e-general-meeting">AID2E General Meeting</h1>
+<p><strong>Date:</strong> June 16, 2026  </p>
+<div class="attendees"><strong>Attendees:</strong> </div>
+<p>Amit Bashyal, Kolja Kauder: BNL, Derek: JLab, Anselm Vossen: Duke, Hemalata, James, Cristiano: W&amp;M</p>
+<hr />
+<h2 id="announcements">Announcements</h2>
+<ul>
+<li>
+<p>DOE –  progress report approved by DOE</p>
+</li>
+<li>
+<p>Creation of CUA as vendor — Cris -&gt; reach to Tanja</p>
+</li>
+<li>
+<p>Shifting the technical meeting of a week</p>
+<ul>
+<li>Decision to have two AID2E meetings the same week, i.e., this week we are also having the technical meeting, and meet again biweekly. Cris will send a reminder.</li>
+</ul>
+</li>
+</ul>
+<h2 id="updates-on-phase-i-from-technical-meeting">Updates on Phase I from technical meeting</h2>
+<ul>
+<li>
+<p>Derek presented several PRs (one fixing a few bugs causing pytests to fail for the optimizers, configurations, scheduler, workflows modules; two other PRs working through the remaining bugs blocking examples/epic/epic_stack_example.py to have a complete, working from-YAML-only example)</p>
+</li>
+<li>
+<p>Derek and Cynthia - found out that CLI is not fully implemented yet, work in progress</p>
+</li>
+<li>
+<p>Cynthia is doing work on the ePIC build (at every trial; not doing that would be faster) as well as how to submit sub-jobs; Wen reminded that sub-jobs were handled when working with PanDA at the beginning. Amit will also look at multi-stage PanDA - split one job in multiple sub-jobs and run it</p>
+</li>
+<li>
+<p>We agreed on the fact that for the paper we need one working pipeline for one subdetector, supporting https://github.com/aid2e/AID2E-framework/; for stress-testing complexity of larger detector design in principle we can duplicate that pipeline. If all sub-detector pipelines are ready to be merged, then we will use a unified detector design for the stress-tests. </p>
+</li>
+<li>
+<p>We identified a list of tasks </p>
+<p>1) (Amit + Derek) CLI(s) needed for DTLZ tests with different schedulers and optimizers 
+2) (Cynthia, anybody else?) no way to collect objectives (missing utility to map that output back to Ax/optimizer) - [drich_utils.py: collect_objectives, failed_trials_from_stage_result]
+3) (Cynthia) try to figure out best way to implement per trial subjob support → merge in AID2E framework [drich_trials.py]
+4) (Cynthia) PR for review after PR#53 merge for adding the no-per-trial build geometry option [drich_utils.py, prepare_trial_geometry]
+5) Work on multi-stage (different schedulers) to support EIC workflows (Derek, Amit, Cynthia — see number 2)
+6) Converging on one single sub-detector workflow (either dRICH, BIC, far-forward) and potentially duplicate that for stress-tests — specific to subdetector workflows (Baptiste (FF), Cynthia (dRICH), Derek (BIC) + SLURM/PanDA (BNL, W&amp;M)). Notice:</p>
+<pre><code>- (Derek) The workflow introduced in PR#53 is sufficient for the paper: it’s a SOBO on the BIC AstroPix staves using the photon phi resolution as an objective at 3 kinematic points. I’ve tested the analysis script and kinematic points in the “standalone” (until we get the FW running) BIC-MOBO repo, and Amit and I have confirmed it runs as expected with Ax + SLURM/PanDA
+
+- (Baptiste, Cynthia) checking working of FF and dRICH pipeline with PanDA scheduler
+</code></pre>
+<p>7) Cris + anybody else? — working on the Overleaf skeleton</p>
+</li>
+</ul>
+<h2 id="phase-ii">Phase II</h2>
+<ul>
+<li>
+<p>The majority of time at the past technical meeting was dedicated to discussion of Phase I. We said to Amit (presenting updates on Phase II) to share more details and provide an update during this General Meeting if time permits. – Agreed?</p>
+</li>
+<li>
+<p>Some notes taken last time:
+Testing the preliminary AID2E agent (June 11 slides)</p>
+<ul>
+<li>
+<p>Test done with preliminary AID2E agent</p>
+<ul>
+<li>Docker container that builds and installs AID2E and then deploys AID2E agent, panda-mcp framework calls AID2E agent</li>
+<li>Preliminary test of running a simple AID2E cli passed.</li>
+<li>Looking at the integration/implementation of panada job monitoring mcp server developed and deployed by epic streaming workflow developers in BNL</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Next technical meeting - Roadmap, distribution of tasks for Phase II</p>
+<ul>
+<li>Objectives
+    1) LLM / AI systems integration in AID2E for (1)  monitoring/control and (2) assistance 
+        - Discuss solutions (e.g., local / cloud) and estimate needs and infrastructure requirements; with the ePIC/EIC case in mind.<br />
+    2) Detector Optimization Tasks 
+        - (Duke) CLAS12 RICH alignment with AID2E 
+        - (CUA) NPS(?) calorimeter calibration with AID2E
+    3) Extension of Software Stack (FEM + Geant)
+        - (W&amp;M + anybody else) Bidirectional translator between FEM/CAD to Geant
+        - (CUA, W&amp;M ) AerFib Optimization Geant4 + FEM </li>
+</ul>
+</li>
+</ul>
+    </div>
+  </div>
+  <div class="w3-container dark-bg" style="padding: 1rem 2rem;">
+    <div class="w3-content" style="display:flex; justify-content:space-between; gap:1rem;">
+      <div>
+        
+        <a class="nav-link nav-prev" href="2026-05-19.html"><i class="fa fa-arrow-left" aria-hidden="true"></i> Previous: May 19, 2026</a>
+        
+      </div>
+      <div style="margin-left:auto;">
+        
+      </div>
+    </div>
+  </div>
+  <footer class="w3-container w3-padding-64 w3-center dark-bg">
+    <p>&copy; 2025 AID2E Collaboration.</p>
+  </footer>
+<script>
+function myFunction() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else {
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+</script>
+</body>
+</html>

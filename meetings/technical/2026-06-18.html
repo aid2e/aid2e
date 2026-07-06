@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2026-06-18 - AID2E</title>
+  <link rel="stylesheet" href="/aid2e/assets/css/style.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="darker-bg">
+  <div class="w3-top">
+    <div class="w3-bar dark-bg w3-card w3-left-align w3-large">
+      <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-opacity w3-large" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+      <a href="/aid2e/index.html" class="w3-bar-item w3-button w3-padding-large accent-hover">Home</a>
+      <a href="/aid2e/collaboration.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Collaboration</a>
+      <a href="/aid2e/projects.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Projects</a>
+      <a href="/aid2e/publications.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Publications</a>
+      <a href="/aid2e/meetings.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-color">Meetings</a>
+      <a href="/aid2e/other-activities.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Other Activities</a>
+    </div>
+  </div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block dark-bg w3-hide w3-hide-large w3-hide-medium w3-large">
+    <a href="/aid2e/index.html" class="w3-bar-item w3-button w3-padding-large">Home</a>
+    <a href="/aid2e/collaboration.html" class="w3-bar-item w3-button w3-padding-large">Collaboration</a>
+    <a href="/aid2e/projects.html" class="w3-bar-item w3-button w3-padding-large">Projects</a>
+    <a href="/aid2e/publications.html" class="w3-bar-item w3-button w3-padding-large">Publications</a>
+    <a href="/aid2e/meetings.html" class="w3-bar-item w3-button w3-padding-large">Meetings</a>
+    <a href="/aid2e/other-activities.html" class="w3-bar-item w3-button w3-padding-large">Other Activities</a>
+  </div>
+  
+  <div class="page-header" style="padding-top: 6rem;">
+    <h1>2026-06-18</h1>
+  </div>
+  <div class="w3-container dark-bg" style="padding: clamp(1.5rem, 3vw, 3rem);">
+    <div class="w3-content markdown-content">
+      <h1 id="aid2e-technical-meeting">AID2E Technical Meeting</h1>
+<p><strong>Date:</strong> June 18, 2026  </p>
+<div class="attendees"><strong>Attendees:</strong> <br />
+Amit Bashyal: BNL, Derek Anderson: JLab, Anselm Vossen: Duke, Hemalata Nayak, James Giroux, Cristiano Fanelli: W&amp;M</div>
+<h1 id="phase-i">Phase I</h1>
+<ul>
+<li><strong>Derek</strong>  </li>
+<li>all PRs merged in the development branch </li>
+<li>
+<p>Functionality to support cross-communication between multistep jobs 
+        * In progress at:
+        https://github.com/aid2e/AID2E-framework/pull/55 </p>
+</li>
+<li>
+<p>Coming next: DTLZ as discussed in the last meeting</p>
+</li>
+<li>
+<p>(confirmed) For the paper - analysis/results we could start from BIC (we can use this and “duplicate” for stress-testing complexity)</p>
+<ul>
+<li>Wait for dRICH and FF to be included</li>
+</ul>
+</li>
+<li>
+<p>Amit </p>
+</li>
+<li>
+<p>Multi-stage PanDA runner for BIC MOBO</p>
+</li>
+<li>
+<p>Projected Timeline (first preliminary results supporting paper)</p>
+</li>
+<li>
+<p>DTLZ – (cross-communication + CLIs work needed) ~ early July to see some first results </p>
+</li>
+<li>
+<p>BIC – (if we see something from DTLZ not far for BIC too; cf. multi-stage job; ) ~ mid July </p>
+</li>
+<li>
+<p>dRICH, FF → outline similar path forward (for the paper) </p>
+</li>
+</ul>
+<hr />
+<h1 id="phase-2">Phase 2</h1>
+<ul>
+<li>
+<p>(Amit) Amit gave a presentation at the last general meeting [LINK] and laid out challenges </p>
+</li>
+<li>
+<p>A few MCP servers for different task, maybe converged later </p>
+</li>
+<li>Resources - performance with open model </li>
+<li>finish integration of MCP that helps analyzing the PanDA jobs/logs</li>
+<li>The other one is for the AID2E agent (assistance - steer optimization)<ul>
+<li>Steer — (Cris) comment<ul>
+<li>Optimization engines can be more effective in making certain decisions inherently during the optimization process </li>
+</ul>
+</li>
+<li>Let’s define assistance…  <ul>
+<li>At a bare minimum, can we define assistance as supporting the definition of the optimization problem and get the user started with launching AID2E jobs? </li>
+<li>(James) Two aspects <ul>
+<li>Physics — figures of merit / objectives </li>
+<li>Code-side </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Passive/active agentic workflows <ul>
+<li>Monitor </li>
+<li>Code/Optimization Assistance </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>(Amit) Build Closure tests </p>
+<ul>
+<li>Assistance Closure test 1 - e.g., building a working optimization pipeline for the AID2E assistant  </li>
+<li>Monitoring Closure test 2 - e.g., you know the issue, is it found (flag raised)? Being able to interact with PanDA server; </li>
+<li>(James) one issue is going to be scalability at some point (not ingest the entire thing) - regex match </li>
+</ul>
+</li>
+<li>
+<p>Wen worked on LangChain and LangGraph </p>
+</li>
+<li>
+<p>(Cris) Let’s start from one of the challenges; what data do we have?</p>
+</li>
+<li>Discussion on Logging (PanDA vs SLURM)<ul>
+<li>Do we need to make them accessible to all users?</li>
+<li>PanDA - possible to do that for AID2E  </li>
+<li>SLURM - </li>
+<li>We can filter out a lot of information that is not really needed for monitoring - how do you do this during execution? </li>
+<li>Is someone working to replace the current PanDA monitor with an LLM-based one?</li>
+</ul>
+</li>
+<li>Choice of LLM<ul>
+<li>Do we have enough resources to run the LLM? In the future for bigger tasks?  </li>
+<li>Quantify ‘how large’ LM are needed for this </li>
+</ul>
+</li>
+</ul>
+<h3 id="action-items">Action items</h3>
+<ul>
+<li>(Amit) volunteer on creating a document with a list of things that we need to support all this [LINK]</li>
+</ul>
+    </div>
+  </div>
+  <div class="w3-container dark-bg" style="padding: 1rem 2rem;">
+    <div class="w3-content" style="display:flex; justify-content:space-between; gap:1rem;">
+      <div>
+        
+        <a class="nav-link nav-prev" href="2026-06-11.html"><i class="fa fa-arrow-left" aria-hidden="true"></i> Previous: Jun 11, 2026</a>
+        
+      </div>
+      <div style="margin-left:auto;">
+        
+        <a class="nav-link nav-next" href="2026-07-02.html">Next: Jul 2, 2026 <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+        
+      </div>
+    </div>
+  </div>
+  <footer class="w3-container w3-padding-64 w3-center dark-bg">
+    <p>&copy; 2025 AID2E Collaboration.</p>
+  </footer>
+<script>
+function myFunction() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else {
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+</script>
+</body>
+</html>

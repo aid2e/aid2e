@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>2026-05-19 - AID2E</title>
+  <title>2026-07-02 - AID2E</title>
   <link rel="stylesheet" href="/aid2e/assets/css/style.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
@@ -34,116 +34,84 @@
   </div>
   
   <div class="page-header" style="padding-top: 6rem;">
-    <h1>2026-05-19</h1>
+    <h1>2026-07-02</h1>
   </div>
   <div class="w3-container dark-bg" style="padding: clamp(1.5rem, 3vw, 3rem);">
     <div class="w3-content markdown-content">
-      <h1 id="aid2e-general-meeting">AID2E General Meeting</h1>
-<p><strong>Date:</strong> May 19, 2026  </p>
-<div class="attendees"><strong>Attendees:</strong> </div>
-<hr />
-<h1 id="announcements">Announcements</h1>
+      <h1 id="aid2e-technical-meeting">AID2E Technical Meeting</h1>
+<p><strong>Date:</strong> July 02, 2026  </p>
+<div class="attendees"><strong>Attendees:</strong> <br />
+Amit Bashyal, Wen Guan, Meifeng Lin: BNL, Baptiste Fraisse: CUA, Cynthia Nunez, Anselm Vossen: Duke, Derek Anderson: JLab, Hemalata Nayak, James Giroux, Cristiano Fanelli: W&amp;M</div>
+<h1 id="phase-i">Phase I</h1>
+<h3 id="derek">Derek</h3>
 <ul>
-<li>
-<p>CHEP</p>
-</li>
-<li>
-<p>DOE Progress Report (NP Award DE-SC0024625)</p>
-<ul>
-<li><strong>Reporting Period:</strong> 09/01/2025 – 08/31/2026  </li>
-<li><strong>Due Date:</strong> 06/02/2026, 5:00 PM ET</li>
+<li><strong>PR #55</strong> (artifact cross-referencing between jobs) has been completed.</li>
+<li>Next priority is completing the CLI.</li>
+<li>Created Issue (Link) for the remaining CLI work and assigned it to Amit and Cynthia.</li>
+<li>Potentially merging dev branch into main<ul>
+<li>Initial thought hold off on putting in main until fully functional</li>
+<li>Useful having most recent functionality in main for Phase II</li>
+<li>Should be just migrating configuration models branch</li>
+<li>Is there a specific Panda specific branch? - No</li>
+<li>Will wait for dRICH PR then direct into main</li>
 </ul>
 </li>
 </ul>
-<hr />
-<h1 id="general-updates">General Updates</h1>
+<h3 id="baptiste">Baptiste</h3>
 <ul>
-<li>
-<p>Project Timeline</p>
-<ul>
-<li>Project technically started on 09/30/2025.</li>
-</ul>
-</li>
-<li>
-<p>Guidance from Program Manager</p>
-<ul>
-<li>Focus on reporting progress achieved so far together with anticipated activities for the remaining reporting period.</li>
-<li>A fully comprehensive report is not required.</li>
+<li>B0 FarForward repository working with 2 branches (slurm and panda)</li>
+<li>Uses real resolution calculation running on Panda</li>
+<li>Should this be merged?<ul>
+<li>(Derek) - keep things parallel so that things that are supported can be copied over - run stress tests</li>
+<li>Keep full FarForward code functional and together before ready to full support with framework</li>
+<li>Use positions to test with the AID2E framework - remove polynomials</li>
 </ul>
 </li>
 </ul>
-<hr />
-<h1 id="phase-ii-discussion">Phase II Discussion</h1>
+<h3 id="cynthia">Cynthia</h3>
 <ul>
-<li>
-<p>General Status</p>
-<ul>
-<li>Some deviations from the original Gantt chart were noted due to evolving project priorities and opportunities.</li>
-<li>Several activities planned for later phases advanced earlier than expected, while some early planned activities are progressing more slowly.</li>
-<li>Examples</li>
-<li>Significant progress on the alignment problem.</li>
-<li>Bidirectional Translator development remains in early stages.</li>
+<li>Working on CLI phase I</li>
+<li>Pushed dRICH examples and other AID2E updates<ul>
+<li>See PR#30:
+https://github.com/aid2e/AID2E-framework/pull/30 </li>
 </ul>
 </li>
-<li>
-<p>Ongoing and Related Activities</p>
-<ul>
-<li>Integration of related efforts such as:</li>
-<li>RAG4EIC</li>
-<li>Amit’s work on job execution and job log analysis</li>
-<li>Local model deployment and larger-scale model execution on Perlmutter using AID2E allocations</li>
+<li>Get dRICH optimizer script integrated</li>
 </ul>
-</li>
-<li>
-<p>Computing Resources Under Investigation</p>
+<h3 id="cris">Cris</h3>
 <ul>
-<li><strong>Option A:</strong> Small/medium open-source models</li>
-<li><strong>Option B:</strong> Cloud-based solutions</li>
-<li>Cloud-based approaches have shown stronger performance for RAG4EIC tasks.</li>
-</ul>
-</li>
-<li>
-<p>Remaining Reporting Period Activities</p>
-<ul>
-<li>Future activities expected through June–September 2026.</li>
-</ul>
-</li>
-<li>
-<p>Research Artifacts</p>
-<ul>
-<li>Ensure all research artifacts acknowledge federal support.</li>
+<li>Are any of the reconstruction algorithms going to have critical dependence on change in the design space? <ul>
+<li>No bias being introduced</li>
 </ul>
 </li>
 </ul>
-<hr />
-<h1 id="action-items">Action Items</h1>
+<h1 id="phase-ii">Phase II</h1>
 <ul>
-<li>
-<p>Progress Report Google Doc (link)</p>
-</li>
-<li>
-<p>All Institutions<br />
-<strong>Deadline:</strong> May 28, 2026 at 10:00 AM (next technical meeting)</p>
+<li>Amit (See slides)</li>
+<li>Meifeng Suggestion: Nvidia Nemotron as additional open models working in Codex/Claude layer (see slides)</li>
+<li>Google Vertex - fine tuning from Google</li>
+<li>Google AntiGravity - anyone tried?</li>
+<li>James: Will add</li>
+</ul>
+<h2 id="action-items">Action Items</h2>
+<ul>
+<li>Check Action Items from previous meeting </li>
+<li>New action items<ul>
+<li>Once code assist is semi-working - add users for testing</li>
+<li>Utilization (GPU contention) - effectiveness</li>
+</ul>
 </li>
 </ul>
-<ol>
-<li>Add any No-Cost-Extension requests related to Phase II.</li>
-<li>Provide a short summary of contributions to Phases I and II.</li>
-<li>Outline projected Phase II contributions for June–September 2026.</li>
-<li>Add all relevant research artifacts from Phases I and II.</li>
-</ol>
     </div>
   </div>
   <div class="w3-container dark-bg" style="padding: 1rem 2rem;">
     <div class="w3-content" style="display:flex; justify-content:space-between; gap:1rem;">
       <div>
         
-        <a class="nav-link nav-prev" href="2026-05-05.html"><i class="fa fa-arrow-left" aria-hidden="true"></i> Previous: May 5, 2026</a>
+        <a class="nav-link nav-prev" href="2026-06-18.html"><i class="fa fa-arrow-left" aria-hidden="true"></i> Previous: Jun 18, 2026</a>
         
       </div>
       <div style="margin-left:auto;">
-        
-        <a class="nav-link nav-next" href="2026-06-16.html">Next: Jun 16, 2026 <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
         
       </div>
     </div>
