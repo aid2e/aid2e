@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>2026-07-02 - AID2E</title>
+  <title>2026-07-29 - AID2E</title>
   <link rel="stylesheet" href="/aid2e/assets/css/style.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
@@ -34,73 +34,60 @@
   </div>
   
   <div class="page-header" style="padding-top: 6rem;">
-    <h1>2026-07-02</h1>
+    <h1>2026-07-29</h1>
   </div>
   <div class="w3-container dark-bg" style="padding: clamp(1.5rem, 3vw, 3rem);">
     <div class="w3-content markdown-content">
       <h1 id="aid2e-technical-meeting">AID2E Technical Meeting</h1>
-<p><strong>Date:</strong> July 02, 2026  </p>
-<div class="attendees"><strong>Attendees:</strong> <br />
-Amit Bashyal, Wen Guan, Meifeng Lin: BNL, Baptiste Fraisse: CUA, Cynthia Nunez, Anselm Vossen: Duke, Derek Anderson: JLab, Hemalata Nayak, James Giroux, Cristiano Fanelli: W&amp;M</div>
-<h1 id="phase-i">Phase I</h1>
-<h3 id="derek">Derek</h3>
+<p><strong>Date:</strong> July 29, 2026  </p>
+<div class="attendees"><strong>Attendees:</strong> Amit Bashyal, Meifeng Lin, Kolja Kuader: BNL, Baptiste Fraisse: CUA, Cynthia Nunez, Anselm Vossen: Duke, James Giroux, Cris Fanelli, Hemalata Nayak: W&amp;M, Derek Anderson: JLab</div>
+<h2 id="announcements">Announcements</h2>
+<h2 id="phase-i">Phase I</h2>
 <ul>
-<li><strong>PR #55</strong> (artifact cross-referencing between jobs) has been completed.</li>
-<li>Next priority is completing the CLI.</li>
-<li>Created Issue (Link) for the remaining CLI work and assigned it to Amit and Cynthia.</li>
-<li>Potentially merging dev branch into main<ul>
-<li>Initial thought hold off on putting in main until fully functional</li>
-<li>Useful having most recent functionality in main for Phase II</li>
-<li>Should be just migrating configuration models branch</li>
-<li>Is there a specific Panda specific branch? - No</li>
-<li>Will wait for dRICH PR then direct into main</li>
+<li><strong>Derek</strong><ul>
+<li>Presented Slides</li>
+<li>PR#22 set to merge dev branch into main → Pinged Karthik on PR, will ping him on Slack later today, and then will close &amp; open new PR if haven’t heard back</li>
+</ul>
+</li>
+<li>
+<p><strong>(Cynthia)</strong> Adding objectives took significant amount of time to implement per stage </p>
+<ul>
+<li>(Derek): Performing as expected? Anything missing or blocking?</li>
+<li>(Cynthia) - Comparing to DRICH MOBO outputs to validate (# jobs, outputs, objective collection, etc)</li>
+<li>(Cynthia) - Objective plan steps (detector specific payloads) should be supported now </li>
+<li>(Cynthia) - tried to go through examples and update naming conventions, remove stale/legacy things not used anymore</li>
+<li>(Derek) - examples can be updated after tests for the paper - legacy code removal will be important for v0.0.0</li>
+<li>(Cynthia) - CLI still does not own the ePIC workflow - DRICH specific stuff needs to be separated first</li>
+<li>(Amit) - ePIC specific meaning reconstruction, simulation, etc?</li>
+<li>(Amit) - CLI does general things, other workflows done through more specialized scripts?</li>
+<li>(Derek) - CLI currently can communicate with the interface in such a way that all relevant driver - scripts are created like BIC MOBO</li>
+<li>(Cynthia) - scheduler cascade allows choice of scheduler for specific stages (i.e., quick things use Joblib instead of slurm)</li>
+</ul>
+</li>
+<li>
+<p><strong>Derek</strong> - Timeline for paper</p>
+<ul>
+<li>Last stages of implementing CLI - PR#59 merged by end of next week`</li>
+<li>Testing could start at this time</li>
+<li>(Amit) - is PR#57 already enough?<ul>
+<li>Now you can run AID2E optimization with a dtlz2 test on the joblib backend.</li>
+</ul>
+</li>
+<li>(Cynthia) - PR#57 prepares for PR#59 - added functionality</li>
 </ul>
 </li>
 </ul>
-<h3 id="baptiste">Baptiste</h3>
+<h2 id="phase-ii">Phase II</h2>
 <ul>
-<li>B0 FarForward repository working with 2 branches (slurm and panda)</li>
-<li>Uses real resolution calculation running on Panda</li>
-<li>Should this be merged?<ul>
-<li>(Derek) - keep things parallel so that things that are supported can be copied over - run stress tests</li>
-<li>Keep full FarForward code functional and together before ready to full support with framework</li>
-<li>Use positions to test with the AID2E framework - remove polynomials</li>
+<li><strong>Amit</strong> - perlmutter is still down (August 3rd will resume work)</li>
+<li>Update from last week:<ul>
+<li>Testing the mcp-framework with the vllm compliant models. However the error still persists.  </li>
+<li>Had a meeting with James. He had some success using open model hosted in vllm-server in W&amp;M cluster. He shared the configuration that he used in vscode. Currently looking at his implementations. </li>
+<li>Got access to the idds machine in npps to host the MCP-Server. Next step is to host the MCP-Server in the idds machine with the available port number. </li>
 </ul>
 </li>
-</ul>
-<h3 id="cynthia">Cynthia</h3>
-<ul>
-<li>Working on CLI phase I</li>
-<li>Pushed dRICH examples and other AID2E updates<ul>
-<li>See PR#30:
-https://github.com/aid2e/AID2E-framework/pull/30 </li>
-</ul>
-</li>
-<li>Get dRICH optimizer script integrated</li>
-</ul>
-<h3 id="cris">Cris</h3>
-<ul>
-<li>Are any of the reconstruction algorithms going to have critical dependence on change in the design space? <ul>
-<li>No bias being introduced</li>
-</ul>
-</li>
-</ul>
-<h1 id="phase-ii">Phase II</h1>
-<ul>
-<li>Amit (See slides)</li>
-<li>Meifeng Suggestion: Nvidia Nemotron as additional open models working in Codex/Claude layer (see slides)</li>
-<li>Google Vertex - fine tuning from Google</li>
-<li>Google AntiGravity - anyone tried?</li>
-<li>James: Will add</li>
-</ul>
-<h2 id="action-items">Action Items</h2>
-<ul>
-<li>Check Action Items from previous meeting </li>
-<li>New action items<ul>
-<li>Once code assist is semi-working - add users for testing</li>
-<li>Utilization (GPU contention) - effectiveness</li>
-</ul>
-</li>
+<li>(Cris) - Other activities are underway</li>
+<li>(Baptiste) - Slides</li>
 </ul>
     </div>
   </div>
@@ -108,12 +95,12 @@ https://github.com/aid2e/AID2E-framework/pull/30 </li>
     <div class="w3-content" style="display:flex; justify-content:space-between; gap:1rem;">
       <div>
         
-        <a class="nav-link nav-prev" href="2026-06-18.html"><i class="fa fa-arrow-left" aria-hidden="true"></i> Previous: Jun 18, 2026</a>
+        <a class="nav-link nav-prev" href="2026-07-16.html"><i class="fa fa-arrow-left" aria-hidden="true"></i> Previous: Jul 16, 2026</a>
         
       </div>
       <div style="margin-left:auto;">
         
-        <a class="nav-link nav-next" href="2026-07-16.html">Next: Jul 16, 2026 <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+        <a class="nav-link nav-next" href="2026-08-13.html">Next: Aug 13, 2026 <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
         
       </div>
     </div>

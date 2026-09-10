@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2026-08-11 - AID2E</title>
+  <link rel="stylesheet" href="/aid2e/assets/css/style.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="darker-bg">
+  <div class="w3-top">
+    <div class="w3-bar dark-bg w3-card w3-left-align w3-large">
+      <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-opacity w3-large" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+      <a href="/aid2e/index.html" class="w3-bar-item w3-button w3-padding-large accent-hover">Home</a>
+      <a href="/aid2e/collaboration.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Collaboration</a>
+      <a href="/aid2e/projects.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Projects</a>
+      <a href="/aid2e/publications.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Publications</a>
+      <a href="/aid2e/meetings.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-color">Meetings</a>
+      <a href="/aid2e/other-activities.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Other Activities</a>
+    </div>
+  </div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block dark-bg w3-hide w3-hide-large w3-hide-medium w3-large">
+    <a href="/aid2e/index.html" class="w3-bar-item w3-button w3-padding-large">Home</a>
+    <a href="/aid2e/collaboration.html" class="w3-bar-item w3-button w3-padding-large">Collaboration</a>
+    <a href="/aid2e/projects.html" class="w3-bar-item w3-button w3-padding-large">Projects</a>
+    <a href="/aid2e/publications.html" class="w3-bar-item w3-button w3-padding-large">Publications</a>
+    <a href="/aid2e/meetings.html" class="w3-bar-item w3-button w3-padding-large">Meetings</a>
+    <a href="/aid2e/other-activities.html" class="w3-bar-item w3-button w3-padding-large">Other Activities</a>
+  </div>
+  
+  <div class="page-header" style="padding-top: 6rem;">
+    <h1>2026-08-11</h1>
+  </div>
+  <div class="w3-container dark-bg" style="padding: clamp(1.5rem, 3vw, 3rem);">
+    <div class="w3-content markdown-content">
+      <h1 id="aid2e-general-meeting">AID2E General Meeting</h1>
+<p><strong>Date:</strong> Aug 11, 2026  </p>
+<div class="attendees"><strong>Attendees:</strong> Amit Bashyal, Meifeng Lin (BNL); Markus Diefenthaler, Derek Anderson (JLab); Cynthia Nunez, Anselm Vossen (Duke); Hemalata, James, Cristiano (W&amp;M)</div>
+<hr />
+<h2 id="announcements">Announcements</h2>
+<ul>
+<li>XLOOP 2026 artifact submission deadline was July 31. The team will look for other conference and workshop opportunities.</li>
+<li><strong>MODE 2026:</strong> September 1, 2026.</li>
+</ul>
+<hr />
+<h2 id="updates-on-phase-i-from-technical-meeting">Updates on Phase I from technical meeting</h2>
+<h3 id="derek-jlab">Derek — JLab</h3>
+<ul>
+<li><strong>PR #57</strong> (“Resolve config issues”) was merged on July 29.</li>
+<li><strong>PR #22</strong> was merged, so new PRs should now target <code>main</code>.</li>
+<li>
+<p>PR #59 needs to be updated to target <code>main</code>.</p>
+</li>
+<li>
+<p>The <code>aid2e optimize</code> command now handles:</p>
+<ul>
+<li>Optimization loop</li>
+<li>Scheduler execution</li>
+<li>Objective collection</li>
+<li>Failure reporting</li>
+<li>Result artifacts</li>
+</ul>
+</li>
+<li>Users provide a YAML configuration file, an analysis script, and optional helper code.</li>
+<li><strong>Next two weeks (around August 25):</strong><ul>
+<li>Make sure the optimization pipelines work, including dRICH on SLURM and PanDA.</li>
+</ul>
+</li>
+</ul>
+<h3 id="amit-bnl">Amit — BNL</h3>
+<ul>
+<li>PanDA and iDDS scheduler implementations are in progress.</li>
+<li>Simple PanDA jobs have been successfully implemented and tested.</li>
+<li>Multi-stage PanDA jobs still need to be finalized.</li>
+</ul>
+<hr />
+<h2 id="code-assist">Code Assist</h2>
+<h3 id="james-wm">James — W&amp;M</h3>
+<ul>
+<li>Continued work on the Code Assist branch.</li>
+<li>Once the implementation and examples are complete, it will be ready for testing.</li>
+<li>Testing is waiting on Baptiste's DUO authentication issue.</li>
+<li>Baptiste reported that the issue is on the W&amp;M side, and the team is switching from DUO to Microsoft Authenticator.</li>
+</ul>
+<h2 id="monitoring-control">Monitoring / Control</h2>
+<h3 id="amit-bnl_1">Amit — BNL</h3>
+<ul>
+<li>Testing of inference using the vLLM server on Perlmutter will resume when the system is available.</li>
+<li>Tianle has a multi-model vLLM server that can be deployed on Perlmutter.</li>
+<li>Amit will meet with Tianle on Thursday to discuss integration and testing with the Monitoring agent.</li>
+<li>The setup is mainly intended for Perlmutter jobs, though some parts may be reusable by other institutions.</li>
+</ul>
+<h3 id="monitoring-goals">Monitoring Goals</h3>
+<ul>
+<li>Use AID2E and PanDA logs and outputs to monitor optimization jobs.</li>
+<li>Identify why jobs fail and at which stage.</li>
+<li>If a failure is likely to affect other jobs, suggest stopping queued jobs.</li>
+<li>Use previous optimization results to suggest new design points.</li>
+<li>Allow offline searches of past optimization jobs, including failures, results, and performance information.</li>
+<li>Add PanDA support for accessing locally stored optimization results.</li>
+<li>Temporarily store PanDA logs centrally for access to ongoing and recent jobs.</li>
+</ul>
+<hr />
+<h1 id="detector-optimization-applications">Detector Optimization Applications</h1>
+<h3 id="cua">CUA</h3>
+<ul>
+<li><strong>Calorimetry calibration:</strong> Updates requested from Baptiste and Tanja.</li>
+</ul>
+<h3 id="duke-wm-other-institutions">Duke / W&amp;M / Other Institutions</h3>
+<ul>
+<li><strong>kLM Design:</strong> Phase I activity.</li>
+<li><strong>RICH Alignment:</strong> Phase II activity; alignment is in production and included in Connor's thesis.</li>
+<li><strong>AerFib:</strong> Ongoing activity.</li>
+<li><strong>Software Stack Extension:</strong> FEM integration activity.</li>
+</ul>
+<hr />
+    </div>
+  </div>
+  <div class="w3-container dark-bg" style="padding: 1rem 2rem;">
+    <div class="w3-content" style="display:flex; justify-content:space-between; gap:1rem;">
+      <div>
+        
+        <a class="nav-link nav-prev" href="2026-07-28.html"><i class="fa fa-arrow-left" aria-hidden="true"></i> Previous: Jul 28, 2026</a>
+        
+      </div>
+      <div style="margin-left:auto;">
+        
+        <a class="nav-link nav-next" href="2026-08-25.html">Next: Aug 25, 2026 <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+        
+      </div>
+    </div>
+  </div>
+  <footer class="w3-container w3-padding-64 w3-center dark-bg">
+    <p>&copy; 2025 AID2E Collaboration.</p>
+  </footer>
+<script>
+function myFunction() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else {
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2026-07-28 - AID2E</title>
+  <link rel="stylesheet" href="/aid2e/assets/css/style.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="darker-bg">
+  <div class="w3-top">
+    <div class="w3-bar dark-bg w3-card w3-left-align w3-large">
+      <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-opacity w3-large" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+      <a href="/aid2e/index.html" class="w3-bar-item w3-button w3-padding-large accent-hover">Home</a>
+      <a href="/aid2e/collaboration.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Collaboration</a>
+      <a href="/aid2e/projects.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Projects</a>
+      <a href="/aid2e/publications.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Publications</a>
+      <a href="/aid2e/meetings.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-color">Meetings</a>
+      <a href="/aid2e/other-activities.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large accent-hover">Other Activities</a>
+    </div>
+  </div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block dark-bg w3-hide w3-hide-large w3-hide-medium w3-large">
+    <a href="/aid2e/index.html" class="w3-bar-item w3-button w3-padding-large">Home</a>
+    <a href="/aid2e/collaboration.html" class="w3-bar-item w3-button w3-padding-large">Collaboration</a>
+    <a href="/aid2e/projects.html" class="w3-bar-item w3-button w3-padding-large">Projects</a>
+    <a href="/aid2e/publications.html" class="w3-bar-item w3-button w3-padding-large">Publications</a>
+    <a href="/aid2e/meetings.html" class="w3-bar-item w3-button w3-padding-large">Meetings</a>
+    <a href="/aid2e/other-activities.html" class="w3-bar-item w3-button w3-padding-large">Other Activities</a>
+  </div>
+  
+  <div class="page-header" style="padding-top: 6rem;">
+    <h1>2026-07-28</h1>
+  </div>
+  <div class="w3-container dark-bg" style="padding: clamp(1.5rem, 3vw, 3rem);">
+    <div class="w3-content markdown-content">
+      <h1 id="aid2e-general-meeting">AID2E General Meeting</h1>
+<p><strong>Date:</strong> July 28, 2026  </p>
+<div class="attendees"><strong>Attendees:</strong> </div>
+<hr />
+<h2 id="announcements">Announcements</h2>
+<h2 id="updates-on-phase-i-from-technical-meeting">Updates on Phase I from technical meeting</h2>
+<h3 id="cynthia-aid2e-framework">Cynthia — AID2E Framework</h3>
+<ul>
+<li>Worked on the CLI; <strong>PR #57</strong> has been approved.</li>
+<li>After PR #57 is merged, the remaining changes will be merged into <code>main</code>.</li>
+<li>Future PRs will build on the updated CLI implementation.</li>
+<li>The team is transitioning toward a <strong>common framework for all design optimization pipelines</strong>.</li>
+<li>The revised project timeline will be discussed at the next technical meeting.</li>
+<li>Completing the CLI is expected to be the final major step before moving forward.</li>
+</ul>
+<hr />
+<h1 id="phase-ii">Phase II</h1>
+<h2 id="code-assist">Code Assist</h2>
+<h3 id="james-aid2e">James — AID2E</h3>
+<ul>
+<li>Created a new branch for the Code Assist work.</li>
+<li>Added deployment instructions under <code>src/aid2e/mcp/</code>.</li>
+<li>Testing is currently waiting on <strong>DUO authentication issues</strong> with Baptiste's William &amp; Mary account.</li>
+<li>Testing will begin once the authentication issue is resolved.</li>
+</ul>
+<h2 id="monitoring-control">Monitoring / Control</h2>
+<ul>
+<li>
+<p><strong>Amit</strong></p>
+<ul>
+<li>Continued work on the PanDA jobs and agent framework.</li>
+<li>The system currently supports two types of MCP tools:</li>
+<li>MCP tools developed by the ePIC teams.</li>
+<li>MCP tools developed specifically for AID2E.</li>
+<li>Two approaches are being considered for the AI agent:</li>
+<li>A custom AI agent orchestrator.</li>
+<li>Existing tools such as Codex or Claude Desktop.</li>
+<li>The custom AI orchestrator works with both:</li>
+<li>Frontier models.</li>
+<li>Open models hosted locally or through a vLLM server on Perlmutter.</li>
+<li>Using Codex with the vLLM server on Perlmutter is still being worked on.</li>
+<li>Further testing will resume once Perlmutter is back online in early August.</li>
+<li>
+<p>The custom AI orchestrator is currently working well; integration with Codex and similar tools remains in progress.</p>
+</li>
+<li>
+<p>Continued work on deploying the MCP server locally.</p>
+</li>
+<li>Deployment is working on NPPS machines that can access the PanDA API through the secured connection.</li>
+</ul>
+</li>
+<li>
+<p><strong>Wen</strong></p>
+<ul>
+<li>Working on saving optimizer results as JSON.</li>
+<li>The JSON results will be accessible through the PanDA REST API and used by the PanDA MCP server together with the PanDA database.</li>
+<li>Working on creating and indexing a database using OpenViking.</li>
+<li>The goal is to allow the LLM to search optimization results and logs more efficiently.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h1 id="detector-optimization">Detector Optimization</h1>
+<h2 id="calorimetry-calibration">Calorimetry Calibration</h2>
+<h3 id="cua">CUA</h3>
+<ul>
+<li>Working on the calorimetry calibration study.</li>
+<li>The π0 sample shows a dependence on energy.</li>
+<li>Further investigation is ongoing.</li>
+<li>A technical meeting will be used to discuss the optimization strategy and how it can be supported within the AID2E framework.</li>
+</ul>
+<hr />
+<h1 id="conference-papers">Conference Papers</h1>
+<ul>
+<li>Conference paper activities are ongoing.</li>
+<li>The <strong>XLOOP 2026</strong> conference was mentioned for potential paper submission/work.</li>
+</ul>
+    </div>
+  </div>
+  <div class="w3-container dark-bg" style="padding: 1rem 2rem;">
+    <div class="w3-content" style="display:flex; justify-content:space-between; gap:1rem;">
+      <div>
+        
+        <a class="nav-link nav-prev" href="2026-06-16.html"><i class="fa fa-arrow-left" aria-hidden="true"></i> Previous: Jun 16, 2026</a>
+        
+      </div>
+      <div style="margin-left:auto;">
+        
+        <a class="nav-link nav-next" href="2026-08-11.html">Next: Aug 11, 2026 <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+        
+      </div>
+    </div>
+  </div>
+  <footer class="w3-container w3-padding-64 w3-center dark-bg">
+    <p>&copy; 2025 AID2E Collaboration.</p>
+  </footer>
+<script>
+function myFunction() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else {
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+</script>
+</body>
+</html>

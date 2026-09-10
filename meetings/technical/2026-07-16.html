@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>2026-07-02 - AID2E</title>
+  <title>2026-07-16 - AID2E</title>
   <link rel="stylesheet" href="/aid2e/assets/css/style.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
@@ -34,73 +34,74 @@
   </div>
   
   <div class="page-header" style="padding-top: 6rem;">
-    <h1>2026-07-02</h1>
+    <h1>2026-07-16</h1>
   </div>
   <div class="w3-container dark-bg" style="padding: clamp(1.5rem, 3vw, 3rem);">
     <div class="w3-content markdown-content">
       <h1 id="aid2e-technical-meeting">AID2E Technical Meeting</h1>
-<p><strong>Date:</strong> July 02, 2026  </p>
+<p><strong>Date:</strong> July 16, 2026  </p>
 <div class="attendees"><strong>Attendees:</strong> <br />
-Amit Bashyal, Wen Guan, Meifeng Lin: BNL, Baptiste Fraisse: CUA, Cynthia Nunez, Anselm Vossen: Duke, Derek Anderson: JLab, Hemalata Nayak, James Giroux, Cristiano Fanelli: W&amp;M</div>
+Amit Bashyal, Wen Guan, Tianle Wang: BNL, Baptiste Fraisse: CUA, Cynthia Nunez: Duke, James Giroux: W&amp;M</div>
+<h1 id="announcements">Announcements</h1>
 <h1 id="phase-i">Phase I</h1>
-<h3 id="derek">Derek</h3>
 <ul>
-<li><strong>PR #55</strong> (artifact cross-referencing between jobs) has been completed.</li>
-<li>Next priority is completing the CLI.</li>
-<li>Created Issue (Link) for the remaining CLI work and assigned it to Amit and Cynthia.</li>
-<li>Potentially merging dev branch into main<ul>
-<li>Initial thought hold off on putting in main until fully functional</li>
-<li>Useful having most recent functionality in main for Phase II</li>
-<li>Should be just migrating configuration models branch</li>
-<li>Is there a specific Panda specific branch? - No</li>
-<li>Will wait for dRICH PR then direct into main</li>
+<li><strong>Cynthia</strong><ul>
+<li>Worked through some of the issues PR #52 <ul>
+<li>Issues needed to be addressed prior to CLI implementation</li>
+<li>Test updates - PanDA test updated with current framework</li>
+<li>ePIC problem config - doesn’t fail, need to test usage</li>
+<li>Scheduler config, loader, etc added and tested</li>
+<li>CLI - opened a branch (implement-optimize-cli) - integrates the optimization and running trial workflows with different payloads</li>
+<li>Working on compute objectives to get them back into the optimizer - should be pushed relatively soon - test and then will make a PR</li>
+<li>Need to integrate ePIC stack eval script (drich_eval.py) runner into framework + CLI - finished once this occurs</li>
 </ul>
 </li>
 </ul>
-<h3 id="baptiste">Baptiste</h3>
+</li>
+<li>
+<p><strong>Amit</strong> </p>
 <ul>
-<li>B0 FarForward repository working with 2 branches (slurm and panda)</li>
-<li>Uses real resolution calculation running on Panda</li>
-<li>Should this be merged?<ul>
-<li>(Derek) - keep things parallel so that things that are supported can be copied over - run stress tests</li>
-<li>Keep full FarForward code functional and together before ready to full support with framework</li>
-<li>Use positions to test with the AID2E framework - remove polynomials</li>
+<li>going through PR#57</li>
+<li>working on PandA- Runner in BIC-MOBO</li>
+<li>Implementing multi-stage runner on BIC MOBO</li>
+<li>Currently runs with slurm and PanDA runner - single job</li>
+</ul>
+</li>
+<li>
+<p>Status of condensing repository?</p>
+<ul>
+<li><strong>Cynthia</strong> - once CLI implementation is merged into migrating-config-models repo will be cleaned up - this will then be merged into main<ul>
+<li>Maybe looking at two weeks </li>
 </ul>
 </li>
 </ul>
-<h3 id="cynthia">Cynthia</h3>
-<ul>
-<li>Working on CLI phase I</li>
-<li>Pushed dRICH examples and other AID2E updates<ul>
-<li>See PR#30:
-https://github.com/aid2e/AID2E-framework/pull/30 </li>
-</ul>
 </li>
-<li>Get dRICH optimizer script integrated</li>
-</ul>
-<h3 id="cris">Cris</h3>
-<ul>
-<li>Are any of the reconstruction algorithms going to have critical dependence on change in the design space? <ul>
-<li>No bias being introduced</li>
-</ul>
+<li>
+<p><strong>Amit</strong> - as long as things run with dtlz2 test maybe ok to move to main while still working on ePIC stack? Cynthia: possibly yes</p>
 </li>
 </ul>
 <h1 id="phase-ii">Phase II</h1>
 <ul>
-<li>Amit (See slides)</li>
-<li>Meifeng Suggestion: Nvidia Nemotron as additional open models working in Codex/Claude layer (see slides)</li>
-<li>Google Vertex - fine tuning from Google</li>
-<li>Google AntiGravity - anyone tried?</li>
-<li>James: Will add</li>
-</ul>
-<h2 id="action-items">Action Items</h2>
-<ul>
-<li>Check Action Items from previous meeting </li>
-<li>New action items<ul>
-<li>Once code assist is semi-working - add users for testing</li>
-<li>Utilization (GPU contention) - effectiveness</li>
+<li><strong>Amit</strong> - trying make agentic framework work with LLM hosted in perlmutter<ul>
+<li>Run agentic framework inside codex / claude - uses MCP servers relevant to user prompt and passes this to local LLM</li>
+<li>Once this is done want to test with models host in BNL machines</li>
+<li>When doing production scale optimization - currently no way to store experimental results, this should be stored somewhere accessible</li>
 </ul>
 </li>
+<li>
+<p><strong>James</strong></p>
+<ul>
+<li>Testing code assist with Baptise next week</li>
+</ul>
+</li>
+<li>
+<p><strong>Tianle</strong> (slides) vllm gateway Update 1.pptx </p>
+</li>
+<li>
+<p>Previous Action Items</p>
+</li>
+<li>New Action Items</li>
+<li>AOB</li>
 </ul>
     </div>
   </div>
@@ -108,12 +109,12 @@ https://github.com/aid2e/AID2E-framework/pull/30 </li>
     <div class="w3-content" style="display:flex; justify-content:space-between; gap:1rem;">
       <div>
         
-        <a class="nav-link nav-prev" href="2026-06-18.html"><i class="fa fa-arrow-left" aria-hidden="true"></i> Previous: Jun 18, 2026</a>
+        <a class="nav-link nav-prev" href="2026-07-02.html"><i class="fa fa-arrow-left" aria-hidden="true"></i> Previous: Jul 2, 2026</a>
         
       </div>
       <div style="margin-left:auto;">
         
-        <a class="nav-link nav-next" href="2026-07-16.html">Next: Jul 16, 2026 <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+        <a class="nav-link nav-next" href="2026-07-29.html">Next: Jul 29, 2026 <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
         
       </div>
     </div>

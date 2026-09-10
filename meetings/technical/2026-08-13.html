@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>2026-07-02 - AID2E</title>
+  <title>2026-08-13 - AID2E</title>
   <link rel="stylesheet" href="/aid2e/assets/css/style.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
@@ -34,86 +34,71 @@
   </div>
   
   <div class="page-header" style="padding-top: 6rem;">
-    <h1>2026-07-02</h1>
+    <h1>2026-08-13</h1>
   </div>
   <div class="w3-container dark-bg" style="padding: clamp(1.5rem, 3vw, 3rem);">
     <div class="w3-content markdown-content">
       <h1 id="aid2e-technical-meeting">AID2E Technical Meeting</h1>
-<p><strong>Date:</strong> July 02, 2026  </p>
-<div class="attendees"><strong>Attendees:</strong> <br />
-Amit Bashyal, Wen Guan, Meifeng Lin: BNL, Baptiste Fraisse: CUA, Cynthia Nunez, Anselm Vossen: Duke, Derek Anderson: JLab, Hemalata Nayak, James Giroux, Cristiano Fanelli: W&amp;M</div>
+<p><strong>Date:</strong> Aug 13, 2026  </p>
+<div class="attendees"><strong>Attendees:</strong> Amit Bashyal, Wen Guan, Tianle Wang (BNL); Baptiste Fraisse (CUA); Cynthia Nunez (Duke); Derek Anderson (JLab); James Giroux, Cris Fanelli, Hemalata Nayak (W&amp;M)</div>
+<h1 id="announcements">Announcements</h1>
 <h1 id="phase-i">Phase I</h1>
-<h3 id="derek">Derek</h3>
+<h2 id="updates">Updates</h2>
+<h3 id="cynthia-duke">Cynthia — Duke</h3>
 <ul>
-<li><strong>PR #55</strong> (artifact cross-referencing between jobs) has been completed.</li>
-<li>Next priority is completing the CLI.</li>
-<li>Created Issue (Link) for the remaining CLI work and assigned it to Amit and Cynthia.</li>
-<li>Potentially merging dev branch into main<ul>
-<li>Initial thought hold off on putting in main until fully functional</li>
-<li>Useful having most recent functionality in main for Phase II</li>
-<li>Should be just migrating configuration models branch</li>
-<li>Is there a specific Panda specific branch? - No</li>
-<li>Will wait for dRICH PR then direct into main</li>
+<li><strong>PR #59</strong> is ready for review.</li>
+<li>The dRICH example is working and has been fully updated in the main AID2E framework repository.</li>
+<li>The team discussed what is still missing before the framework is ready for wider use.</li>
+<li>Suggested cleanup work includes:<ul>
+<li>Simplifying the examples folder.</li>
+<li>Updating the documentation.</li>
+<li>Cleaning up branches.</li>
+<li>Identifying any other remaining issues.</li>
 </ul>
 </li>
 </ul>
-<h3 id="baptiste">Baptiste</h3>
+<h3 id="amit-bnl">Amit — BNL</h3>
 <ul>
-<li>B0 FarForward repository working with 2 branches (slurm and panda)</li>
-<li>Uses real resolution calculation running on Panda</li>
-<li>Should this be merged?<ul>
-<li>(Derek) - keep things parallel so that things that are supported can be copied over - run stress tests</li>
-<li>Keep full FarForward code functional and together before ready to full support with framework</li>
-<li>Use positions to test with the AID2E framework - remove polynomials</li>
+<li>Working on finishing the PanDA scheduler.</li>
+<li>Simple jobs are working.</li>
+<li>Multi-stage jobs are working, but not consistently.</li>
+<li>Final testing will use Cynthia's dRICH example.</li>
 </ul>
-</li>
-</ul>
-<h3 id="cynthia">Cynthia</h3>
+<h3 id="derek-jlab">Derek — JLab</h3>
 <ul>
-<li>Working on CLI phase I</li>
-<li>Pushed dRICH examples and other AID2E updates<ul>
-<li>See PR#30:
-https://github.com/aid2e/AID2E-framework/pull/30 </li>
+<li>Once PR #59 is merged, the BIC example will be updated to provide additional tests.</li>
 </ul>
-</li>
-<li>Get dRICH optimizer script integrated</li>
-</ul>
-<h3 id="cris">Cris</h3>
-<ul>
-<li>Are any of the reconstruction algorithms going to have critical dependence on change in the design space? <ul>
-<li>No bias being introduced</li>
-</ul>
-</li>
-</ul>
+<hr />
 <h1 id="phase-ii">Phase II</h1>
+<h2 id="code-assist">Code Assist</h2>
+<h3 id="james-wm">James — W&amp;M</h3>
 <ul>
-<li>Amit (See slides)</li>
-<li>Meifeng Suggestion: Nvidia Nemotron as additional open models working in Codex/Claude layer (see slides)</li>
-<li>Google Vertex - fine tuning from Google</li>
-<li>Google AntiGravity - anyone tried?</li>
-<li>James: Will add</li>
+<li>No major updates since the previous meeting.</li>
+<li>Tianle suggested considering other models, including Gemma and GPT, alongside Qwen.</li>
 </ul>
-<h2 id="action-items">Action Items</h2>
+<h3 id="amit-bnl_1">Amit — BNL</h3>
 <ul>
-<li>Check Action Items from previous meeting </li>
-<li>New action items<ul>
-<li>Once code assist is semi-working - add users for testing</li>
-<li>Utilization (GPU contention) - effectiveness</li>
+<li>Will return to Phase II after finishing the PanDA scheduler.</li>
 </ul>
-</li>
+<h3 id="tianle-bnl">Tianle — BNL</h3>
+<ul>
+<li>Fixed a bug that previously allowed users to submit only one model type.</li>
+<li>Multiple models can now be submitted to Perlmutter and accessed through the model gateway.</li>
+<li>Testing whether these improvements also work for Amit's setup.</li>
 </ul>
+<hr />
     </div>
   </div>
   <div class="w3-container dark-bg" style="padding: 1rem 2rem;">
     <div class="w3-content" style="display:flex; justify-content:space-between; gap:1rem;">
       <div>
         
-        <a class="nav-link nav-prev" href="2026-06-18.html"><i class="fa fa-arrow-left" aria-hidden="true"></i> Previous: Jun 18, 2026</a>
+        <a class="nav-link nav-prev" href="2026-07-29.html"><i class="fa fa-arrow-left" aria-hidden="true"></i> Previous: Jul 29, 2026</a>
         
       </div>
       <div style="margin-left:auto;">
         
-        <a class="nav-link nav-next" href="2026-07-16.html">Next: Jul 16, 2026 <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+        <a class="nav-link nav-next" href="2026-08-27.html">Next: Aug 27, 2026 <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
         
       </div>
     </div>

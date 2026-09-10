@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>2026-07-02 - AID2E</title>
+  <title>2026-08-25 - AID2E</title>
   <link rel="stylesheet" href="/aid2e/assets/css/style.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
@@ -34,86 +34,78 @@
   </div>
   
   <div class="page-header" style="padding-top: 6rem;">
-    <h1>2026-07-02</h1>
+    <h1>2026-08-25</h1>
   </div>
   <div class="w3-container dark-bg" style="padding: clamp(1.5rem, 3vw, 3rem);">
     <div class="w3-content markdown-content">
-      <h1 id="aid2e-technical-meeting">AID2E Technical Meeting</h1>
-<p><strong>Date:</strong> July 02, 2026  </p>
-<div class="attendees"><strong>Attendees:</strong> <br />
-Amit Bashyal, Wen Guan, Meifeng Lin: BNL, Baptiste Fraisse: CUA, Cynthia Nunez, Anselm Vossen: Duke, Derek Anderson: JLab, Hemalata Nayak, James Giroux, Cristiano Fanelli: W&amp;M</div>
-<h1 id="phase-i">Phase I</h1>
-<h3 id="derek">Derek</h3>
+      <h1 id="aid2e-general-meeting">AID2E General Meeting</h1>
+<p><strong>Date:</strong> Aug 25, 2026  </p>
+<div class="attendees"><strong>Attendees:</strong> </div>
+<hr />
+<h2 id="announcements">Announcements</h2>
 <ul>
-<li><strong>PR #55</strong> (artifact cross-referencing between jobs) has been completed.</li>
-<li>Next priority is completing the CLI.</li>
-<li>Created Issue (Link) for the remaining CLI work and assigned it to Amit and Cynthia.</li>
-<li>Potentially merging dev branch into main<ul>
-<li>Initial thought hold off on putting in main until fully functional</li>
-<li>Useful having most recent functionality in main for Phase II</li>
-<li>Should be just migrating configuration models branch</li>
-<li>Is there a specific Panda specific branch? - No</li>
-<li>Will wait for dRICH PR then direct into main</li>
+<li><strong>AID2E Dev Day — September 14, 2026 (JLab)</strong><ul>
+<li>One-day hybrid work session focused on running studies for the paper and planning the road to v1.0.</li>
+<li>Derek is coordinating the in-person arrangements at JLab.</li>
+<li>Remote participation will be available throughout the day.</li>
+<li>Anyone planning to attend in person should contact Derek.</li>
+<li>Onsite attendees must complete the JLab access form at least 7 days before arrival.</li>
+<li>The Indico page is available.</li>
 </ul>
 </li>
 </ul>
-<h3 id="baptiste">Baptiste</h3>
+<h2 id="updates-on-phase-i-from-technical-meeting">Updates on Phase I from technical meeting</h2>
+<h3 id="cynthia-duke">Cynthia — Duke</h3>
 <ul>
-<li>B0 FarForward repository working with 2 branches (slurm and panda)</li>
-<li>Uses real resolution calculation running on Panda</li>
-<li>Should this be merged?<ul>
-<li>(Derek) - keep things parallel so that things that are supported can be copied over - run stress tests</li>
-<li>Keep full FarForward code functional and together before ready to full support with framework</li>
-<li>Use positions to test with the AID2E framework - remove polynomials</li>
+<li>Created a new branch for documentation and example cleanup.</li>
+<li>Continuing work to make the optimization pipelines ready for use.</li>
 </ul>
-</li>
-</ul>
-<h3 id="cynthia">Cynthia</h3>
+<h3 id="derek-jlab">Derek — JLab</h3>
 <ul>
-<li>Working on CLI phase I</li>
-<li>Pushed dRICH examples and other AID2E updates<ul>
-<li>See PR#30:
-https://github.com/aid2e/AID2E-framework/pull/30 </li>
+<li>Will test the BIC code this week.</li>
+<li>Next step is to combine the sub-detector workflows into a working pipeline.</li>
 </ul>
-</li>
-<li>Get dRICH optimizer script integrated</li>
-</ul>
-<h3 id="cris">Cris</h3>
-<ul>
-<li>Are any of the reconstruction algorithms going to have critical dependence on change in the design space? <ul>
-<li>No bias being introduced</li>
-</ul>
-</li>
-</ul>
+<hr />
 <h1 id="phase-ii">Phase II</h1>
+<h2 id="code-assist">Code Assist</h2>
 <ul>
-<li>Amit (See slides)</li>
-<li>Meifeng Suggestion: Nvidia Nemotron as additional open models working in Codex/Claude layer (see slides)</li>
-<li>Google Vertex - fine tuning from Google</li>
-<li>Google AntiGravity - anyone tried?</li>
-<li>James: Will add</li>
+<li>Testing with <strong>Gemma</strong> is underway.</li>
+<li>Gemma has been somewhat less effective than the Qwen models so far.</li>
+<li>Qwen remains a suitable option for users running models locally.</li>
+<li>The team is looking into other models that meet national lab requirements.</li>
 </ul>
-<h2 id="action-items">Action Items</h2>
+<h2 id="monitoring-control">Monitoring / Control</h2>
+<h2 id="-amit-will-provide-an-update-at-the-next-technical-meeting">- Amit will provide an update at the next technical meeting.</h2>
+<h1 id="detector-optimization">Detector Optimization</h1>
+<h3 id="cua">CUA</h3>
 <ul>
-<li>Check Action Items from previous meeting </li>
-<li>New action items<ul>
-<li>Once code assist is semi-working - add users for testing</li>
-<li>Utilization (GPU contention) - effectiveness</li>
+<li><strong>Calorimetry calibration:</strong> Updates requested from Baptiste and Tanja.</li>
+</ul>
+<h3 id="duke-wm-other-institutions">Duke / W&amp;M / Other Institutions</h3>
+<ul>
+<li><strong>kLM Design:</strong> Phase I activity.</li>
+<li><strong>RICH Alignment:</strong> Phase II activity; the alignment work is already in production at CLAS12.<ul>
+<li>Connor may still be contributing.</li>
+<li>Anselm is considering ways to speed up the work.</li>
+<li>Connor needs to write up the completed work.</li>
+<li>The team discussed whether SLURM/PanDA could help speed up the process.</li>
+<li>Cynthia believes Connor has been using SLURM.</li>
 </ul>
 </li>
+<li><strong>AerFib:</strong> Ongoing activity.</li>
+<li><strong>Software Stack Extension:</strong> FEM integration and ensuring consistency between FEM and Geant detector designs.</li>
 </ul>
+<hr />
     </div>
   </div>
   <div class="w3-container dark-bg" style="padding: 1rem 2rem;">
     <div class="w3-content" style="display:flex; justify-content:space-between; gap:1rem;">
       <div>
         
-        <a class="nav-link nav-prev" href="2026-06-18.html"><i class="fa fa-arrow-left" aria-hidden="true"></i> Previous: Jun 18, 2026</a>
+        <a class="nav-link nav-prev" href="2026-08-11.html"><i class="fa fa-arrow-left" aria-hidden="true"></i> Previous: Aug 11, 2026</a>
         
       </div>
       <div style="margin-left:auto;">
-        
-        <a class="nav-link nav-next" href="2026-07-16.html">Next: Jul 16, 2026 <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
         
       </div>
     </div>
